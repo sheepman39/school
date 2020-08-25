@@ -6,7 +6,7 @@ painter = trtl.Turtle()
 repeat = 0
 painter.turtlesize(3)
 painter.pensize(5)
-painter.pencolor('#48f542')
+painter.pencolor('#ebeef0')
 
 #goes to the upper corner to start
 painter.penup()
@@ -15,7 +15,7 @@ painter.setheading(180)
 painter.pendown()
 
 #while loop draws the rectangle without writing the same code again
-painter.fillcolor('#6b118a')
+painter.fillcolor('#272932')
 painter.begin_fill()
 while repeat < 2:
   painter.left(90)
@@ -27,7 +27,7 @@ painter.end_fill()
 
 
 #draws the triangle
-painter.fillcolor('#579c17')
+painter.fillcolor('#47484b')
 painter.begin_fill()
 painter.left(90)
 painter.forward(50)

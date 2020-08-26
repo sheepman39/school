@@ -17,6 +17,7 @@ while repeat < 4:
   painter.dot(x)
   repeat = repeat + 1
 painter.setheading(0)
+
 #Creates the circles
 repeat = 0
 while repeat < len(colorArray):

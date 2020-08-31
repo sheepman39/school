@@ -5,6 +5,8 @@ import turtle as trtl
 painter = trtl.Turtle()
 painter.speed(10)
 painter.pensize(5)
+
+# function moveto makes it easier to move the turtle
 def moveto(x,y):
   painter.penup()
   painter.goto(x,y)

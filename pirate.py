@@ -1,11 +1,11 @@
 # Add your code here and add comments to your code 
 #   to describe what each section of code is doing
 #   code is asking the user their name and what the name of their pirate ship will be
-user_name=input("Avast me harty! This be ye new pirate vessel. But before we can transfer the deed to ye we gonna be needin' some information from ye. Fer starters, wat ye be called?")
-ship_name=input("Welcome aboard "+user_name+" This be yer new vessel. But first she be needin' a name. Wat ye be callin' yer vessel.")
+#user_name=input("Avast me harty! This be ye new pirate vessel. But before we can transfer the deed to ye we gonna be needin' some information from ye. Fer starters, wat ye be called?")
+#ship_name=input("Welcome aboard "+user_name+" This be yer new vessel. But first she be needin' a name. Wat ye be callin' yer vessel?")
 
 #   we are congratumalating the user on their name?
-print("That be a nice name "  + user_name + " We be callin' ye vessel the " + ship_name)
+#print("That be a nice name "  + user_name + " We be callin' ye vessel the " + ship_name)
 import turtle as turtl
 painter = turtl.Turtle()
 
@@ -44,4 +44,10 @@ painter.pensize(8)
 painter.right(90)
 painter.pendown()
 painter.forward(150)
+painter.right(135)
+painter.pencolor("yellow")
+painter.forward(150)
+painter.right(135)
+painter.forward(100)
 wn = turtl.Screen()
+wn.mainloop()

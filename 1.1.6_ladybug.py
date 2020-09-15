@@ -5,10 +5,18 @@ import turtle as trtl
 ladybug = trtl.Turtle()
 ladybug.pensize(40)
 ladybug.circle(5)
-
+#creates legs
+legs = 0
+ladybug.pensize(10)
+while(legs < 3):
+  ladybug.goto(0,-25)
+  ladybug.setheading(155+legs*25)
+  ladybug.forward(60)
+  ladybug.backward(120)
+  legs += 1
 # and body
 ladybug.penup()
-ladybug.goto(0, -55) 
+ladybug.goto(-5, -25) 
 ladybug.color("red")
 ladybug.pendown()
 ladybug.pensize(40)
@@ -27,6 +35,7 @@ xpos = -20
 ypos = -55
 ladybug.pensize(10)
 
+  
 # draw two sets of dots
 while (num_dots <= 2 ):
   ladybug.penup()
@@ -42,6 +51,7 @@ while (num_dots <= 2 ):
   xpos += 25
   ypos += 5
   num_dots += 1
+  
 
 ladybug.hideturtle()
 

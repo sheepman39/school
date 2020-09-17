@@ -6,26 +6,39 @@ import turtle as trtl
 my_turtles = []
 
 # use interesting shapes and colors
-turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic"]
-turtle_colors = ["red", "blue", "green", "orange", "purple", "gold"]
+turtle_shapes = ["arrow", "turtle", "circle", "square", "triangle", "classic","arrow", "turtle", "circle", "square", "triangle", "classic"]
+turtle_colors = ["red", "blue", "green", "orange", "purple", "gold","red", "blue", "green", "orange", "purple", "gold"]
 
 for s in turtle_shapes:
- 
-  my_turtles.append(trtl.Turtle(shape=s))
+  current_color = turtle_colors.pop()
+  t = trtl.Turtle(shape=s)
+  my_turtles.append(t)
+  t.pencolor(current_color)
+  t.color(current_color)
 
 # Sets the starting position
-startx = -150
-starty = -150
-
+startx = 0
+starty = 0
+rotate = 270
+forwar = 55
+i = 1
 # For the number of shapes that are available, go right 45 and move forward 50
 for t in my_turtles:
+  
+  t.penup()
+  t.pensize(5)
   t.goto(startx, starty)
-  t.right(45)     
-  t.forward(50)
+  t.setheading(rotate)
+  rotate += 45 
+  t.pendown()
+  t.right(45)
+  forwar = 55+i*5
+  t.forward(int(forwar))
+  i += 1
 
 #	Sets the next position up 50,50
-  startx = startx + 50
-  starty = starty + 50
+  startx = t.xcor()
+  starty = t.ycor()
 
 wn = trtl.Screen()
 wn.mainloop()

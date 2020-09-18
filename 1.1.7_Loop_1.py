@@ -1,5 +1,6 @@
 #   a117_traversing_turtles.py
 #   Add code to make turtles move in a circle and change colors.
+# This comment was written by me. ha
 import turtle as trtl
 
 # create an empty list of turtles

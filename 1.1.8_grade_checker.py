@@ -1,5 +1,4 @@
 #   a118_grades.py
-#   This code is incomplete. 
 
 my_courses = ("English","CS","Band")
 check_grades = True

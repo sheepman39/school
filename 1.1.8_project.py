@@ -52,22 +52,24 @@ for s in turtle_shapes:
         if(abs(ht.xcor()-vt.xcor()) < 20 and abs(ht.ycor()-vt.ycor()) < 20):
           ht_shape = ht.shape()
           vt_shape = vt.shape()
+          ht_color = ht.fillcolor()
+          vt_color = vt.fillcolor()
           vt.fillcolor("#a2d145")
           ht.fillcolor("#a2d145")
           vt.shape("square")
           ht.shape("square")
-          #vert_turtles.remove(v)
-          #horiz_turtles.remove(h)
-          vt.forward(-30)
+          vt.forward(30)
           ht.forward(-45)
-        #else: 
-          #vt.shape(vt_shape)
-          #ht.shape(ht_shape)
+          vt.shape(vt_shape)
+          ht.shape(ht_shape)
+          vt.fillcolor(vt_color)
+          ht.fillcolor(ht_color)
         if(abs(ht.xcor()) > 180 or abs(ht.ycor() > 180)):
-          ht.fillcolor("gray")
+          ht.fillcolor("pink")
           horiz_turtles.remove(h) 
         if(abs(vt.xcor()) > 180 or abs(vt.ycor() > 180)):
-          vt.fillcolor("gray")
+          vt.fillcolor("pink")
           vert_turtles.remove(v)
+        
 wn = trtl.Screen()
 wn.mainloop()

@@ -11,7 +11,7 @@ turtle_shapes = ["arrow", "turtle", "circle", "triangle", "classic"]
 horiz_colors = ["red", "blue", "green", "orange", "purple"]
 vert_colors = ["darkred", "darkblue", "lime", "salmon", "indigo"]
 
-tloc = 50
+tloc = -50
 for s in turtle_shapes:
   
   #Adds a new turtle to the horiz_turtles list
@@ -20,7 +20,7 @@ for s in turtle_shapes:
   ht.penup()
   new_color = horiz_colors.pop()
   ht.fillcolor(new_color)
-  ht.goto(-200, tloc)
+  ht.goto(-100, tloc)
   ht.setheading(0)
   
   #Adds a new turtle to the vert_turtles list
@@ -29,7 +29,7 @@ for s in turtle_shapes:
   vt.penup()
   new_color = vert_colors.pop()
   vt.fillcolor(new_color)
-  vt.goto( -tloc, 200)
+  vt.goto( -tloc, 100)
   vt.setheading(270)
   
   #Changes the location of the turtles
@@ -66,10 +66,7 @@ for s in turtle_shapes:
           ht.shape(ht_shape)
           vt.fillcolor(vt_color)
           ht.fillcolor(ht_color)
-        if(abs(ht.xcor()) > 300 or abs(ht.ycor() > 300) or abs(vt.xcor()) > 300 or abs(vt.ycor() > 300)):
-          print(ht.shape())
-          print(ht.xcor())
-          print(ht.ycor())
+        if(ht.xcor() > 150 or vt.ycor() < -150):
           ht.fillcolor("pink")
           vt.fillcolor("pink")
           steps = 501

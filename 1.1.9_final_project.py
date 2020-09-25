@@ -12,7 +12,6 @@ def moveto(x,y):
   painter.goto(x,y)
   painter.pendown()
 #Builds the center line and circle
-
 #First and center circle
 painter.turtlesize(0.7)
 painter.setheading(90)
@@ -28,9 +27,22 @@ painter.circle(20)
 painter.right(90)
 
 #Draws the center line
+painter.shape("arrow")
 painter.pensize(5)
-painter.goto(0,190)
-painter.goto(0,-190)
+painter.goto(0,80)
+painter.setheading(90)
+painter.left(90)
+painter.forward(115)
+painter.left(90)
+painter.forward(150)
+painter.left(90)
+painter.forward(225)
+painter.left(90)
+painter.forward(150)
+painter.left(90)
+painter.forward(110)
+#painter.goto(0,180)
+painter.goto(0,-66)
 
 wn = trtl.Screen()
 wn.mainloop()

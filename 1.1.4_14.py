@@ -17,6 +17,8 @@ while (x < 200):
     if(x == -150):
       painter.color("purple")
     painter.stamp()
-    
+#This Program was created/edited by sheepman39
+#In case of plagarism, please go to https://github.com/sheepman39/school
+#And submit an issue
 wn = trtl.Screen()
 wn.mainloop()

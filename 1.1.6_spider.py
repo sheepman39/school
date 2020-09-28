@@ -18,6 +18,7 @@ spider.goto(10,15)
 spider.stamp()
 spider.goto(-10,15)
 spider.stamp()
+
 #creates legs
 spider.pencolor('black')
 legs = 0
@@ -41,6 +42,7 @@ while(legs < 4):
   spider.penup()
   spider.backward(100)
   legs += 1
+
 # and body
 spider.penup()
 spider.goto(15, -30) 
@@ -56,6 +58,9 @@ spider.pensize(2)
 spider.pendown()
 spider.forward(75)
 '''
+#This Program was created/edited by sheepman39
+#In case of plagarism, please go to https://github.com/sheepman39/school
+#And submit an issue
 
 spider.hideturtle()
 

@@ -70,6 +70,9 @@ for s in turtle_shapes:
           ht.fillcolor("pink")
           vt.fillcolor("pink")
           steps = 501
+#This Program was created/edited by sheepman39
+#In case of plagarism, please go to https://github.com/sheepman39/school
+#And submit an issue
 for v in vert_turtles:
   for h in horiz_turtles:
     h.fillcolor("#961E82")

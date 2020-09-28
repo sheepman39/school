@@ -1,6 +1,7 @@
 # 1.1.9_final_project.py
 import turtle as trtl
 import random
+
 # create the turtle object
 painter = trtl.Turtle()
 screen = trtl.Screen()

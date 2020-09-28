@@ -5,7 +5,7 @@ import random
 # create the turtle object
 painter = trtl.Turtle()
 screen = trtl.Screen()
-screen.setup(280, 190)
+screen.setup(280, 200)
 trtl.bgcolor("#72b964")
 painter.color("white")
 
@@ -44,14 +44,20 @@ painter.setheading(90)
 painter.left(90)
 painter.forward(115)
 painter.left(90)
-painter.forward(150)
+painter.forward(160)
 painter.left(90)
-painter.forward(225)
+painter.forward(230)
 painter.left(90)
-painter.forward(150)
+painter.forward(160)
 painter.left(90)
-painter.forward(110)
-painter.goto(0,-66)
+painter.forward(115)
+painter.goto(0,-80)
+
+#drawing the arcs
+moveto(-115,80)
+painter.circle(80,-180,200)
+moveto(115,-80)
+painter.circle(80,-180,200)
 
 #Left Goal
 moveto(0,0)
@@ -71,7 +77,7 @@ painter.forward(37.5)
 moveto(0,0)
 painter.setheading(0)
 painter.penup()
-painter.forward(110)
+painter.forward(115)
 painter.pendown()
 for i in range(2):
   painter.left(90)
@@ -83,22 +89,37 @@ painter.forward(37.5)
 
 #Tricky part of spawning in the teams
 #tt stands for triangle team
-#st stands for square team
+#at stands for square team
+
 i = 0
 while(i <= 10):
   tt = trtl.Turtle(shape="triangle")
-  st = trtl.Turtle(shape="square")
-  square_team.append(st)
+  at = trtl.Turtle(shape="arrow")
+  square_team.append(at)
   triangle_team.append(tt)
   tt.turtlesize(0.5)
-  st.turtlesize(0.5)
+  at.turtlesize(0.5)
   tt.color("blue")
-  st.color("red")
+  at.color("red")
   tt.penup()
-  st.penup()
-  tt.goto(random_num(-150, 150), random_num(-80, 80))
-  st.goto(random_num(-150, 150), random_num(-80, 80))
+  at.penup()
+  tt.goto(random_num(-130, 130), random_num(-70, 70))
+  at.goto(random_num(-130, 130), random_num(-70, 70))
+  if(tt.xcor() <= 0):
+    tt.setheading(0)
+  elif(tt.xcor() >= 0):
+    tt.setheading(180)
+  if(at.xcor() <= 0):
+    at.setheading(180)
+  elif(at.xcor() >= 0):
+    at.setheading(0)
+  for j in triangle_team:
+      if(abs(j.xcor()-at.xcor()) < 20 and abs(j.ycor()-at.ycor()) < 20):
+        at.forward(15)
+        j.goto(j.xcor(),j.ycor()-15)
+        #j.forward(-15)
   i += 1
+#'''
 
 wn = trtl.Screen()
 wn.mainloop()

@@ -48,6 +48,9 @@ painter.pensize(5)
 painter.goto(0,80)
 painter.setheading(90)
 painter.left(90)
+
+#Draws the perimiter of the
+#Soccer Field
 painter.forward(115)
 painter.left(90)
 painter.forward(160)
@@ -59,7 +62,7 @@ painter.left(90)
 painter.forward(115)
 painter.goto(0,-80)
 
-#drawing the arcs
+#draws the arcs
 moveto(-115,80)
 painter.circle(80,-180,200)
 moveto(115,-80)
@@ -93,10 +96,14 @@ painter.forward(75)
 painter.left(90)
 painter.forward(37.5)
 
-#Tricky part of spawning in the teams
-#tt stands for triangle team
-#at stands for arrow team
-
+'''
+ The rest of the code is for
+ Spawning in the two teams
+ in the correct locations
+ 
+ tt stands for triangle team
+ at stands for arrow team
+'''
 #While loop creates new turtle objects and puts them in the array
 i = 0
 while(i <= 9):
@@ -111,18 +118,19 @@ while(i <= 9):
   at.color("red")
   tt.penup()
   at.penup()
-  #Balances out the teams so they spawn in different locations
-  # 2 midfield
+  
+  #Balences out the teams so they spawn in different locations
+  #2 midfield per team
   if(i<=1):
     tt.goto(random_num(-20, 20), random_num(-60, 70))
     at.goto(random_num(-20, 20), random_num(-60, 70))
 
-  # 4 defence
+  #4 defence per team
   elif(i >= 2 and i <= 5):
     tt.goto(random_num(-100, -25), random_num(-60, 70))
     at.goto(random_num(25, 100), random_num(-60, 70))
 
-  # 4 Offence
+  #4 Offence per team
   elif(i >= 6 and i <= 9):
     tt.goto(random_num(25, 100), random_num(-60, 70))
     at.goto(random_num(-100, -25), random_num(-60, 70))
@@ -130,20 +138,24 @@ while(i <= 9):
   #Changes the direction depending on which side of the field they are on.
   if(tt.xcor() <= 0):
     tt.setheading(0)
+  
   elif(tt.xcor() >= 0):
     tt.setheading(180)
  
   #Same thing above but for the arrow team
   if(at.xcor() <= 0):
     at.setheading(180)
+  
   elif(at.xcor() >= 0):
     at.setheading(0)
   
   #For loop controls collisions between the different teams
   for j in triangle_team:
+      
       if(abs(j.xcor()-at.xcor()) < 20 and abs(j.ycor()-at.ycor()) < 20):
         at.forward(15)
         j.goto(j.xcor(),j.ycor()-15)
+  
   i += 1
 
 wn = trtl.Screen()

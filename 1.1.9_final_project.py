@@ -22,6 +22,8 @@ def moveto(x,y):
 
 #Shortcut for creating random numbers
 def random_num(low, high):
+  if(low > high):
+    return random.randrange(high,low)
   return random.randrange(low,high)
 
 #Variables

@@ -151,10 +151,24 @@ while(i <= 9):
   
   #For loop controls collisions between the different teams
   for j in triangle_team:
-      
       if(abs(j.xcor()-at.xcor()) < 20 and abs(j.ycor()-at.ycor()) < 20):
         at.forward(15)
         j.goto(j.xcor(),j.ycor()-15)
+
+  #For loops controls collisisons among the same team members
+  for k in triangle_team:
+    for z in triangle_team:
+      if(k != z):
+        if(abs(k.xcor()-z.xcor()) < 20 and abs(k.ycor()-z.ycor()) < 20):
+          z.forward(15)
+          k.goto(k.xcor(),k.ycor()-15)
+  
+  for k in arrow_team:
+    for z in arrow_team:
+      if(k != z):
+        if(abs(k.xcor()-z.xcor()) < 20 and abs(k.ycor()-z.ycor()) < 20):
+          z.forward(15)
+          k.goto(k.xcor(),k.ycor()-15)
   
   i += 1
 

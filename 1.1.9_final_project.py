@@ -124,18 +124,18 @@ while(i <= 9):
   #Balences out the teams so they spawn in different locations
   #2 midfield per team
   if(i<=1):
-    tt.goto(random_num(-20, 20), random_num(-60, 70))
-    at.goto(random_num(-20, 20), random_num(-60, 70))
+    tt.goto(random_num(-20, 20), random_num(-50, 70))
+    at.goto(random_num(-20, 20), random_num(-50, 70))
 
   #4 defence per team
   elif(i >= 2 and i <= 5):
-    tt.goto(random_num(-100, -25), random_num(-60, 70))
-    at.goto(random_num(25, 100), random_num(-60, 70))
+    tt.goto(random_num(-75, -25), random_num(-50, 70))
+    at.goto(random_num(25, 75), random_num(-50, 70))
 
   #4 Offence per team
   elif(i >= 6 and i <= 9):
-    tt.goto(random_num(25, 100), random_num(-60, 70))
-    at.goto(random_num(-100, -25), random_num(-60, 70))
+    tt.goto(random_num(25, 75), random_num(-50, 70))
+    at.goto(random_num(-75, -25), random_num(-50, 70))
   
   #Changes the direction depending on which side of the field they are on.
   if(tt.xcor() <= 0):
@@ -153,26 +153,25 @@ while(i <= 9):
   
   #For loop controls collisions between the different teams
   for j in triangle_team:
-      if(abs(j.xcor()-at.xcor()) < 20 and abs(j.ycor()-at.ycor()) < 20):
-        at.forward(15)
+      if(abs(j.xcor()-at.xcor()) < 15 and abs(j.ycor()-at.ycor()) < 15):
+        at.forward(-15)
         j.goto(j.xcor(),j.ycor()-15)
 
   #For loops controls collisisons among the same team members
   for k in triangle_team:
     for z in triangle_team:
       if(k != z):
-        if(abs(k.xcor()-z.xcor()) < 20 and abs(k.ycor()-z.ycor()) < 20):
+        if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
           z.forward(15)
           k.goto(k.xcor(),k.ycor()-15)
   
   for k in arrow_team:
     for z in arrow_team:
       if(k != z):
-        if(abs(k.xcor()-z.xcor()) < 20 and abs(k.ycor()-z.ycor()) < 20):
+        if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
           z.forward(15)
-          k.goto(k.xcor(),k.ycor()-15)
+          k.goto(k.xcor(),k.ycor()+15)
   
   i += 1
-
 wn = trtl.Screen()
 wn.mainloop()

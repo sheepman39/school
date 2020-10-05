@@ -155,7 +155,7 @@ while(i <= 9):
   for j in triangle_team:
       if(abs(j.xcor()-at.xcor()) < 15 and abs(j.ycor()-at.ycor()) < 15):
         at.forward(-15)
-        j.goto(j.xcor(),j.ycor()-15)
+        j.goto(j.xcor(),j.ycor()-25)
 
   #For loops controls collisisons among the same team members
   for k in triangle_team:
@@ -163,14 +163,14 @@ while(i <= 9):
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
           z.forward(15)
-          k.goto(k.xcor(),k.ycor()-15)
+          k.goto(k.xcor(),k.ycor()-25)
   
   for k in arrow_team:
     for z in arrow_team:
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
           z.forward(15)
-          k.goto(k.xcor(),k.ycor()+15)
+          k.goto(k.xcor(),k.ycor()+25)
   
   i += 1
 wn = trtl.Screen()

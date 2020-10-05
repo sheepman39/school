@@ -31,10 +31,11 @@ triangle_team = []
 arrow_team = []
 
 #First and center circle
+painter.speed(-1)
 painter.turtlesize(0.5)
 painter.setheading(90)
 painter.shape("circle")
-painter.speed(-1)
+
 #Draws the larger circle
 moveto(0,0)
 painter.stamp()
@@ -110,6 +111,7 @@ painter.forward(37.5)
 #While loop creates new turtle objects and puts them in the array
 i = 0
 while(i <= 9):
+  
   #Creates the turtle, assigns a color, size, shape, and sets the location to a random spot
   tt = trtl.Turtle(shape="triangle")
   at = trtl.Turtle(shape="arrow")

@@ -34,7 +34,7 @@ arrow_team = []
 painter.turtlesize(0.5)
 painter.setheading(90)
 painter.shape("circle")
-
+painter.speed(-1)
 #Draws the larger circle
 moveto(0,0)
 painter.stamp()
@@ -106,6 +106,7 @@ painter.forward(37.5)
  tt stands for triangle team
  at stands for arrow team
 '''
+
 #While loop creates new turtle objects and puts them in the array
 i = 0
 while(i <= 9):
@@ -162,14 +163,14 @@ while(i <= 9):
     for z in triangle_team:
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
-          z.forward(15)
+          z.forward(20)
           k.goto(k.xcor(),k.ycor()-25)
   
   for k in arrow_team:
     for z in arrow_team:
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
-          z.forward(15)
+          z.forward(20)
           k.goto(k.xcor(),k.ycor()+25)
   
   i += 1

@@ -173,7 +173,7 @@ while(i <= 9):
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
           z.forward(20)
-          k.goto(k.xcor(),k.ycor()+25)
+          k.goto(k.xcor(),k.ycor()-25)
   
   i += 1
 wn = trtl.Screen()

@@ -31,6 +31,7 @@ triangle_team = []
 arrow_team = []
 
 #First and center circle
+painter.speed(-1)
 painter.turtlesize(0.5)
 painter.setheading(90)
 painter.shape("circle")
@@ -106,9 +107,11 @@ painter.forward(37.5)
  tt stands for triangle team
  at stands for arrow team
 '''
+
 #While loop creates new turtle objects and puts them in the array
 i = 0
 while(i <= 9):
+  
   #Creates the turtle, assigns a color, size, shape, and sets the location to a random spot
   tt = trtl.Turtle(shape="triangle")
   at = trtl.Turtle(shape="arrow")
@@ -155,22 +158,22 @@ while(i <= 9):
   for j in triangle_team:
       if(abs(j.xcor()-at.xcor()) < 15 and abs(j.ycor()-at.ycor()) < 15):
         at.forward(-15)
-        j.goto(j.xcor(),j.ycor()-15)
+        j.goto(j.xcor(),j.ycor()-25)
 
   #For loops controls collisisons among the same team members
   for k in triangle_team:
     for z in triangle_team:
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
-          z.forward(15)
-          k.goto(k.xcor(),k.ycor()-15)
+          z.forward(20)
+          k.goto(k.xcor(),k.ycor()-25)
   
   for k in arrow_team:
     for z in arrow_team:
       if(k != z):
         if(abs(k.xcor()-z.xcor()) < 15 and abs(k.ycor()-z.ycor()) < 15):
-          z.forward(15)
-          k.goto(k.xcor(),k.ycor()+15)
+          z.forward(20)
+          k.goto(k.xcor(),k.ycor()-25)
   
   i += 1
 wn = trtl.Screen()

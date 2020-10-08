@@ -10,9 +10,10 @@ dot_size = 5
 dot_shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 30
+timer = 5
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
+
 #-----initialize turtle-----
 dot = trtl.Turtle()
 dot.fillcolor(dot_color)
@@ -57,7 +58,7 @@ def game_setup(x,y):
     dot_shape = "circle"
     score = 0
     font_setup = ("Arial", 20, "normal")
-    timer = 30
+    timer = 5
     counter_interval = 1000  
     timer_up = False
     counter.write("Timer: " + str(timer), font=font_setup)
@@ -78,7 +79,7 @@ def change_position():
     dot_size -= 0.25
     dot.turtlesize(dot_size)
   new_xcor = rand.randint(-200,200)
-  new_ycor = rand.randint(-150,150)
+  new_ycor = rand.randint(-100,150)
   dot.goto(new_xcor,new_ycor)
 
 def countdown():
@@ -87,7 +88,9 @@ def countdown():
   if timer <= 0:
     counter.write("Time's Up", font=font_setup)
     timer_up = True
-    #print("Click on the turtle to play again!")
+    dot.goto(0,0)
+    dot.turtlesize(5)
+    print("Click on the turtle to play again!")
   else:
     counter.write("Timer: " + str(timer), font=font_setup)
     timer -= 1

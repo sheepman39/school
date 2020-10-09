@@ -65,6 +65,7 @@ def game_setup(x,y):
   
   if(timer_up == True):
     
+    counter.clear()
     counter.write("Timer: " + str(timer), font=font_setup)
     counter.getscreen().ontimer(countdown, counter_interval) 
     dot_color = "#460a8f"

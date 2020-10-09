@@ -10,7 +10,6 @@ screen = trtl.Screen()
 screen.setup(280, 200)
 
 #Changes the background color and painter color
-trtl.bgcolor("#72b964")
 painter.color("white")
 
 #Shortcut moveto function helps 
@@ -177,4 +176,5 @@ while(i <= 9):
   
   i += 1
 wn = trtl.Screen()
+wn.bgcolor("#72b964")
 wn.mainloop()

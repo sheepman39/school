@@ -10,28 +10,33 @@ dot_size = 5
 dot_shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 5
+timer = 20
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
 #-----initialize turtle-----
+#Purple turtle
 dot = trtl.Turtle()
 dot.fillcolor(dot_color)
 dot.turtlesize(dot_size)
 dot.shape(dot_shape)
 dot.penup()
 
+#Score turtle
 score_writer = trtl.Turtle()
 score_writer.penup()
 score_writer.hideturtle()
 score_writer.goto(50,-150)
 
+#Timer turtle
 counter =  trtl.Turtle()
 counter.penup()
 counter.hideturtle()
 counter.goto(-150,-150)
 
 #-----game functions--------
+
+#Controls the initial click
 def spot_clicked(x, y):
   global timer_up
   if(timer_up):
@@ -43,6 +48,7 @@ def spot_clicked(x, y):
     change_position()
     update_score()
 
+#Resets the game to make it playable
 def game_setup(x,y):
   global dot_color
   global dot_size
@@ -52,46 +58,60 @@ def game_setup(x,y):
   global timer
   global counter_interval
   global timer_up
+  
   if(timer_up == True):
+    
+    counter.write("Timer: " + str(timer), font=font_setup)
+    counter.getscreen().ontimer(countdown, counter_interval) 
     dot_color = "#460a8f"
     dot_size = 5
     dot_shape = "circle"
     score = 0
+    timer = 20
     font_setup = ("Arial", 20, "normal")
-    timer = 5
     counter_interval = 1000  
     timer_up = False
-    counter.write("Timer: " + str(timer), font=font_setup)
-    counter.getscreen().ontimer(countdown, counter_interval) 
+    
   else:
     spot_clicked(x,y)
 
+#Updates the score
 def update_score():
+  
   global score
   score += 1
   score_writer.clear()
   score_writer.write("score: " + str(score), font = font_setup)
-  
+
+#Moves turtle to a random position  
 def change_position():
+  
   global score
   global dot_size
   if(score % 2 == 0 and dot_size >= 1):
+  
     dot_size -= 0.25
     dot.turtlesize(dot_size)
+  
   new_xcor = rand.randint(-200,200)
   new_ycor = rand.randint(-100,150)
   dot.goto(new_xcor,new_ycor)
 
+#Timer code
 def countdown():
+  
   global timer, timer_up
   counter.clear()
   if timer <= 0:
+  
     counter.write("Time's Up", font=font_setup)
     timer_up = True
     dot.goto(0,0)
     dot.turtlesize(5)
     print("Click on the turtle to play again!")
+  
   else:
+  
     counter.write("Timer: " + str(timer), font=font_setup)
     timer -= 1
     counter.getscreen().ontimer(countdown, counter_interval) 

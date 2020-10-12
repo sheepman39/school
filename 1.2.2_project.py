@@ -1,8 +1,16 @@
 # a121_catch_a_turtle.py
+#NOTE: copy and pasted code from 1.2.1 and im going
+#to continue working on this to keep the two separate
 #-----import statements-----
 import turtle as trtl
 import random as rand
+import leaderboard as lb
 
+# leaderboard variables
+leaderboard_file_name = "a122_leaderboard.txt"
+leader_names_list = []
+leader_scores_list = []
+player_name = input("Please enter your name:")
 
 #-----game configuration----
 dot_color = "#460a8f"
@@ -10,7 +18,7 @@ dot_size = 5
 dot_shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 20
+timer = 5
 counter_interval = 1000
 timer_up = False
 
@@ -39,6 +47,24 @@ counter.hideturtle()
 counter.goto(-150,-150)
 
 #-----game functions--------
+# manages the leaderboard for top 5 scorers
+def manage_leaderboard():
+  
+  global leader_scores_list
+  global leader_names_list
+  global score
+  global dot
+
+  # load all the leaderboard records into the lists
+  lb.load_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list)
+
+  # TODO
+  if (len(leader_scores_list) < 5 or score > leader_scores_list[4]):
+    lb.update_leaderboard(leaderboard_file_name, leader_names_list, leader_scores_list, player_name, score)
+    lb.draw_leaderboard(leader_names_list, leader_scores_list, True, dot, score)
+
+  else:
+    lb.draw_leaderboard(leader_names_list, leader_scores_list, False, dot, score)
 
 #Controls the initial click
 def spot_clicked(x, y):
@@ -114,6 +140,7 @@ def countdown():
   
     counter.write("Time's Up", font=font_setup)
     timer_up = True
+    manage_leaderboard()
     dot.goto(0,0)
     dot.turtlesize(5)
     print("Click on the turtle to play again!")

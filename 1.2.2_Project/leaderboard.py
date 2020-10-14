@@ -8,28 +8,37 @@ gold_score = 25
 
 # load leaderboard from file
 def load_leaderboard(file_name, leader_names, leader_scores):
-
+  print(file_name)
   leaderboard_file = open(file_name, "r")  # need to create the file ahead of time in same folder
 
   # use a for loop to iterate through the content of the file, one line at a time
   # note that each line in the file has the format "leader_name,leader_score" for example "Pat,50"
   for line in leaderboard_file:
-    leader_name = ""
-    leader_score = ""    
-    index = 0
+    #leader_name = ""
+    #leader_score = ""    
+    #index = 0
+    leader_name = line[:line.find(",")]
+    leader_score = line[line.find(",")+1:]
+    '''
+    while (line[index] != ","):
+      leader_name = leader_name + line[index] 
+      index = index + 1
+      '''
 
     # TODO 1: use a while loop to read the leader name from the line (format is "leader_name,leader_score")
 
 
     # TODO 2: add the leader name to the list
+    leader_names.append(leader_name)
+    leader_scores.append(int(leader_score))
 
+    print("Individual results: " + leader_name + " " + str(leader_score))
+    print("Entire Arrays: " + str(leader_scores) + " " + str(leader_names))
     
     # TODO 3: read the player score using a similar loop
 
     
     # TODO 4: add the player score to the list
-
-
   leaderboard_file.close()
 
 
@@ -71,14 +80,14 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   font_setup = ("Arial", 20, "normal")
   turtle_object.clear()
   turtle_object.penup()
-  turtle_object.goto(-200,100)
-  turtle_object.hideturtle()
+  turtle_object.goto(0,0)
+  #turtle_object.hideturtle()
   turtle_object.down()
   leader_index = 0
 
   # loop through the lists and use the same index to display the corresponding name and score, separated by a tab space '\t'
   while leader_index < len(leader_names):
-    turtle_object.write(str(leader_index + 1) + "\t" + leader_names[leader_index] + "\t" + str(leader_scores[leader_index]), font=font_setup)
+    turtle_object.write(str(leader_index) + "\t" + leader_names[leader_index] + "\t" + str(leader_scores[leader_index]), font=font_setup)
     turtle_object.penup()
     turtle_object.goto(-200,int(turtle_object.ycor())-50)
     turtle_object.down()

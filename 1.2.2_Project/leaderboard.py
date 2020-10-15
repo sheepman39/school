@@ -19,6 +19,14 @@ def load_leaderboard(file_name, leader_names, leader_scores):
     #index = 0
     leader_name = line[:line.find(",")]
     leader_score = line[line.find(",")+1:]
+<<<<<<< HEAD
+=======
+    '''
+    while (line[index] != ","):
+      leader_name = leader_name + line[index] 
+      index = index + 1
+      '''
+>>>>>>> 219558e9755c74ab2130b5cf1c04ce6648380b99
 
     # TODO 1: use a while loop to read the leader name from the line (format is "leader_name,leader_score")
 

@@ -7,7 +7,7 @@ import random as rand
 import leaderboard as lb
 
 # leaderboard variables
-leaderboard_file_name = "a122_leaderboard.txt"
+leaderboard_file_name = "1.2.2_Project/a122_leaderboard.txt"
 leader_names_list = []
 leader_scores_list = []
 player_name = input("Please enter your name:")

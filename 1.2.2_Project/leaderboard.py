@@ -16,7 +16,7 @@ def load_leaderboard(file_name, leader_names, leader_scores):
 
     #Todo 1-4 is here
     #The way the book had you do it was not an efficient way to do it
-    #Python has a find method to find strings and return an index value
+    #Python has a find method to find strings and return an index value6
     leader_name = line[:line.find(",")]
     leader_score = line[line.find(",")+1:]
     leader_names.append(leader_name)

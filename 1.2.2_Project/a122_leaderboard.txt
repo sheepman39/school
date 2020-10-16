@@ -1,4 +1,4 @@
-bob,bob
-jill,jill
-John,John
-james,james
+Bob,15
+Joe,10
+Lily,5
+John,1

@@ -18,7 +18,7 @@ dot_size = 5
 dot_shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 5
+timer = 30
 counter_interval = 1000
 timer_up = False
 
@@ -97,7 +97,7 @@ def game_setup(x,y):
     dot_size = 5
     dot_shape = "circle"
     score = 0
-    timer = 20
+    timer = 30
     font_setup = ("Arial", 20, "normal")
     counter_interval = 1000  
     timer_up = False

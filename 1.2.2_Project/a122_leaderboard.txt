@@ -1,4 +1,5 @@
-Bob,15
-Joe,10
-Lily,5
-John,1
+bob,10
+god,7
+list,6
+js,5
+john,4

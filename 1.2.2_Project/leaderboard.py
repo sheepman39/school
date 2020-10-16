@@ -8,40 +8,20 @@ gold_score = 25
 
 # load leaderboard from file
 def load_leaderboard(file_name, leader_names, leader_scores):
-  print(file_name)
   leaderboard_file = open(file_name, "r")  # need to create the file ahead of time in same folder
 
   # use a for loop to iterate through the content of the file, one line at a time
   # note that each line in the file has the format "leader_name,leader_score" for example "Pat,50"
   for line in leaderboard_file:
-    #leader_name = ""
-    #leader_score = ""    
-    #index = 0
+
+    #Todo 1-4 is here
+    #The way the book had you do it was not an efficient way to do it
+    #Python has a find method to find strings and return an index value
     leader_name = line[:line.find(",")]
     leader_score = line[line.find(",")+1:]
-<<<<<<< HEAD
-=======
-    '''
-    while (line[index] != ","):
-      leader_name = leader_name + line[index] 
-      index = index + 1
-      '''
->>>>>>> 219558e9755c74ab2130b5cf1c04ce6648380b99
-
-    # TODO 1: use a while loop to read the leader name from the line (format is "leader_name,leader_score")
-
-
-    # TODO 2: add the leader name to the list
     leader_names.append(leader_name)
     leader_scores.append(int(leader_score))
 
-    print("Individual results: " + leader_name + " " + str(leader_score))
-    print("Entire Arrays: " + str(leader_scores) + " " + str(leader_names))
-    
-    # TODO 3: read the player score using a similar loop
-
-    
-    # TODO 4: add the player score to the list
   leaderboard_file.close()
 
 
@@ -61,8 +41,6 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
   # TODO 7: insert the new player and score at the appropriate position
   leader_scores.insert(leader_index,player_score)
   leader_names.insert(leader_index,player_name)
-  print("leader_scores on line 61:" + str(leader_scores))
-  print("leader_scores on line 61:" + str(leader_names))
   # TODO 8: keep both lists at 5 elements only (top 5 players)
   if(len(leader_names) > 5 and len(leader_scores) > 5):
     leader_names.pop(5)
@@ -72,15 +50,9 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
   # store the latest leaderboard back in the file
   leaderboard_file = open(file_name, "w")  # this mode opens the file and erases its contents for a fresh start
   leader_index = 0
-  # TODO 9: loop through all the leaderboard elements and write them to the file
+  # TODO 9: loop through all the leaderboard elements and 
   for i in range(len(leader_names)):
-    leaderboard_file.write(leader_names[i] + "," + leader_scores[i] + "\n")
-  '''
-  while(leader_index<len(leader_names)):
-    leaderboard_file.write(leader_names[leader_index] + "," + str(leader_scores[leader_index]) + "\n")
-    leader_index = leader_index + 1
-  leaderboard_file.close()
-  '''
+    leaderboard_file.write(str(leader_names[i]) + "," + str(leader_scores[i]) + "\n")
 
 # draw leaderboard and display a message to player
 def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, player_score):
@@ -90,7 +62,7 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   turtle_object.clear()
   turtle_object.penup()
   turtle_object.goto(0,0)
-  #turtle_object.hideturtle()
+  turtle_object.hideturtle()
   turtle_object.down()
   leader_index = 0
 
@@ -112,12 +84,16 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   turtle_object.penup()
   turtle_object.goto(-200,int(turtle_object.ycor())-50)
   turtle_object.pendown()
-  
+
   # TODO 10: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
-  '''
-  if ():
+  
+  if (player_score >= bronze_score and player_score < silver_score):
     turtle_object.write("You earned a bronze medal!", font=font_setup)
+  elif (player_score >= silver_score and player_score < gold_score):
     turtle_object.write("You earned a silver medal!", font=font_setup)
+  elif (player_score >= gold_score):
     turtle_object.write("You earned a gold medal!", font=font_setup)
-  '''
+  else:
+    turtle_object.write("You need to earn a higher score to earn a medal :(", font=font_setup)
+  
   

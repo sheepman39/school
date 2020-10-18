@@ -61,29 +61,32 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   font_setup = ("Arial", 20, "normal")
   turtle_object.clear()
   turtle_object.penup()
-  turtle_object.goto(0,0)
+  turtle_object.goto(-200,150)
   turtle_object.hideturtle()
-  turtle_object.down()
+  #turtle_object.down()
   leader_index = 0
 
   # loop through the lists and use the same index to display the corresponding name and score, separated by a tab space '\t'
   while leader_index < len(leader_names):
     turtle_object.write(str(leader_index) + "\t" + leader_names[leader_index] + "\t" + str(leader_scores[leader_index]), font=font_setup)
     turtle_object.penup()
-    turtle_object.goto(-200,int(turtle_object.ycor())-50)
+    turtle_object.goto(-200,int(turtle_object.ycor())-30)
     turtle_object.down()
     leader_index = leader_index + 1
 
   # Display message about player making/not making leaderboard based on high_scorer
   if (high_scorer):
+    turtle_object.goto(-200,int(turtle_object.ycor())-25)
     turtle_object.write("Congratulations! You made the leaderboard!", font=font_setup)
   else:
-    turtle_object.write("Sorry, you didn't make the leaderboard. Maybe next time!", font=font_setup)
+    turtle_object.goto(-200,int(turtle_object.ycor())-25)
+    turtle_object.write("Sorry, you didn't make the leaderboard. \nMaybe next time!", font=font_setup)
 
   # move turtle to a new line
   turtle_object.penup()
   turtle_object.goto(-200,int(turtle_object.ycor())-50)
-  turtle_object.pendown()
+  #turtle_object.goto(0,0)
+  #turtle_object.pendown()
 
   # TODO 10: Display a gold/silver/bronze message if player earned a gold/silver/or bronze medal; display nothing if no medal
   
@@ -94,6 +97,6 @@ def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, pl
   elif (player_score >= gold_score):
     turtle_object.write("You earned a gold medal!", font=font_setup)
   else:
-    turtle_object.write("You need to earn a higher score to earn a medal :(", font=font_setup)
+    turtle_object.write("You earned a participation award!", font=font_setup)
   
   

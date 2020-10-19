@@ -11,7 +11,7 @@ wn = trtl.Screen()
 wn.bgpic("./1.2.3_Project/background.gif")
 wn.setup(width=1.0, height=1.0)
 wn.addshape(pear_image) # Make the screen aware of the new file
-
+ground_height = -120
 pear = trtl.Turtle()
 
 #-----functions-----
@@ -22,7 +22,7 @@ def draw_apple(active_pear):
 
 def fall(turtle):
   turtle.penup()
-  turtle.goto(turtle.xcor(),-120)
+  turtle.goto(turtle.xcor(),ground_height)
 
 #-----function calls-----
 draw_apple(pear)

@@ -13,6 +13,7 @@ leader_scores_list = []
 player_name = input("Please enter your name:")
 
 #-----game configuration----
+screen = trtl.Screen()
 dot_color = "#460a8f"
 dot_size = 5
 dot_shape = "circle"
@@ -168,8 +169,10 @@ def countdown():
 
 
 #-----events----------------
-dot.onclick(game_setup)
+dot.onclick(spot_clicked)
 wn = trtl.Screen()
+wn.listen()
+wn.onkeypress(game_setup(dot.xcor(),dot.ycor()), "space")
 wn.ontimer(countdown, counter_interval)
 wn.bgcolor("#5ca5ff")
 wn.mainloop()

@@ -14,9 +14,15 @@ def load_leaderboard(file_name, leader_names, leader_scores):
   # note that each line in the file has the format "leader_name,leader_score" for example "Pat,50"
   for line in leaderboard_file:
 
-    #Todo 1-4 is here
+    #TODO 1-4 is here
     #The way the book had you do it was not an efficient way to do it
+    #todo: this is dumb
     #Python has a find method to find strings and return an index value6
+    '''
+    while (line[index] != ","):
+      leader_name = leader_name + line[index] 
+      index = index + 1
+    '''
     leader_name = line[:line.find(",")]
     leader_score = line[line.find(",")+1:]
     leader_names.append(leader_name)

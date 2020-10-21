@@ -1,11 +1,15 @@
 #   a123_apple_1.py
 import turtle as trtl
+import random as rand
 
 #-----setup-----
 # NOTE: since this is in a folder and the code is (probably) not running in the same folder, you must give a file path for it to go to.  
 #This will vary slightly depending on your setup.  
 #If it is running in the same folder and you are not funky like I am, you can leave it 'pear.gif'
+
 pear_image = "./1.2.3_Project/pear.gif" # Store the file name of your shape
+
+alphabet_list = ["a","s","d","f","g","h","j","k","l"]
 
 #TODO Create a function that takes a turtle as its parameter and gives that turtle (apple)
 # a new location on the tree, only if the list of letters is not empty. Associate the 
@@ -51,6 +55,7 @@ pear = trtl.Turtle()
 apple = trtl.Turtle()
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
+
 def draw_apple(active_pear):
   active_pear.shape(pear_image)
   wn.update()
@@ -70,10 +75,17 @@ def letter_draw(turtle,letter):
   turtle.goto(pear.xcor()-18,pear.ycor()-40)
   turtle.write(letter, font = font_setup)
 
+# This is what I did for number 15.  List is at the top of code
+def random_letter():
+  
+  # return will send the letter that was in the index that was randomly selected with the rand.randint() function
+  return alphabet_list.pop(rand.randint(0,len(alphabet_list)))
+
 #-----function calls-----
 apple.hideturtle()
 draw_apple(pear)
-letter_draw(apple,"a")
-wn.onkeypress(pear_fall, "a")
+current_letter = random_letter()
+letter_draw(apple,current_letter)
+wn.onkeypress(pear_fall, current_letter)
 wn.listen()
 wn.mainloop()

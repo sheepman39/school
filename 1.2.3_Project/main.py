@@ -84,6 +84,11 @@ def random_letter():
 #-----function calls-----
 apple.hideturtle()
 draw_apple(pear)
+
+#Take note of the current_letter variable
+#Since random_letter returns a random letter, this variable
+#is used to draw the right letters and respond to the correct letter_draw
+# Step 16 BTW
 current_letter = random_letter()
 letter_draw(apple,current_letter)
 wn.onkeypress(pear_fall, current_letter)

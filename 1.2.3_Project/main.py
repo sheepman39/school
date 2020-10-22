@@ -50,53 +50,55 @@ wn.addshape(pear_image) # Make the screen aware of the new file
 
 font_setup = ("Arial", 55, "normal")
 alphabet_list = ["a","s","d","f","g","h","j","k","l"]
+turtle_list = []
 ground_height = -120
 
 turtle_list = []
 
+writer = trtl.Turtle()
 pear = trtl.Turtle()
-apple = trtl.Turtle()
+writer.penup()
+writer.hideturtle()
+
+def random_letter():
+  # return will send the letter that was in the index that was randomly selected with the rand.randint() function
+  return alphabet_list.pop(rand.randint(0,len(alphabet_list)-1))
+
+class game_turtle():
+  def __init__ (self,turtle,letter):
+    self.turtle = turtle
+    self.letter = letter
 
 #-----functions-----
 # given a turtle, set that turtle to be shaped by the image file
 # This is what I did for number 15.  List is at the top of code
-def random_letter():
-  
-  # return will send the letter that was in the index that was randomly selected with the rand.randint() function
-  return alphabet_list.pop(rand.randint(0,len(alphabet_list)))
-
-def draw_apple(active_pear):
-  active_pear.shape(pear_image)
-  wn.update()
 
 def pear_fall():
+  #for 
   pear.penup()
-  apple.clear()
   wn.update()
   pear.goto(pear.xcor(),ground_height)
 
-def letter_draw(turtle,letter):
-  turtle.penup()
-  apple.hideturtle()
-  turtle.goto(pear.xcor()-18,pear.ycor()-40)
-  turtle.write(letter, font = font_setup)
-
 def game_start():
-  current_letter = random_letter()
-  letter_draw(apple,current_letter)
-  wn.onkeypress(pear_fall, current_letter)
+  
+  for i in range(5):
+    temp_turtle = trtl.Turtle()
+    temp_turtle.shape(pear_image)
+    temp_turtle.penup()
+    temp_turtle.goto(-150+i*75,0)
+    obj_turtle = game_turtle(temp_turtle,random_letter())
+    turtle_list.append(obj_turtle)
+    writer.goto(turtle_list[i].turtle.xcor()-25,turtle_list[i].turtle.ycor()-60)
+    writer.write(turtle_list[i].letter,font=font_setup)
+
+  for i in range(len(turtle_list)):
+    
+    
+    
+    pass
 
 #-----function calls-----
-
-draw_apple(pear)
-
-for i in range(5):
-  temp_turtle = trtl.Turtle()
-  temp_turtle.shape(pear_image)
-  turtle_list.append(temp_turtle)
-  turtle_list[i].penup()
-  turtle_list[i].goto(-150+i*75,0)
-
 game_start()
+wn.onkeypress()
 wn.listen()
 wn.mainloop()

@@ -9,88 +9,182 @@ import random as rand
 
 pear_image = "./1.2.3_Project/pear.gif" # Store the file name of your shape
 
-alphabet_list = ["a","s","d","f","g","h","j","k","l"]
-
-#TODO Create a function that takes a turtle as its parameter and gives that turtle (apple)
-# a new location on the tree, only if the list of letters is not empty. Associate the 
-# turtle with a new letter selected at random from the list of letters
-
-#TODO Create a function that takes a turtle (apple) and its corresponding letter from the letter
-# list and draws that letter on that turtle (apple)
-
-#TODO Create a function that takes a turtle (apple) and its corresponding ltter from the letter
-# list and set that turtle to be shaped by the image file, call the letter drawing function,
-# and update the Screen
-
-#TODO Iterate over the numbers from 0 to the number of apples, creating that many turtles
-# calling your function that resets the apples by giving them a new random location
-# add the new apples to a list of apples to be used in the rest of the program.
-# The loop below executes the correct number of times by using the range() function
-# to create a list of numbers to iterate over.
-#for i in range(0, number_of_apples):
-  
-  #Your code here
-
-#TODO Create a function that takes a letter as its parameter, uses that letter to retrieve the
-# corresponding turtle (apple) and causes both to drop from the tree simultaneously. Once the 
-# apple and letter have dropped, call the apple reseting function.
-
-#TODO define a function per letter that you will use in your program. Each function should check
-# to see if the given letter is in the list of letters; if it is, it should drop the corresponding
-# apple.
-
-#TODO use the onkeypress method of wn to correlate the functions you defined above with each
-# of the letters that the user might type.
-# onkeypress requires that you name one function that must take
-# no arguments to be called when the specified key is pressed.
-
-
+# Screen setup for the background and size
 wn = trtl.Screen()
 wn.bgpic("./1.2.3_Project/background.gif")
 wn.setup(width=1.0, height=1.0)
-wn.addshape(pear_image) # Make the screen aware of the new file
+
+# Make the screen aware of the new file
+wn.addshape(pear_image) 
+
+# Random variables for stuff
+# font_setup is for fonts.  
 font_setup = ("Arial", 55, "normal")
+
+# alphabet_list contains the characters needed on the home row
+alphabet_list = ["a","s","d","f","g","h","j","k","l"]
+
+# turtle list is where turtle objects are stored and kept with corresponding letters
+turtle_list = []
+
+# height where the apples/pears will fall
 ground_height = -120
+
+# initial definition of pear
 pear = trtl.Turtle()
-apple = trtl.Turtle()
+
+class game_turtle():
+  def __init__ (self, turtle, writer, letter):
+    self.turtle = turtle
+    self.writer = writer
+    self.letter = letter
+
 #-----functions-----
-# given a turtle, set that turtle to be shaped by the image file
 
-def draw_apple(active_pear):
-  active_pear.shape(pear_image)
-  wn.update()
-
-def fall(turtle):
-  turtle.penup()
-  turtle.goto(turtle.xcor(),ground_height)
-
-def pear_fall():
-  pear.penup()
-  apple.clear()
-  wn.update()
-  pear.goto(pear.xcor(),ground_height)
-
-def letter_draw(turtle,letter):
-  turtle.penup()
-  turtle.goto(pear.xcor()-18,pear.ycor()-40)
-  turtle.write(letter, font = font_setup)
-
-# This is what I did for number 15.  List is at the top of code
 def random_letter():
+  # return will send *the letter* that was in the index that was randomly selected with the rand.randint() function
+  return alphabet_list.pop(rand.randint(0,len(alphabet_list)-1))
+
+# This function actually makes the pear fall
+def pear_fall(letter, index):
   
-  # return will send the letter that was in the index that was randomly selected with the rand.randint() function
-  return alphabet_list.pop(rand.randint(0,len(alphabet_list)))
+  # the index tells where in the list the correct turtle is
+  # makes sure the pen is up and the writing is cleared
+  turtle_list[index].turtle.penup()
+  turtle_list[index].writer.clear()
+  
+  # updates the screen properly
+  wn.update()
+
+  # this makes the pear fall
+  turtle_list[index].turtle.goto(turtle_list[index].turtle.xcor(),ground_height)
+
+# NOTE this is a terrible way of doing this!
+# I was not able to find a way (yet) to pass an argument for .onkeypress()
+# hencefourth, I had to make a different function for each
+# individual
+# letter
+# This is inefficient but i had to >:(
+
+def a_fall():
+  
+  #for loop repeats the if statement for as long as the list is
+  for i in range(len(turtle_list)):
+
+    # if statement checks if the letter value of the object is equal to the correct letter
+    if(turtle_list[i].letter == "a"):
+      
+      # calls the pear_fall function with the proper arguments
+      pear_fall("a", i)
+      
+      # break ends the for loop and prevents the need for it to continue
+      break
+
+def s_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "s"):
+      pear_fall("s", i)
+      break
+
+def d_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "d"):
+      pear_fall("d", i)
+      break
+
+def f_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "f"):
+      pear_fall("f", i)
+      break
+
+def g_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "g"):
+      pear_fall("g", i)
+      break
+
+def h_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "h"):
+      pear_fall("h", i)
+      break
+
+def j_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "j"):
+      pear_fall("j", i)
+      break
+
+def k_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "k"):
+      pear_fall("k", i)
+      break
+
+def l_fall():
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == "l"):
+      pear_fall("l", i)
+      break
+
+# game_start() places the 5 turtles with the random letters
+def game_start():
+  
+  #repeats the loop 5 times
+  for i in range(5):
+    
+    # creates the writer turtle for the letter
+    writer = trtl.Turtle()
+    writer.penup()
+    writer.hideturtle()
+    
+    # creates the pear turtle and sets its location
+    temp_turtle = trtl.Turtle()
+    temp_turtle.shape(pear_image)
+    temp_turtle.penup()
+    temp_turtle.goto(-150+i*75,0)
+    
+    # sets the location of the writer
+    writer.goto(temp_turtle.xcor()-25,temp_turtle.ycor()-60)
+    
+    # creates a new object with the pear, writer, and the random letter
+    # NOTE this is a bit ahead of what we worked with already
+    # Objects are kind of hard to explain. 
+    # Pretty much an object can store multiple values and properties in a single variable,
+    # making it easier to group different values together
+
+    obj_turtle = game_turtle(temp_turtle, writer, random_letter())
+    
+    # adds the new object into the turtle_list array
+    turtle_list.append(obj_turtle)
+    
+    # writes the random letter on top of the pear
+    writer.write(turtle_list[i].letter,font=font_setup)
+    
+    
+
 
 #-----function calls-----
-apple.hideturtle()
-draw_apple(pear)
 
-#Take note of the current_letter variable
-#Since random_letter returns a random letter, this variable
-#is used to draw the right letters and respond to the correct letter_draw
-# Step 16 BTW
-current_letter = random_letter()
-letter_draw(apple,current_letter)
-wn.onkeypress(pear_fall, current_letter)
+# starts the game by drawing the apples
+game_start()
+
+# NOTE This is also a terrible way of doing this
+# I am probably just really stupid
+# But I have yet to figure out how to actually pass
+# an argument with on key press to include which key
+# is being pressed
+# so i have to do this manually 
+wn.onkeypress(a_fall,"a")
+wn.onkeypress(s_fall,"s")
+wn.onkeypress(d_fall,"d")
+wn.onkeypress(f_fall,"f")
+wn.onkeypress(g_fall,"g")
+wn.onkeypress(h_fall,"h")
+wn.onkeypress(j_fall,"j")
+wn.onkeypress(k_fall,"k")
+wn.onkeypress(l_fall,"l")
+
 wn.listen()
 wn.mainloop()

@@ -30,8 +30,11 @@ turtle_list = []
 # height where the apples/pears will fall
 ground_height = -120
 
-# initial definition of pear
-pear = trtl.Turtle()
+# NOTE this is a bit farther along than what we've gone through
+# A class stores multiple properties in one variable
+# this makes it easier to store and manipulate values
+# This will store the pear, the writer, and the random letter
+# Makes life easier
 
 class game_turtle():
   def __init__ (self, turtle, writer, letter):
@@ -52,7 +55,8 @@ def pear_fall(letter, index):
   # makes sure the pen is up and the writing is cleared
   turtle_list[index].turtle.penup()
   turtle_list[index].writer.clear()
-  
+  turtle_list[index].writer.hideturtle()
+
   # updates the screen properly
   wn.update()
 

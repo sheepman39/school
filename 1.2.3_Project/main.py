@@ -33,6 +33,12 @@ ground_height = -120
 # initial definition of pear
 pear = trtl.Turtle()
 
+# NOTE this is a bit farther along than what we've gone through
+# A class stores multiple properties in one variable
+# this makes it easier to store and manipulate values
+# This will store the pear, the writer, and the random letter
+# Makes life easier
+
 class game_turtle():
   def __init__ (self, turtle, writer, letter):
     self.turtle = turtle
@@ -175,7 +181,7 @@ game_start()
 # But I have yet to figure out how to actually pass
 # an argument with on key press to include which key
 # is being pressed
-# so i have to do this manually 
+# so i have to do this manually ¯\_(ツ)_/¯
 wn.onkeypress(a_fall,"a")
 wn.onkeypress(s_fall,"s")
 wn.onkeypress(d_fall,"d")

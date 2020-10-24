@@ -30,8 +30,19 @@ turtle_list = []
 # height where the apples/pears will fall
 ground_height = -120
 
-# initial definition of pear
-pear = trtl.Turtle()
+# number of pears setting
+num_letters = 5
+current_letters = 0
+
+# notification turtle
+notification = trtl.Turtle()
+notification.ht()
+
+# NOTE this is a bit farther along than what we've gone through
+# A class stores multiple properties in one variable
+# this makes it easier to store and manipulate values
+# This will store the pear, the writer, and the random letter
+# Makes life easier
 
 # NOTE this is a bit farther along than what we've gone through
 # A class stores multiple properties in one variable
@@ -54,17 +65,39 @@ def random_letter():
 # This function actually makes the pear fall
 def pear_fall(letter, index):
   
+  global current_letters
   # the index tells where in the list the correct turtle is
   # makes sure the pen is up and the writing is cleared
   turtle_list[index].turtle.penup()
   turtle_list[index].writer.clear()
-  
+  turtle_list[index].writer.hideturtle()
+
   # updates the screen properly
   wn.update()
 
   # this makes the pear fall
   turtle_list[index].turtle.goto(turtle_list[index].turtle.xcor(),ground_height)
+  
+  # increases current letters
+  current_letters += 1
 
+  # if the number of letters your clicked is greater than or equal to the number of letters you should have,
+  # do stuff
+  if(current_letters >= num_letters):
+    
+    # Text box asks if you want to restart the game
+    play_again = wn.textinput("Woohoo!","Would you like to play again? \nPlease type y/n")
+    
+    # if you hit yes or y, restarts the game
+    if(play_again.lower() == "y" or play_again.lower() == "yes"):
+      
+      current_letters = 0
+      game_start()
+    # else, close the game
+    else:
+      
+      wn.bye()
+    
 # NOTE this is a terrible way of doing this!
 # I was not able to find a way (yet) to pass an argument for .onkeypress()
 # hencefourth, I had to make a different function for each
@@ -137,8 +170,21 @@ def l_fall():
 # game_start() places the 5 turtles with the random letters
 def game_start():
   
+  global turtle_list
+  global alphabet_list
+  if(len(turtle_list) > 0):
+    
+    #hides the turtles when a game is started
+    for i in turtle_list:
+      i.turtle.ht()
+  
+    # resets major variables
+    turtle_list = []
+    alphabet_list = ["a","s","d","f","g","h","j","k","l"]
+
+  
   #repeats the loop 5 times
-  for i in range(5):
+  for i in range(num_letters):
     
     # creates the writer turtle for the letter
     writer = trtl.Turtle()
@@ -167,6 +213,25 @@ def game_start():
     
     # writes the random letter on top of the pear
     writer.write(turtle_list[i].letter,font=font_setup)
+
+    # listens for the keystrokes
+    # NOTE This is also a terrible way of doing this
+    # I am probably just really stupid
+    # But I have yet to figure out how to actually pass
+    # an argument with on key press to include which key
+    # is being pressed
+    # so i have to do this manually 
+
+    wn.onkeypress(a_fall,"a")
+    wn.onkeypress(s_fall,"s")
+    wn.onkeypress(d_fall,"d")
+    wn.onkeypress(f_fall,"f")
+    wn.onkeypress(g_fall,"g")
+    wn.onkeypress(h_fall,"h")
+    wn.onkeypress(j_fall,"j")
+    wn.onkeypress(k_fall,"k")
+    wn.onkeypress(l_fall,"l")
+    wn.listen()
     
     
 
@@ -175,22 +240,6 @@ def game_start():
 
 # starts the game by drawing the apples
 game_start()
-
-# NOTE This is also a terrible way of doing this
-# I am probably just really stupid
-# But I have yet to figure out how to actually pass
-# an argument with on key press to include which key
-# is being pressed
-# so i have to do this manually ¯\_(ツ)_/¯
-wn.onkeypress(a_fall,"a")
-wn.onkeypress(s_fall,"s")
-wn.onkeypress(d_fall,"d")
-wn.onkeypress(f_fall,"f")
-wn.onkeypress(g_fall,"g")
-wn.onkeypress(h_fall,"h")
-wn.onkeypress(j_fall,"j")
-wn.onkeypress(k_fall,"k")
-wn.onkeypress(l_fall,"l")
 
 wn.listen()
 wn.mainloop()

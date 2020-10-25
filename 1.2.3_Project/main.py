@@ -45,12 +45,6 @@ notification.ht()
 # This will store the pear, the writer, and the random letter
 # Makes life easier
 
-# NOTE this is a bit farther along than what we've gone through
-# A class stores multiple properties in one variable
-# this makes it easier to store and manipulate values
-# This will store the pear, the writer, and the random letter
-# Makes life easier
-
 class game_turtle():
   def __init__ (self, turtle, writer, letter):
     self.turtle = turtle
@@ -82,7 +76,8 @@ def pear_fall(letter, index):
   # increases current letters
   current_letters += 1
 
-  # if the number of letters your clicked is greater than or equal to the number of letters you should have,
+  # if the number of letters your clicked is 
+  # greater than or equal to the number of letters you should have,
   # do stuff
   if(current_letters >= num_letters):
     
@@ -94,14 +89,15 @@ def pear_fall(letter, index):
       
       current_letters = 0
       game_start()
+    
     # else, close the game
     else:
       
       wn.bye()
+
 # Originally, I had to do each one of these individually,
 # but i found a way to pass a letter as an argument
 # more info how down below
-
 def fall(letter):
   
   #for loop repeats the if statement for as long as the list is
@@ -169,6 +165,7 @@ def game_start():
     # This will loop through the entire alphabet
     # NOTE YOU MUST 'import functools' in order for this to work
     for k in 'abcdefghijklmnopqrstuvwxyz':
+      
       # functools.partial allows the fall function to pass
       # an argument, allowing the keys to work better
       # also, it sets the key it listens for as 'k'

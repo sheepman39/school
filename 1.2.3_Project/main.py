@@ -22,7 +22,7 @@ wn.addshape(pear_image)
 font_setup = ("Arial", 55, "normal")
 
 # alphabet_list contains the characters needed on the home row
-alphabet_list = ["a","s","d","f","g","h","j","k","l"]
+alphabet_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
 # turtle list is where turtle objects are stored and kept with corresponding letters
 turtle_list = []
@@ -107,66 +107,194 @@ def pear_fall(letter, index):
 
 def a_fall():
   
+  # This makes it easier to change what letter each function is
+  letter = "a"
   #for loop repeats the if statement for as long as the list is
   for i in range(len(turtle_list)):
 
     # if statement checks if the letter value of the object is equal to the correct letter
-    if(turtle_list[i].letter == "a"):
+    if(turtle_list[i].letter == letter):
       
       # calls the pear_fall function with the proper arguments
-      pear_fall("a", i)
+      pear_fall(letter, i)
       
       # break ends the for loop and prevents the need for it to continue
       break
 
-def s_fall():
+def b_fall():
+  letter = "b"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "s"):
-      pear_fall("s", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def c_fall():
+  letter = "c"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def d_fall():
+  letter = "d"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "d"):
-      pear_fall("d", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def e_fall():
+  letter = "e"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def f_fall():
+  letter = "f"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "f"):
-      pear_fall("f", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def g_fall():
+  letter = "g"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "g"):
-      pear_fall("g", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def h_fall():
+  letter = "h"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "h"):
-      pear_fall("h", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def i_fall():
+  letter = "i"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def j_fall():
+  letter = "j"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "j"):
-      pear_fall("j", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def k_fall():
+  letter = "k"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "k"):
-      pear_fall("k", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
 def l_fall():
+  letter = "k"
   for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == "l"):
-      pear_fall("l", i)
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
       break
 
+def m_fall():
+  letter = "m"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def n_fall():
+  letter = "n"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def o_fall():
+  letter = "o"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def p_fall():
+  letter = "p"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def q_fall():
+  letter = "q"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def r_fall():
+  letter = "r"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def s_fall():
+  letter = "s"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def t_fall():
+  letter = "t"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def u_fall():
+  letter = "u"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def v_fall():
+  letter = "v"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def w_fall():
+  letter = "w"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def x_fall():
+  letter = "x"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def y_fall():
+  letter = "y"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
+
+def z_fall():
+  letter = "z"
+  for i in range(len(turtle_list)):
+    if(turtle_list[i].letter == letter):
+      pear_fall(letter, i)
+      break
 # game_start() places the 5 turtles with the random letters
 def game_start():
   
@@ -180,7 +308,7 @@ def game_start():
   
     # resets major variables
     turtle_list = []
-    alphabet_list = ["a","s","d","f","g","h","j","k","l"]
+    alphabet_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
   
   #repeats the loop 5 times
@@ -223,14 +351,31 @@ def game_start():
     # so i have to do this manually 
 
     wn.onkeypress(a_fall,"a")
-    wn.onkeypress(s_fall,"s")
+    wn.onkeypress(b_fall,"b")
+    wn.onkeypress(c_fall,"c")
     wn.onkeypress(d_fall,"d")
+    wn.onkeypress(e_fall,"e")
     wn.onkeypress(f_fall,"f")
     wn.onkeypress(g_fall,"g")
     wn.onkeypress(h_fall,"h")
+    wn.onkeypress(i_fall,"i")
     wn.onkeypress(j_fall,"j")
     wn.onkeypress(k_fall,"k")
     wn.onkeypress(l_fall,"l")
+    wn.onkeypress(m_fall,"m")
+    wn.onkeypress(n_fall,"n")
+    wn.onkeypress(o_fall,"o")
+    wn.onkeypress(p_fall,"p")
+    wn.onkeypress(q_fall,"q")
+    wn.onkeypress(r_fall,"r")
+    wn.onkeypress(s_fall,"s")
+    wn.onkeypress(t_fall,"t")
+    wn.onkeypress(u_fall,"u")
+    wn.onkeypress(v_fall,"v")
+    wn.onkeypress(w_fall,"w")
+    wn.onkeypress(x_fall,"x")
+    wn.onkeypress(y_fall,"y")
+    wn.onkeypress(z_fall,"z")
     wn.listen()
     
     

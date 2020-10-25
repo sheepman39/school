@@ -86,10 +86,10 @@ def pear_fall(letter, index):
   if(current_letters >= num_letters):
     
     # Text box asks if you want to restart the game
-    play_again = wn.textinput("Woohoo!","Would you like to play again? \nPlease type y/n")
+    play_again = wn.textinput("Woohoo!","Would you like to play again? \nHit enter to keep playing or press y/n")
     
     # if you hit yes or y, restarts the game
-    if(play_again.lower() == "y" or play_again.lower() == "yes"):
+    if(play_again == "" or play_again.lower() == "y" or play_again.lower() == "yes"):
       
       current_letters = 0
       game_start()

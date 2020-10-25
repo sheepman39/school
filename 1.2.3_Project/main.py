@@ -1,6 +1,7 @@
 #   a123_apple_1.py
 import turtle as trtl
 import random as rand
+import functools 
 
 #-----setup-----
 # NOTE: since this is in a folder and the code is (probably) not running in the same folder, you must give a file path for it to go to.  
@@ -97,18 +98,12 @@ def pear_fall(letter, index):
     else:
       
       wn.bye()
-    
-# NOTE this is a terrible way of doing this!
-# I was not able to find a way (yet) to pass an argument for .onkeypress()
-# hencefourth, I had to make a different function for each
-# individual
-# letter
-# This is inefficient but i had to >:(
+# Originally, I had to do each one of these individually,
+# but i found a way to pass a letter as an argument
+# more info how down below
 
-def a_fall():
+def fall(letter):
   
-  # This makes it easier to change what letter each function is
-  letter = "a"
   #for loop repeats the if statement for as long as the list is
   for i in range(len(turtle_list)):
 
@@ -121,180 +116,6 @@ def a_fall():
       # break ends the for loop and prevents the need for it to continue
       break
 
-def b_fall():
-  letter = "b"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def c_fall():
-  letter = "c"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def d_fall():
-  letter = "d"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def e_fall():
-  letter = "e"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def f_fall():
-  letter = "f"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def g_fall():
-  letter = "g"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def h_fall():
-  letter = "h"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def i_fall():
-  letter = "i"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def j_fall():
-  letter = "j"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def k_fall():
-  letter = "k"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def l_fall():
-  letter = "l"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def m_fall():
-  letter = "m"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def n_fall():
-  letter = "n"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def o_fall():
-  letter = "o"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def p_fall():
-  letter = "p"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def q_fall():
-  letter = "q"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def r_fall():
-  letter = "r"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def s_fall():
-  letter = "s"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def t_fall():
-  letter = "t"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def u_fall():
-  letter = "u"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def v_fall():
-  letter = "v"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def w_fall():
-  letter = "w"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def x_fall():
-  letter = "x"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def y_fall():
-  letter = "y"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
-
-def z_fall():
-  letter = "z"
-  for i in range(len(turtle_list)):
-    if(turtle_list[i].letter == letter):
-      pear_fall(letter, i)
-      break
 # game_start() places the 5 turtles with the random letters
 def game_start():
   
@@ -345,41 +166,15 @@ def game_start():
     # writes the random letter on top of the pear
     writer.write(turtle_list[i].letter,font=font_setup)
 
-    # listens for the keystrokes
-    # NOTE This is also a terrible way of doing this
-    # I am probably just really stupid
-    # But I have yet to figure out how to actually pass
-    # an argument with on key press to include which key
-    # is being pressed
-    # so i have to do this manually 
-
-    wn.onkeypress(a_fall,"a")
-    wn.onkeypress(b_fall,"b")
-    wn.onkeypress(c_fall,"c")
-    wn.onkeypress(d_fall,"d")
-    wn.onkeypress(e_fall,"e")
-    wn.onkeypress(f_fall,"f")
-    wn.onkeypress(g_fall,"g")
-    wn.onkeypress(h_fall,"h")
-    wn.onkeypress(i_fall,"i")
-    wn.onkeypress(j_fall,"j")
-    wn.onkeypress(k_fall,"k")
-    wn.onkeypress(l_fall,"l")
-    wn.onkeypress(m_fall,"m")
-    wn.onkeypress(n_fall,"n")
-    wn.onkeypress(o_fall,"o")
-    wn.onkeypress(p_fall,"p")
-    wn.onkeypress(q_fall,"q")
-    wn.onkeypress(r_fall,"r")
-    wn.onkeypress(s_fall,"s")
-    wn.onkeypress(t_fall,"t")
-    wn.onkeypress(u_fall,"u")
-    wn.onkeypress(v_fall,"v")
-    wn.onkeypress(w_fall,"w")
-    wn.onkeypress(x_fall,"x")
-    wn.onkeypress(y_fall,"y")
-    wn.onkeypress(z_fall,"z")
-    wn.listen()
+    # This will loop through the entire alphabet
+    # NOTE YOU MUST 'import functools' in order for this to work
+    for k in 'abcdefghijklmnopqrstuvwxyz':
+      # functools.partial allows the fall function to pass
+      # an argument, allowing the keys to work better
+      # also, it sets the key it listens for as 'k'
+      # this is a much better way of doing this!
+      wn.onkeypress(functools.partial(fall, k),key = k)
+      wn.listen()
     
     
 

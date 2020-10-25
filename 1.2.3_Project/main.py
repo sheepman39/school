@@ -164,14 +164,14 @@ def game_start():
 
     # This will loop through the entire alphabet
     # NOTE YOU MUST 'import functools' in order for this to work
-    for k in 'abcdefghijklmnopqrstuvwxyz':
-      
-      # functools.partial allows the fall function to pass
-      # an argument, allowing the keys to work better
-      # also, it sets the key it listens for as 'k'
-      # this is a much better way of doing this!
-      wn.onkeypress(functools.partial(fall, k),key = k)
-      wn.listen()
+  for k in 'abcdefghijklmnopqrstuvwxyz':
+    
+    # functools.partial allows the fall function to pass
+    # an argument, allowing the keys to work better
+    # also, it sets the key it listens for as 'k'
+    # this is a much better way of doing this!
+    wn.onkeypress(functools.partial(fall, k),key = k)
+    wn.listen()
 
 # starts the game by drawing the apples
 game_start()

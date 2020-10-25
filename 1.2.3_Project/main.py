@@ -317,14 +317,17 @@ def game_start():
     # creates the writer turtle for the letter
     writer = trtl.Turtle()
     writer.penup()
+    writer.speed(-1)
     writer.hideturtle()
     
     # creates the pear turtle and sets its location
     temp_turtle = trtl.Turtle()
     temp_turtle.shape(pear_image)
+    temp_turtle.speed(-1)
     temp_turtle.penup()
     temp_turtle.goto(-150+i*75,0)
-    
+    temp_turtle.speed(3)
+
     # sets the location of the writer
     writer.goto(temp_turtle.xcor()-25,temp_turtle.ycor()-60)
     

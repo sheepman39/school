@@ -172,11 +172,6 @@ def game_start():
       # this is a much better way of doing this!
       wn.onkeypress(functools.partial(fall, k),key = k)
       wn.listen()
-    
-    
-
-
-#-----function calls-----
 
 # starts the game by drawing the apples
 game_start()

@@ -192,7 +192,7 @@ def k_fall():
       break
 
 def l_fall():
-  letter = "k"
+  letter = "l"
   for i in range(len(turtle_list)):
     if(turtle_list[i].letter == letter):
       pear_fall(letter, i)

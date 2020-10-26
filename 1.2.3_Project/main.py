@@ -162,8 +162,8 @@ def game_start():
     # writes the random letter on top of the pear
     writer.write(turtle_list[i].letter,font=font_setup)
 
-    # This will loop through the entire alphabet
-    # NOTE YOU MUST 'import functools' in order for this to work
+  # This will loop through the entire alphabet
+  # NOTE YOU MUST 'import functools' in order for this to work
   for k in 'abcdefghijklmnopqrstuvwxyz':
     
     # functools.partial allows the fall function to pass

@@ -79,21 +79,31 @@ def pear_fall(letter, index):
   # if the number of letters your clicked is 
   # greater than or equal to the number of letters you should have,
   # do stuff
-  if(current_letters >= num_letters):
-    
-    # Text box asks if you want to restart the game
-    play_again = wn.textinput("Woohoo!","Would you like to play again? \nHit enter to keep playing or press y/n")
-    
-    # if you hit yes or y, restarts the game
-    if(play_again == "" or play_again.lower() == "y" or play_again.lower() == "yes"):
+  # Since we may receive unexpected input, the try
+  # and except blocks here will keep running the code
+  # even if there is an error
+  # it tries to run the code in the first block 
+  # and if there is an error, it will close the game
+  try:
+    if(current_letters >= num_letters):
       
-      current_letters = 0
-      game_start()
-    
-    # else, close the game
-    else:
+      # Text box asks if you want to restart the game
+      play_again = wn.textinput("Woohoo!","Would you like to play again? \nHit enter to keep playing or press y/n")
+
+      # if you hit yes or y, restarts the game
+      if(play_again == "" or play_again.lower() == "y" or play_again.lower() == "yes"):
+        
+        current_letters = 0
+        game_start()
       
-      wn.bye()
+      # else, close the game
+      else:
+        
+        wn.bye()
+
+  except:
+    
+    wn.bye()
 
 # Originally, I had to do each one of these individually,
 # but i found a way to pass a letter as an argument

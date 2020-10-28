@@ -1,2 +1,2 @@
 language = "python3"
-run = "python3 1.2.1_project1.py"
+run = "python3 1.2.3 _Project/main.py"

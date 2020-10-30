@@ -28,7 +28,7 @@ for i in range(num_walls):
   wall_len = 30+i*distance
 
   if(i>=6):
-    print("i: " + str(i))
+    
     door = rand.randint(distance*2, (wall_len - distance*2))
     barrier = rand.randint(distance*2, (wall_len - distance*2))
     while abs(door - barrier) < distance:
@@ -36,30 +36,26 @@ for i in range(num_walls):
     
     if(door < barrier):
 
+      # draws the door first
       maze_painter.left(90)
       maze_painter.forward(door)
       maze_painter.penup()
       maze_painter.forward(distance*2)
       maze_painter.pendown()
 
+      # draws the barriers
       maze_painter.forward(barrier - (distance*2+door))
       maze_painter.left(90)
       maze_painter.forward(distance*2)
       maze_painter.back(distance*2)
       maze_painter.right(90)
+
+      # draws the rest of the wall
       maze_painter.forward(wall_len-barrier)
-      
-      print("===first=loop===")
-      print("door: " + str(door))
-      print("barrier: " + str(barrier))
-      print("Door - Barrier" + str(abs(door-barrier)))
-      print("Door + Barrier: " + str(door + barrier))
-      print("wall_len: " + str(wall_len))
-      print("wall_len left: " + str(abs(wall_len-(barrier + distance*2))))
-      print("===================")
 
     else:
 
+      # draws the barrier first
       maze_painter.left(90)
       maze_painter.forward(barrier)
       maze_painter.left(90)
@@ -67,20 +63,14 @@ for i in range(num_walls):
       maze_painter.back(distance*2)
       maze_painter.right(90)
 
+      # draws the doors
       maze_painter.forward(door-barrier)
       maze_painter.penup()
       maze_painter.forward(distance*2)
       maze_painter.pendown()
-      maze_painter.forward(wall_len - door - distance*2)
       
-      print("===second=loop===")
-      print("door: " + str(door))
-      print("barrier: " + str(barrier))
-      print("Door - Barrier" + str(abs(door-barrier)))
-      print("Door + Barrier: " + str(door + barrier))
-      print("wall_len: " + str(wall_len))
-      print("wall_len left: " + str(abs(wall_len -(door + distance*2))))
-      print("===================")
+      # finishes up the rest of the wall
+      maze_painter.forward(wall_len - door - distance*2)
 
   else:
     

@@ -21,11 +21,14 @@ maze_painter.speed(-1)
 
 # maze runner
 maze_runner = trtl.Turtle()
+maze_runner.shape("arrow")
+maze_runner.color("#1FF1E5")
+maze_runner.goto(-15,0)
 
 # door and barrier creator
 def door_creator(door):
   
-  maze_painter.left(90)
+  
   maze_painter.forward(door)
   maze_painter.penup()
   maze_painter.forward(distance*2)
@@ -39,7 +42,7 @@ def bar(barrier):
   maze_painter.right(90)
 
 def go_up():
-  maze_runner.setheading(270)
+  maze_runner.setheading(90)
 
 def go_right():
   maze_runner.setheading(0)
@@ -48,7 +51,7 @@ def go_left():
   maze_runner.setheading(180)
 
 def go_down():
-  maze_runner.setheading(90)
+  maze_runner.setheading(270)
 
 def move_runner(amount):
   maze_runner.forward(amount)
@@ -59,7 +62,7 @@ for i in range(num_walls):
   # ignores the first 6 walls drawn
   wall_len = 30+i*distance
 
-  if(i>=6):
+  if(i>=4):
     
     door = rand.randint(distance*2, (wall_len - distance*2))
     barrier = rand.randint(distance*2, (wall_len - distance*2))
@@ -69,6 +72,7 @@ for i in range(num_walls):
     if(door < barrier):
 
       # draws the door first
+      maze_painter.left(90)
       door_creator(door)
 
       # draws the barriers
@@ -80,6 +84,7 @@ for i in range(num_walls):
     else:
 
       # draws the barrier first
+      maze_painter.left(90)
       bar(barrier)
 
       # draws the doors

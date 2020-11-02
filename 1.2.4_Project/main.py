@@ -8,7 +8,7 @@ wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 
 # config variables
-num_walls = 75
+num_walls = 25
 distance = 15
 wall_color = "#007502"
 

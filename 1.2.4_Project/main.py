@@ -20,6 +20,22 @@ maze_painter.ht()
 # maze runner
 maze_run = trtl.Turtle()
 
+# door and barrier creator
+def door_creator(door):
+  
+  maze_painter.left(90)
+  maze_painter.forward(door)
+  maze_painter.penup()
+  maze_painter.forward(distance*2)
+  maze_painter.pendown()
+
+def bar(barrier):
+  maze_painter.forward(barrier)
+  maze_painter.left(90)
+  maze_painter.forward(distance*2)
+  maze_painter.back(distance*2)
+  maze_painter.right(90)
+
 # maze creator
 for i in range(num_walls):
 
@@ -37,18 +53,10 @@ for i in range(num_walls):
     if(door < barrier):
 
       # draws the door first
-      maze_painter.left(90)
-      maze_painter.forward(door)
-      maze_painter.penup()
-      maze_painter.forward(distance*2)
-      maze_painter.pendown()
+      door_creator(door)
 
       # draws the barriers
-      maze_painter.forward(barrier - (distance*2+door))
-      maze_painter.left(90)
-      maze_painter.forward(distance*2)
-      maze_painter.back(distance*2)
-      maze_painter.right(90)
+      bar(barrier - (distance*2+door))
 
       # draws the rest of the wall
       maze_painter.forward(wall_len-barrier)
@@ -56,18 +64,10 @@ for i in range(num_walls):
     else:
 
       # draws the barrier first
-      maze_painter.left(90)
-      maze_painter.forward(barrier)
-      maze_painter.left(90)
-      maze_painter.forward(distance*2)
-      maze_painter.back(distance*2)
-      maze_painter.right(90)
+      bar(barrier)
 
       # draws the doors
-      maze_painter.forward(door-barrier)
-      maze_painter.penup()
-      maze_painter.forward(distance*2)
-      maze_painter.pendown()
+      door_creator(door-barrier)
       
       # finishes up the rest of the wall
       maze_painter.forward(wall_len - door - distance*2)

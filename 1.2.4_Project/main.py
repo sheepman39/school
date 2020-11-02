@@ -7,7 +7,7 @@ wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 
 # config variables
-num_walls = 25
+num_walls = 75
 distance = 15
 wall_color = "#007502"
 
@@ -16,6 +16,7 @@ maze_painter = trtl.Turtle()
 maze_painter.pensize(5)
 maze_painter.color(wall_color)
 maze_painter.ht()
+maze_painter.speed(-1)
 
 # maze runner
 maze_run = trtl.Turtle()

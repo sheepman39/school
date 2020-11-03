@@ -17,12 +17,16 @@ for s in turtle_shapes:
   t.pencolor(current_color)
   t.color(current_color)
 
+#This Program was created/edited by sheepman39
+#In case of plagarism, please go to https://github.com/sheepman39/school
+#And submit an issue
 # Sets the starting position
 startx = 0
 starty = 0
 rotate = 270
 forwar = 55
 i = 1
+
 # For the number of shapes that are available, go right 45 and move forward 50
 for t in my_turtles:
   

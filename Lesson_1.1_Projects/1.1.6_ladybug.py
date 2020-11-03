@@ -35,7 +35,10 @@ xpos = -20
 ypos = -55
 ladybug.pensize(10)
 
-  
+#This Program was created/edited by sheepman39
+#In case of plagarism, please go to https://github.com/sheepman39/school
+#And submit an issue
+
 # draw two sets of dots
 while (num_dots <= 2 ):
   ladybug.penup()

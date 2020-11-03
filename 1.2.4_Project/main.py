@@ -23,7 +23,9 @@ maze_painter.speed(-1)
 maze_runner = trtl.Turtle()
 maze_runner.shape("arrow")
 maze_runner.color("#1FF1E5")
+maze_runner.penup()
 maze_runner.goto(-15,0)
+maze_runner.pendown()
 
 # door and barrier creator
 def door_creator(door):

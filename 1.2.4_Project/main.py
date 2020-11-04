@@ -62,8 +62,9 @@ def move_runner(amount):
 for i in range(num_walls):
 
   # Controls doors and walls
-  # ignores the first 6 walls drawn
+  # ignores the first 6 walls draw
   wall_len = 30+i*distance
+
 
   if(i>4):
     

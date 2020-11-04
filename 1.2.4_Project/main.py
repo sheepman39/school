@@ -7,7 +7,7 @@ wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 
 # config variables
-num_walls = 25
+num_walls = 50
 distance = 15
 wall_color = "#007502"
 
@@ -24,10 +24,10 @@ maze_run = trtl.Turtle()
 for i in range(num_walls):
 
   # Controls doors and walls
-  # ignores the first 6 walls drawn
+  # ignores the first 6 walls draw
   wall_len = 30+i*distance
 
-  if(i>=6):
+  if(i>=4):
     
     door = rand.randint(distance*2, (wall_len - distance*2))
     barrier = rand.randint(distance*2, (wall_len - distance*2))

@@ -30,12 +30,12 @@ maze_runner.pendown()
 # door and barrier creator
 def door_creator(door):
   
-  
   maze_painter.forward(door)
   maze_painter.penup()
   maze_painter.forward(distance*2)
   maze_painter.pendown()
 
+# creates barriers
 def bar(barrier):
   maze_painter.forward(barrier)
   maze_painter.left(90)
@@ -43,6 +43,8 @@ def bar(barrier):
   maze_painter.back(distance*2)
   maze_painter.right(90)
 
+# functions for different directions
+# not very efficient but it will work for now
 def go_up():
   maze_runner.setheading(90)
 
@@ -62,12 +64,12 @@ def move_runner(amount):
 for i in range(num_walls):
 
   # Controls doors and walls
-  # ignores the first 6 walls draw
+  # ignores the first 4 walls draw
   wall_len = 30+i*distance
-
 
   if(i>4):
     
+    # creates the random lengths
     door = rand.randint(distance*2, (wall_len - distance*2))
     barrier = rand.randint(distance*2, (wall_len - distance*2))
     while abs(door - barrier) < distance:
@@ -103,6 +105,7 @@ for i in range(num_walls):
     maze_painter.left(90)
     maze_painter.forward(20+i*distance)
 
+# key control
 wn.onkeypress(go_down,"Down")
 wn.onkeypress(go_up,"Up")
 wn.onkeypress(go_left,"Left")

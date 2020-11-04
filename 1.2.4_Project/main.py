@@ -8,8 +8,8 @@ wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 
 # config variables
-num_walls = 25
-distance = 15
+num_walls = 35
+distance = 20
 wall_color = "#007502"
 
 # maze drawer setup
@@ -57,6 +57,7 @@ def go_down():
 
 def move_runner(amount):
   maze_runner.forward(amount)
+
 # maze creator
 for i in range(num_walls):
 
@@ -64,7 +65,7 @@ for i in range(num_walls):
   # ignores the first 6 walls drawn
   wall_len = 30+i*distance
 
-  if(i>=4):
+  if(i>4):
     
     door = rand.randint(distance*2, (wall_len - distance*2))
     barrier = rand.randint(distance*2, (wall_len - distance*2))
@@ -105,7 +106,7 @@ wn.onkeypress(go_down,"Down")
 wn.onkeypress(go_up,"Up")
 wn.onkeypress(go_left,"Left")
 wn.onkeypress(go_right,"Right")
-wn.onkeypress(functools.partial(move_runner,10),"g")
+wn.onkeypress(functools.partial(move_runner,10)," ")
 wn.listen()
 wn.mainloop()
 

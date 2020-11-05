@@ -30,7 +30,6 @@ maze_runner.pendown()
 # door and barrier creator
 def door_creator(door):
   
-  
   maze_painter.forward(door)
   maze_painter.penup()
   maze_painter.forward(distance*2)

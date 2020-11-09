@@ -14,21 +14,58 @@ import functools
 
 # === variables ===
 raindrops = []
+trashcan = "./1.2.5_Project/trashcan.gif"
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
+wn.addshape(trashcan) 
 
-for i in range(10):
-  tmp_turtle = trtl.Turtle()
-  tmp_turtle.penup()
-  tmp_turtle.turtlesize(rand.uniform(0.5,3))
-  tmp_turtle.speed(rand.uniform(0.5,5))
-  tmp_turtle.goto(rand.randint(-150,150),rand.randint(-100,100))
+# === bucket turtle ===
+bucket = trtl.Turtle()
+bucket.turtlesize(1)
+bucket.color("white")
+bucket.penup()
+bucket.shape(trashcan)
+bucket.goto(0,-250)
+
+# creates the items of trash
+def trash_creator(x):
+  for i in range(x):
+    tmp_turtle = trtl.Turtle()
+    tmp_turtle.penup()
+    tmp_turtle.turtlesize(rand.uniform(0.5,3))
+    tmp_turtle.speed(-1)
+    tmp_turtle.goto(rand.randint(-200,200),rand.randint(50,300))
+    tmp_turtle.speed(rand.uniform(0.5,5))
+    raindrops.append(tmp_turtle)
     
 
+# moves the trash can
+def move(direction):
+  if(str(direction) == "left"):
+    bucket.goto(bucket.xcor()-5,bucket.ycor())
+  elif(str(direction) == 'right'):
+    bucket.goto(bucket.xcor()+5,bucket.ycor())
+  pass
+
+# summons 10 test dummies
+trash_creator(10)
+# tells the turtles to fall
 for i in range(len(raindrops)):
-  raindrops[i].goto(raindrops[i].xPos,0)
+  
+  while(int(raindrops[i].ycor()) > -200):
+
+    # adds functionality to move trash can
+    wn.onkeypress(functools.partial(move,"left"),"a")
+    wn.onkeypress(functools.partial(move,"left"), "Left")
+    wn.onkeypress(functools.partial(move,"right"),"d")
+    wn.onkeypress(functools.partial(move,"right"),"Right")
+    wn.listen()
+    
+    # moves the raindrops down
+    raindrops[i].goto(raindrops[i].xcor(),raindrops[i].ycor()-1)
+
 # TODO: make raindrop fall
-'''
+''''
 var xPositions = [200];
 var yPositions = [0];
 var diameter = [10];

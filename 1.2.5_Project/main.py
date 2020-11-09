@@ -4,7 +4,6 @@
 import turtle as trtl 
 import random as rand
 import functools
-
 # idea: falling raindrops that click
 # you get a score
 # steal code from 1.2.2 with the leaderboard

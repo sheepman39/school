@@ -4,16 +4,16 @@
 import turtle as trtl 
 import random as rand
 import functools
-# idea: falling raindrops that click
+# idea: falling trashtrash that click
 # you get a score
 # steal code from 1.2.2 with the leaderboard
 # I have some javascript code we can convert for this
 # timer?
-# Idea: add different color raindrops that you don't click on
+# Idea: add different color trash that you don't click on
 #https://wwwkhanacademy.org/computer-programming/snow-fall/6097804743835648
 
 # === variables ===
-raindrops = []
+trash = []
 trashcan = "./1.2.5_Project/trashcan.gif"
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
@@ -36,7 +36,7 @@ def trash_creator(x):
     tmp_turtle.speed(-1)
     tmp_turtle.goto(rand.randint(-200,200),rand.randint(50,300))
     tmp_turtle.speed(rand.uniform(0.5,5))
-    raindrops.append(tmp_turtle)
+    trash.append(tmp_turtle)
     
 
 # moves the trash can
@@ -50,9 +50,9 @@ def move(direction):
 # summons 10 test dummies
 trash_creator(10)
 # tells the turtles to fall
-for i in range(len(raindrops)):
+for i in range(len(trash)):
   
-  while(int(raindrops[i].ycor()) > -200):
+  while(int(trash[i].ycor()) > -200):
 
     # adds functionality to move trash can
     wn.onkeypress(functools.partial(move,"left"),"a")
@@ -61,10 +61,10 @@ for i in range(len(raindrops)):
     wn.onkeypress(functools.partial(move,"right"),"Right")
     wn.listen()
     
-    # moves the raindrops down
-    raindrops[i].goto(raindrops[i].xcor(),raindrops[i].ycor()-1)
+    # moves the trash down
+    trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
 
-# TODO: make raindrop fall
+# TODO: make trash fall
 ''''
 var xPositions = [200];
 var yPositions = [0];
@@ -170,7 +170,7 @@ def manage_leaderboard():
                             score)
 '''
 
-# TODO: Add different colored raindrops
+# TODO: Add different colored trashtrash
 
 
 # TODO: add easter eggs 

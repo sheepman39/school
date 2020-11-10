@@ -18,6 +18,7 @@ trashcan = "./1.2.5_Project/trashcan.gif"
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(trashcan) 
+point = 0
 
 # === bucket turtle ===
 bucket = trtl.Turtle()
@@ -26,6 +27,7 @@ bucket.color("white")
 bucket.penup()
 bucket.shape(trashcan)
 bucket.goto(0,-250)
+
 
 # creates the items of trash
 def trash_creator(x):
@@ -45,14 +47,13 @@ def move(direction):
     bucket.goto(bucket.xcor()-5,bucket.ycor())
   elif(str(direction) == 'right'):
     bucket.goto(bucket.xcor()+5,bucket.ycor())
-  pass
 
 # summons 10 test dummies
 trash_creator(10)
 # tells the turtles to fall
 for i in range(len(trash)):
-  
-  while(int(trash[i].ycor()) > -200):
+
+  while(trash[i].isvisible()):
 
     # adds functionality to move trash can
     wn.onkeypress(functools.partial(move,"left"),"a")
@@ -60,90 +61,26 @@ for i in range(len(trash)):
     wn.onkeypress(functools.partial(move,"right"),"d")
     wn.onkeypress(functools.partial(move,"right"),"Right")
     wn.listen()
-    
-    # moves the trash down
+
+
+    if(abs(trash[i].xcor()-bucket.xcor()) < 25 and trash[i].ycor() <= -200):
+      print(abs(trash[i].xcor()-bucket.xcor()))
+      trash[i].ht()
+      point += 1
+      print(point)
+    elif(trash[i].ycor() <= -320):
+      trash[i].ht()
+      print("Lost a life")
+
     trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
 
+
 # TODO: make trash fall
-''''
-var xPositions = [200];
-var yPositions = [0];
-var diameter = [10];
-var speed = [1];
-for(var g=0;g<200;g++){
-    diameter.push(random(2,15));
-    xPositions.push(random(0,width-10));
-    yPositions.push(random(0, height+25));
-    speed.push(random(0.5,1));
-}
-mouseClicked = function(){
-    diameter.push(random(2,20));
-    xPositions.push(random(0,width-10));
-    yPositions.push(random(0, height+25));
-    speed.push(random(0.5,1));
-    playSound(getSound("rpg/hit-clop"));
-};
-draw = function() {
-    frameRate(90);
-  background(87, 160, 211);
-   
-    for (var i = 0; i < xPositions.length; i++) {
-    
-        noStroke();
-        ellipse(xPositions[i],yPositions[i],diameter[i],diameter[i]);
-        yPositions[i] += speed[i];
-            if(yPositions[i]>height+25){
-                yPositions[i] =-25;
-        }
-    }
-'''
+
 # TODO: make multiple fall + random location
 # TODO: make them clickable
 # TODO: make them disappear and count when clicked
 # TODO: add timer
-
-#Timer turtle
-'''
-counter =  trtl.Turtle()
-counter.penup()
-counter.hideturtle()
-counter.goto(-150,-150)
-
-global timer
-global counter_interval
-global timer_up
-
-if(timer_up == True):
-    counter.clear()
-    counter.write("Timer: " + str(timer), font=font_setup)
-    counter.getscreen().ontimer(countdown, counter_interval) 
-    dot_color = "#460a8f"
-    dot_size = 5
-    dot_shape = "circle"
-    score = 0
-    timer = 20
-    font_setup = ("Arial", 20, "normal")
-    counter_interval = 1000  
-    timer_up = False
-    
-  else:
-    spot_clicked(x,y)
-  
-#Timer code
-def countdown():
-  
-  global timer, timer_up
-  counter.clear()
-  if (timer <= 0):
-  
-    counter.write("Time's Up", font=font_setup)
-    timer_up = True
-    manage_leaderboard()
-    dot.goto(0,0)
-    dot.turtlesize(5)
-    print("Click on the turtle to play again!")
-'''
-
 # TODO: implement leaderboard code from previous projects
 '''
 # manages the leaderboard for top 5 scorers
@@ -171,8 +108,6 @@ def manage_leaderboard():
 '''
 
 # TODO: Add different colored trashtrash
-
-
 # TODO: add easter eggs 
 #/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<
 wn.listen()

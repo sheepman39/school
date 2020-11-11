@@ -21,6 +21,7 @@ wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(trashcan) 
 point = 0
+rounds = 0
 lives = 3
 
 # === leaderboard variables ===
@@ -68,7 +69,7 @@ def trash_creator(x):
     tmp_turtle = trtl.Turtle()
     tmp_turtle.penup()
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
-    tmp_turtle.speed(-1)
+    tmp_turtle.speed(-1+i*0)
     tmp_turtle.goto(rand.randint(-200,200),rand.randint(50,300))
     tmp_turtle.speed(rand.uniform(0.5,5))
     trash.append(tmp_turtle)
@@ -87,6 +88,7 @@ def move(direction):
 def game_start():
   global point
   global lives 
+  global rounds
 
   for i in range(len(trash)):
 
@@ -119,13 +121,16 @@ def game_start():
 
       trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
   
-  manage_leaderboard()
-
-
+  #manage_leaderboard()
+  
 
 # summons 10 test dummies
-trash_creator(10)
-game_start()
+while(lives>0):
+  trash_creator(10+lives*5)
+  game_start()
+
+if(lives <= 0):
+  manage_leaderboard()
 
 # TODO: make multiple fall + random location
 # TODO: implement leaderboard code from previous projects

@@ -27,7 +27,11 @@ lives = 3
 leaderboard_file_name = "./1.2.5_Project/1.2.5_Leaderboard.txt"
 leader_names_list = []
 leader_scores_list = []
-player_name = wn.textinput("Welcome!","Please enter your name:")
+try:
+  player_name = wn.textinput("Greetings Player...","Identify yourself:")
+  print(player_name)
+except:
+  player_name = "Unknown"
 
 # === bucket turtle ===
 bucket = trtl.Turtle()

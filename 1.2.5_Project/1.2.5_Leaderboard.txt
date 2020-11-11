@@ -1,5 +1,4 @@
-bob,10
-god,7
+hello there,6
 list,6
-js,5
-john,4
+General kenobi,4
+js,3

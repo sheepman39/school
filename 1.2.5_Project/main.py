@@ -5,6 +5,7 @@ import turtle as trtl
 import random as rand
 import functools
 import leaderboard as lb
+
 # idea: falling trashtrash that click
 # you get a score
 # steal code from 1.2.2 with the leaderboard
@@ -136,6 +137,6 @@ if(lives <= 0):
 # TODO: implement leaderboard code from previous projects
 # TODO: Add different colored trashtrash
 # TODO: add easter eggs 
-#/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<
+#/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<
 wn.listen()
 wn.mainloop()

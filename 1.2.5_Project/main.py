@@ -16,16 +16,23 @@ import leaderboard as lb
 # === variables ===
 trash = []
 trashcan = "./1.2.5_Project/trashcan.gif"
+font_setup = ("Arial", 20, "normal")
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.addshape(trashcan) 
 point = 0
+lives = 3
+
+# === leaderboard variables ===
 leaderboard_file_name = "./1.2.5_Project/1.2.5_Leaderboard.txt"
+leader_names_list = []
+leader_scores_list = []
+player_name = wn.textinput("Welcome!","Please enter your name:")
 
 # === bucket turtle ===
 bucket = trtl.Turtle()
 bucket.turtlesize(1)
-bucket.color("white")
+bucket.color("black")
 bucket.penup()
 bucket.shape(trashcan)
 bucket.goto(0,-250)
@@ -34,26 +41,25 @@ bucket.goto(0,-250)
 # manages the leaderboard for top 5 scorers
 def manage_leaderboard():
 
-    global leader_scores_list
-    global leader_names_list
-    global score
-    global dot
+  global leader_scores_list
+  global leader_names_list
+  global point
+  global bucket
 
-    # load all the leaderboard records into the lists
-    lb.load_leaderboard(leaderboard_file_name, leader_names_list,
-                        leader_scores_list)
+  # load all the leaderboard records into the lists
+  lb.load_leaderboard(leaderboard_file_name, leader_names_list,leader_scores_list)
 
-    # TODO
-    if (len(leader_scores_list) < 5 or score > leader_scores_list[4]):
-        #lb.update_leaderboard(leaderboard_file_name,leader_names_list,leader_scores_list, player_name, point)
-        lb.draw_leaderboard(leader_names_list, leader_scores_list, True, dot,
-                            score)
+  # TODO
+  if (len(leader_scores_list) < 5 or point > leader_scores_list[4]):
+      lb.update_leaderboard(leaderboard_file_name,leader_names_list,leader_scores_list, player_name, point)
+      lb.draw_leaderboard(leader_names_list, leader_scores_list, True, bucket,point)
 
-    else:
-        lb.draw_leaderboard(leader_names_list,leader_scores_list, False, dot,score)
+  else:
+      lb.draw_leaderboard(leader_names_list,leader_scores_list, False, bucket,point)
 
 # creates the items of trash
 def trash_creator(x):
+  global trash
   for i in range(x):
     tmp_turtle = trtl.Turtle()
     tmp_turtle.penup()
@@ -71,45 +77,54 @@ def move(direction):
   elif(str(direction) == 'right'):
     bucket.goto(bucket.xcor()+7,bucket.ycor())
 
-# summons 10 test dummies
-trash_creator(10)
+
 
 # tells the turtles to fall
-for i in range(len(trash)):
+def game_start():
+  global point
+  global lives 
 
-  while(trash[i].isvisible()):
+  for i in range(len(trash)):
 
-    # adds functionality to move trash can
-    wn.onkeypress(functools.partial(move,"left"),"a")
-    wn.onkeypress(functools.partial(move,"left"), "Left")
-    wn.onkeypress(functools.partial(move,"right"),"d")
-    wn.onkeypress(functools.partial(move,"right"),"Right")
-    wn.listen()
+    if(lives <= 0):
+      print("Game Over")
+      break
+
+    while(trash[i].isvisible()):
+
+      # adds functionality to move trash can
+      wn.onkeypress(functools.partial(move,"left"),"a")
+      wn.onkeypress(functools.partial(move,"left"), "Left")
+      wn.onkeypress(functools.partial(move,"right"),"d")
+      wn.onkeypress(functools.partial(move,"right"),"Right")
+      wn.listen()
 
 
-    if(abs(trash[i].xcor()-bucket.xcor()) < 25 and trash[i].ycor() <= -200):
+      if(abs(trash[i].xcor()-bucket.xcor()) < 25 and trash[i].ycor() <= -200):
+        
+        trash[i].ht()
+        point += 1
+        print(point)
       
-      trash[i].ht()
-      point += 1
-      print(point)
-    
-    elif(trash[i].ycor() <= -320):
-    
-      trash[i].ht()
-      print("Lost a life")
+      elif(trash[i].ycor() <= -320):
+      
+        trash[i].ht()
+        lives -= 1
+        print("Lost a life")
+        print(str(lives) + " lives remaining")
 
-    trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
+      trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
+  
+  manage_leaderboard()
 
+
+
+# summons 10 test dummies
+trash_creator(10)
+game_start()
 
 # TODO: make multiple fall + random location
-# TODO: make them clickable
-# TODO: make them disappear and count when clicked
-# TODO: add timer
 # TODO: implement leaderboard code from previous projects
-'''
-
-'''
-
 # TODO: Add different colored trashtrash
 # TODO: add easter eggs 
 #/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<

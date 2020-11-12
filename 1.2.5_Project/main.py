@@ -16,10 +16,16 @@ import leaderboard as lb
 
 # === variables ===
 trash = []
+trash_img = ["./1.2.5_Project/bad_apple.gif","./1.2.5_Project/banana.gif","./1.2.5_Project/garbage-bag.gif","./1.2.5_Project/paper_ball.gif"]
 trashcan = "./1.2.5_Project/trashcan.gif"
 font_setup = ("Arial", 20, "normal")
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
+
+# adds each of the trash images into the program
+for i in trash_img:
+  wn.addshape(i)
+
 wn.addshape(trashcan) 
 point = 0
 rounds = 0
@@ -68,6 +74,7 @@ def trash_creator(x):
   global trash
   for i in range(x):
     tmp_turtle = trtl.Turtle()
+    tmp_turtle.shape(trash_img[rand.randint(0,len(trash_img)-1)])
     tmp_turtle.penup()
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
     tmp_turtle.speed(-1+i*0)

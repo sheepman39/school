@@ -37,7 +37,6 @@ leader_names_list = []
 leader_scores_list = []
 try:
   player_name = wn.textinput("Greetings Player...","Identify yourself:")
-  print(player_name)
 except:
   player_name = "Unknown"
 
@@ -48,6 +47,8 @@ bucket.color("black")
 bucket.penup()
 bucket.shape(trashcan)
 bucket.goto(0,-250)
+
+# === anouncer turtle ===
 
 # === functions ===
 # manages the leaderboard for top 5 scorers
@@ -78,8 +79,8 @@ def trash_creator(x):
     tmp_turtle.penup()
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
     tmp_turtle.speed(-1+i*0)
-    tmp_turtle.goto(rand.randint(-200,200),rand.randint(50,300))
-    tmp_turtle.speed(rand.uniform(0.5,5))
+    tmp_turtle.goto(rand.randint(-200,200),300)
+    tmp_turtle.speed(rand.uniform(0.5,4))
     trash.append(tmp_turtle)
     
 
@@ -127,17 +128,18 @@ def game_start():
         print("Lost a life")
         print(str(lives) + " lives remaining")
 
-      trash[i].goto(trash[i].xcor(),trash[i].ycor()-1)
-  
-  #manage_leaderboard()
+      trash[i].goto(trash[i].xcor(),trash[i].ycor()- float(trash[i].speed()))
   
 
 # summons 10 test dummies
 while(lives>0):
-  trash_creator(10+lives*5)
+  trash_creator(10)
+  print(len(trash))
   game_start()
 
 if(lives <= 0):
+  for i in trash:
+    i.ht()
   manage_leaderboard()
 
 # TODO: make multiple fall + random location

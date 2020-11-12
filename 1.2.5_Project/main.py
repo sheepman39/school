@@ -18,6 +18,7 @@ import leaderboard as lb
 trash = []
 trash_img = ["./1.2.5_Project/bad_apple.gif","./1.2.5_Project/banana.gif","./1.2.5_Project/garbage-bag.gif","./1.2.5_Project/paper_ball.gif"]
 trashcan = "./1.2.5_Project/trashcan.gif"
+tipped_trash = "./1.2.5_Project/tippedovercan.gif"
 font_setup = ("Arial", 20, "normal")
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
@@ -27,6 +28,7 @@ for i in trash_img:
   wn.addshape(i)
 
 wn.addshape(trashcan) 
+wn.addshape(tipped_trash)
 point = 0
 rounds = 0
 lives = 3
@@ -36,7 +38,7 @@ leaderboard_file_name = "./1.2.5_Project/1.2.5_Leaderboard.txt"
 leader_names_list = []
 leader_scores_list = []
 try:
-  player_name = wn.textinput("Greetings Player...","Identify yourself:")
+  player_name = wn.textinput("Greetings Player...","I'm gonna need your name player. Player isn' exactly a name...:")
 except:
   player_name = "Unknown"
 
@@ -49,7 +51,17 @@ bucket.shape(trashcan)
 bucket.goto(0,-250)
 
 # === anouncer turtle ===
+scoreboard = trtl.Turtle()
+scoreboard.penup()
+scoreboard.goto(-350,-200)
+scoreboard.ht()
 
+#easter egg number 1
+#           {YEEEEEEE HAAAAAAWWWWWWW!!!!!}
+#        o /
+#       /|\
+#       / \
+#------------------
 # === functions ===
 # manages the leaderboard for top 5 scorers
 def manage_leaderboard():
@@ -87,9 +99,9 @@ def trash_creator(x):
 # moves the trash can
 def move(direction):
   if(str(direction) == "left"):
-    bucket.goto(bucket.xcor()-7,bucket.ycor())
+    bucket.goto(bucket.xcor()-14,bucket.ycor())
   elif(str(direction) == 'right'):
-    bucket.goto(bucket.xcor()+7,bucket.ycor())
+    bucket.goto(bucket.xcor()+14,bucket.ycor())
 
 
 
@@ -98,12 +110,15 @@ def game_start():
   global point
   global lives 
   global rounds
-
+  global lives
   for i in range(len(trash)):
 
     if(lives <= 0):
       print("Game Over")
       break
+      
+    scoreboard.clear()
+    scoreboard.write("Score: " + str(point) + "\nRound " + str(rounds) + "\nLives: "  + str(lives),font=font_setup)
 
     while(trash[i].isvisible()):
 
@@ -119,28 +134,37 @@ def game_start():
         
         trash[i].ht()
         point += 1
-        print(point)
-      
+
       elif(trash[i].ycor() <= -320):
       
         trash[i].ht()
         lives -= 1
-        print("Lost a life")
-        print(str(lives) + " lives remaining")
+
+
 
       trash[i].goto(trash[i].xcor(),trash[i].ycor()- float(trash[i].speed()))
   
 
 # summons 10 test dummies
 while(lives>0):
+  
   trash_creator(10)
-  print(len(trash))
+  rounds += 1
+
+  if(rounds % 5 == 0):
+    lives += 1
+  
   game_start()
 
 if(lives <= 0):
+  
   for i in trash:
     i.ht()
+
   manage_leaderboard()
+  bucket.goto(0,-180)
+  bucket.st()
+  bucket.shape(tipped_trash)
 
 # TODO: make multiple fall + random location
 # TODO: implement leaderboard code from previous projects

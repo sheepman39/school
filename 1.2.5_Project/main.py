@@ -93,7 +93,7 @@ def trash_creator(x):
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
     tmp_turtle.speed(-1+i*0)
     tmp_turtle.goto(rand.randint(-200,200),300)
-    tmp_turtle.speed(rand.uniform(0.5,4))
+    tmp_turtle.speed(rand.uniform(0.5+rounds*0.5,4))
     trash.append(tmp_turtle)
     
 

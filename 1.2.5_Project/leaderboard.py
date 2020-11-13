@@ -2,9 +2,9 @@
 # The leaderboard module to be used in a122 solution.
 
 # set the levels of scoring
-bronze_score = 15
+bronze_score = 10
 silver_score = 20
-gold_score = 25
+gold_score = 30
 
 # load leaderboard from file
 def load_leaderboard(file_name, leader_names, leader_scores):

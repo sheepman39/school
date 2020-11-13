@@ -60,7 +60,9 @@ try:
   player_name = wn.textinput("Greetings Player...","I'm gonna need your name player. Player isn' exactly a name...:")
 except:
   player_name = "Unknown"
+
 # === functions ===
+
 # manages the leaderboard for top 5 scorers
 def manage_leaderboard():
 

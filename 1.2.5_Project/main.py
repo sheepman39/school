@@ -20,6 +20,7 @@ font_setup = ("Arial", 20, "normal")
 # screen setup
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
+wn.bgpic("./1.2.3_Project/background.gif")
 
 # adds each of the trash images into the program
 for i in trash_img:
@@ -149,7 +150,10 @@ def game_start():
 
 #easter egg number 2
 #         ---
-#        /   
+#        /~~~\
+#        |===|
+#        \~~~/
+#         ---
 
 # While you still have lives,
 # run the game
@@ -181,10 +185,6 @@ if(lives <= 0):
   bucket.st()
   bucket.shape(tipped_trash)
 
-# TODO: make multiple fall + random location
-# TODO: implement leaderboard code from previous projects
-# TODO: Add different colored trashtrash
-# TODO: add easter eggs 
 #easter egg 
 #/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<
 wn.listen()

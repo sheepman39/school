@@ -5,7 +5,12 @@ import turtle as trtl
 import random as rand
 import functools
 import leaderboard as lb
+
 # === variables ===
+point = 0
+rounds = 0
+lives = 3
+
 trash = []
 trash_img = ["./1.2.5_Project/bad_apple.gif","./1.2.5_Project/banana.gif","./1.2.5_Project/garbage-bag.gif","./1.2.5_Project/paper_ball.gif"]
 trashcan = "./1.2.5_Project/trashcan.gif"
@@ -15,6 +20,7 @@ font_setup = ("Arial", 20, "normal")
 # screen setup
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
+wn.bgpic("./1.2.3_Project/background.gif")
 
 # adds each of the trash images into the program
 for i in trash_img:
@@ -22,9 +28,7 @@ for i in trash_img:
 
 wn.addshape(trashcan) 
 wn.addshape(tipped_trash)
-point = 0
-rounds = 0
-lives = 3
+
 
 # === leaderboard variables ===
 leaderboard_file_name = "./1.2.5_Project/1.2.5_Leaderboard.txt"
@@ -90,7 +94,7 @@ def trash_creator(x):
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
     tmp_turtle.speed(-1+i*0)
     tmp_turtle.goto(rand.randint(-200,200),300)
-    tmp_turtle.speed(rand.uniform(0.5,4))
+    tmp_turtle.speed(rand.uniform(0.5+rounds*0.5,4))
     trash.append(tmp_turtle)
     
 
@@ -150,6 +154,11 @@ def game_start():
 #       |     |
 #        \   /
 #          - 
+#         ---
+#        /~~~\
+#        |===|
+#        \~~~/
+#         ---
 
 # While you still have lives,
 # run the game
@@ -180,7 +189,6 @@ if(lives <= 0):
   bucket.goto(0,-180)
   bucket.st()
   bucket.shape(tipped_trash)
-
 
 # TODO: add easter eggs 
 #easter egg number 3

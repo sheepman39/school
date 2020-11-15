@@ -50,7 +50,7 @@ bucket.goto(0,-250)
 scoreboard = trtl.Turtle()
 scoreboard.penup()
 scoreboard.color("#09A60E")
-scoreboard.goto(-400,250)
+scoreboard.goto(-400,235)
 scoreboard.ht()
 
 # easter egg number 1

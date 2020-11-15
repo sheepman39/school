@@ -92,9 +92,10 @@ def trash_creator(x):
 
   # creates x amount of turtles
   for i in range(x):
+    
+    # creates the tmp turtle
     tmp_turtle = trtl.Turtle()
     
-    print(rounds)
     # every 6th round the trash is an angry racoon. Why? Raccoons. No other reason besides raccoons
     if(rounds % 5 == 0 and rounds >= 5):
       
@@ -115,6 +116,7 @@ def trash_creator(x):
       # sets the shape to a random image
       tmp_turtle.shape(trash_img[rand.randint(0,len(trash_img)-1)])
 
+    # modifies the turtle to the correct parameters
     tmp_turtle.penup()
     tmp_turtle.turtlesize(rand.uniform(0.5,3))
     tmp_turtle.speed(-1+i*0)
@@ -215,7 +217,6 @@ if(lives <= 0):
   bucket.st()
   bucket.shape(tipped_trash)
 
-# TODO: add easter eggs 
 #easter egg number 3
 #/\//\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/[}--<
 wn.listen()

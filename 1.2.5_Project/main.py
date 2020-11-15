@@ -21,7 +21,7 @@ a_surprise_for_later = "./1.2.5_Project/angry_raccoon.gif"
 
 # screen setup
 wn = trtl.Screen()
-wn.setup(width=1.0, height=1.0)
+wn.setup(width=0.8, height=0.8)
 wn.bgpic("./1.2.5_Project/garbage-truck.gif")
 
 # adds each of the trash images into the program
@@ -41,7 +41,7 @@ leader_scores_list = []
 # === bucket turtle ===
 bucket = trtl.Turtle()
 bucket.turtlesize(1)
-bucket.color("#1bb300")
+bucket.color("#703131")
 bucket.penup()
 bucket.shape(trashcan)
 bucket.goto(0,-250)
@@ -49,8 +49,8 @@ bucket.goto(0,-250)
 # === anouncer turtle ===
 scoreboard = trtl.Turtle()
 scoreboard.penup()
-scoreboard.color("#1bb300")
-scoreboard.goto(-350,-250)
+scoreboard.color("#09A60E")
+scoreboard.goto(-400,250)
 scoreboard.ht()
 
 # easter egg number 1
@@ -59,6 +59,7 @@ scoreboard.ht()
 #       /|\
 #       / \
 # === inital setup ===
+wn.textinput("Welcome!","Here is how to play the game! Use your a or left arrow key to move left. Use your d or right arrow key to move right. Your goal is to keep on collecting as much trash as possible! Be careful though, each round will get harder and harder. Every 5th round you will receive an extra life! Good luck!\n Click 'Ok' to continue")
 try:
   player_name = wn.textinput("Greetings Player...","I'm gonna need your name player. Player isn' exactly a name...:")
 except:
@@ -98,6 +99,16 @@ def trash_creator(x):
     if(rounds % 5 == 0 and rounds >= 5):
       
         tmp_turtle.shape(a_surprise_for_later)
+    
+    else:
+    
+      # sets the shape to a random image
+      tmp_turtle.shape(trash_img[rand.randint(0,len(trash_img)-1)])
+
+    # every 6th round the trash is an angry racoon. Why? Raccoons. No other reason besides raccoons
+    if(rounds % 5 == 0 and rounds >= 5):
+      
+      tmp_turtle.shape(a_surprise_for_later)
     
     else:
     

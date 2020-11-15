@@ -59,7 +59,7 @@ def update_leaderboard(file_name, leader_names, leader_scores, player_name, play
 def draw_leaderboard(leader_names, leader_scores, high_scorer, turtle_object, player_score):
   
   # clear the screen and move turtle object to (-200, 100) to start drawing the leaderboard
-  font_setup = ("Arial", 20, "normal")
+  font_setup = ("Arial", 20, "bold")
   turtle_object.clear()
   turtle_object.penup()
   turtle_object.goto(-200,150)

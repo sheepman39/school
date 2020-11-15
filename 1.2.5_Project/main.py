@@ -21,7 +21,7 @@ a_surprise_for_later = "./1.2.5_Project/angry_raccoon.gif"
 
 # screen setup
 wn = trtl.Screen()
-wn.setup(width=0.8, height=0.8)
+wn.setup(1024,682)
 wn.bgpic("./1.2.5_Project/garbage-truck.gif")
 
 # adds each of the trash images into the program
@@ -59,7 +59,7 @@ scoreboard.ht()
 #       /|\
 #       / \
 # === inital setup ===
-wn.textinput("Welcome!","Here is how to play the game! Use your a or left arrow key to move left. Use your d or right arrow key to move right. Your goal is to keep on collecting as much trash as possible! Be careful though, each round will get harder and harder. Every 5th round you will receive an extra life! Good luck!\n Click 'Ok' to continue")
+nothing = wn.textinput("Welcome!","Here is how to play the game! \nUse your a or left arrow key to move left. Use your d or right arrow key to move right. \nYour goal is to keep on collecting as much trash as possible! Be careful though, each round will get harder and harder. \nEvery 5th round you will receive an extra life! Good luck!\n Click 'Ok' to continue")
 try:
   player_name = wn.textinput("Greetings Player...","I'm gonna need your name player. Player isn' exactly a name...:")
 except:

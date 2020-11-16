@@ -21,7 +21,7 @@ a_surprise_for_later = "./1.2.5_Project/angry_raccoon.gif"
 
 # screen setup
 wn = trtl.Screen()
-wn.setup(1024,682)
+wn.screensize(1024,682)
 wn.bgpic("./1.2.5_Project/garbage-truck.gif")
 
 # adds each of the trash images into the program

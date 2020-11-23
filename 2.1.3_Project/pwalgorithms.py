@@ -42,7 +42,7 @@ def two_words_and_digit (password):
       for w in words:
         if(w in password):
           for j in "1234567890":
-            if(j in password:
+            if(j in password):
               guesses += 1
               if (j + w + i == password):
                 return True, guesses

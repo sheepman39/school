@@ -44,8 +44,8 @@ def two_words_and_digit (password):
           for j in "1234567890":
             if(j in password):
               guesses += 1
-              if (j + w + i == password):
+              if (j + w + i == password or w + i + j == password or i + j == password or i == password or j + i == password):
                 return True, guesses
-              elif (w + i + j == password):
-                return True, guesses
+            elif(i == password or i + w == password or w + i == password):
+              return True, guesses
   return False, guesses

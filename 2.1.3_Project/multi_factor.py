@@ -4,10 +4,10 @@ import multifactorgui as mfg
 
 # create a multi-factor interface to a restircteownlo app
 my_auth = mfg.MultiFactorAuth()
-
+my_auth.set_authorization('admin',"th!s!sAStrongP@$$Word" )
 # set the users authentication information
-question = "What is your favorite color"
-answer = "purple"
+question = "What is the krabby patty secret formula?"
+answer = "yes, but only on tuesdays"
 my_auth.set_authentication(question, answer)
 
 # start the GUI

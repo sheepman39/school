@@ -4,7 +4,7 @@ import pwalgorithms as pwa
 
 password = input("Enter password:")
 
-print("Analyzing a one-word password ...")
+print("Analyzing a password ...")
 time_start = time.time()
 
 # attempt to find password

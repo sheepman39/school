@@ -4,9 +4,15 @@
 ##############################################################################
 import tkinter as tk
 
+# here is a site with some easy-to-use documentation
+# https://www.tutorialspoint.com/python/tk_toplevel.htm
+# for number 7, look at line 13
+
 # main window
 root = tk.Tk()
-root.wm_geometry("200x100")
+root.title("Authorization")
+root.wm_geometry("200x200")
+
 # create empty frame
 frame_login = tk.Frame(root)
 root.mainloop()

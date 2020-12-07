@@ -11,13 +11,20 @@ import tkinter as tk
 # main window
 root = tk.Tk()
 
-# number 7
+# step 7
 root.title("Authorization")
 
 root.wm_geometry("200x200")
 
-# number 8 copy and paste
+# step 8 copy and paste
 # create empty frame
 frame_login = tk.Frame(root)
+
+# step 9
+frame_login.grid()
+
+# step 10
+lbl_username = tk.Label(frame_login, text='Username:')
+lbl_username.pack()
 
 root.mainloop()

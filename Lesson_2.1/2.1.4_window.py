@@ -10,9 +10,14 @@ import tkinter as tk
 
 # main window
 root = tk.Tk()
+
+# number 7
 root.title("Authorization")
+
 root.wm_geometry("200x200")
 
+# number 8 copy and paste
 # create empty frame
 frame_login = tk.Frame(root)
+
 root.mainloop()

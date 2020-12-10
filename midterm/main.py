@@ -4,8 +4,9 @@
 # John Salata
 
 # we are making a dueling game
-# TODO:
+# done: 
 # make two turtles that can move using wasd and arrow keys
+# TODO:
 # make the turtles able to fire projectiles 
 # make the opposite player able to be hit
 # make a scoreboard for when a player gets hit
@@ -50,14 +51,25 @@ def move_player(key):
       player1.forward(speed)
     elif(key == "a"):
       player1.forward(-speed)
+    elif(key == "w"):
+        player1.goto(player1.xcor(),player1.ycor()+speed)
+    elif(key == "s"):
+      player1.goto(player1.xcor(),player1.ycor()-speed)
+
   elif(key == "i" or key == "k" or key == "l" or key == "j"):
     if(key == "l"):
       player2.forward(speed)
     elif(key == "j"):
       player2.forward(-speed)
+    elif(key == "i"):
+      player2.goto(player2.xcor(),player2.ycor()+speed)
+    elif(key == "k"):
+      player2.goto(player2.xcor(),player2.ycor()-speed)
 
 for k in "wasdilkj":
   
   wn.onkeypress(functools.partial(move_player, k),key = k)
   wn.listen()
+
+
 wn.mainloop()

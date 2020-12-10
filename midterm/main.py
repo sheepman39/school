@@ -49,7 +49,7 @@ player2.health = 20
 # functions
 def move_player(key):
   if(key == "w" or key == "a" or key == "s" or key == "d"):
-    if(not abs(player1.xcor()) >300 or not abs(player1.ycor() > 200)):
+    if(not abs(player1.xcor()) >300 and not abs(player1.ycor() > 200)):
       
       if(key == "d"):
         player1.forward(speed)
@@ -61,7 +61,7 @@ def move_player(key):
         player1.goto(player1.xcor(),player1.ycor()-speed)
 
   elif(key == "i" or key == "k" or key == "l" or key == "j"):
-    if(not abs(player1.xcor()) >300 or not abs(player1.ycor() > 200)):
+    if(not abs(player1.xcor()) >300 and not abs(player1.ycor() > 200)):
       if(key == "l"):
         player2.forward(speed)
       elif(key == "j"):

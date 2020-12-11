@@ -61,12 +61,12 @@ class Projectile():
     self.direction = player.heading()
     self.life = 20000
     circles.append(self)
+
   def move(self,t):
     self.life, dist = self.life - t, Projectile.speed * t
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
 
 
-  pass
 # functions
 def move_player(key):
   if(key == "w" or key == "a" or key == "s" or key == "d"):
@@ -109,7 +109,4 @@ for k in "wasdilkj":
   #circles.append(c)
   animate()
   wn.listen()
-
-
-
 wn.mainloop()

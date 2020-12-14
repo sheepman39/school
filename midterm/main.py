@@ -71,9 +71,9 @@ class Projectile():
     self.turtle.shape("circle")
     self.turtle.color(player.fillcolor())
     self.direction = player.heading()
-    circles.append(self)
     self.turtle.setheading(player.heading())
     self.life = 50
+    circles.append(self)
 
   # move function to calculate which coordinates
   # the projectile goes to

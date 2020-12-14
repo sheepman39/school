@@ -81,10 +81,34 @@ class Projectile():
   # the projectile goes to
   # Only moves on the x-axis
   def move(self,t):
-
+    global circles
     self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
+    if self.turtle.fillcolor() == player1.fillcolor():
+      if(abs(self.turtle.xcor()-player2.xcor()) < 20):
+        if(abs(self.turtle.ycor() - player2.ycor()) < 20):
+          self.turtle.ht()
+          self.turtle.clear()
+          circles.remove(self)
+          print("Hit player 2")
+          return True
+
+    elif self.turtle.fillcolor() == player2.fillcolor():
+      if(abs(self.turtle.xcor()-player1.xcor()) < 20):
+        if(abs(self.turtle.ycor() - player1.ycor()) < 20):
+          self.turtle.ht()
+          self.turtle.clear()
+          circles.remove(self)
+          print("hit player 1")
+          return True
     self.turtle.goto(self.x,self.turtle.ycor())
+    return False
+
+
+
+    
+  
+
 
 
 # functions
@@ -120,15 +144,19 @@ def animate():
   for b in circles:
     
     # they move a certain bit
-    Projectile.move(b,1/20)
+    hit = Projectile.move(b,1/20)
     if len(circles) > 0:
+      
+
+
       # if the life is less than 0, remove it
-      if b.life < 0:
-        circles.pop(0)
+      if b.life < 0 and hit == False:
+        b.turtle.ht()
+        circles.remove(b)
   # trtl.update() moves everything at once
   # may produce error on vs code. ignore
   trtl.update()
-  wn.ontimer(animate, 5)
+  wn.ontimer(animate, 50)
 
 # creates new projectile tied to a player
 def new_projectile(player):
@@ -136,7 +164,7 @@ def new_projectile(player):
   circles.append(c)
 
 for k in "wasdilkj":
-    
+  
   # controls movement of both players
   wn.onkeypress(functools.partial(move_player, k),key = k)
   

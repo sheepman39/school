@@ -27,8 +27,9 @@ import math
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
 wn.bgpic("midterm/background.gif")
+
 # variables
-speed = 10
+speed = 20
 circles = list()
 
 # test turtle
@@ -57,7 +58,7 @@ player2.health = 20
 
 # projectiles
 class Projectile():
-  speed = 20
+  global speed
 
   # __init__ function starts the creation of a new Projectile object
   # it sets the needed attributes of the projectiles
@@ -66,6 +67,7 @@ class Projectile():
     self.x = player.xcor()
     self.y = player.ycor()
     self.turtle = trtl.Turtle()
+    self.turtle.speed(-1)
     self.turtle.penup()
     self.turtle.goto(self.x,self.y)
     self.turtle.shape("circle")
@@ -80,7 +82,7 @@ class Projectile():
   # Only moves on the x-axis
   def move(self,t):
 
-    self.life, dist = self.life - t, Projectile.speed * t 
+    self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
     self.turtle.goto(self.x,self.turtle.ycor())
 

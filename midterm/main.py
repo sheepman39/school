@@ -120,10 +120,14 @@ class Projectile():
             return True
       else:
         self.turtle.goto(self.x,self.turtle.ycor())
+        circles.remove(self)
+        return True
+
 
     elif self.turtle.fillcolor() == player2.fillcolor():
       if(abs(self.turtle.xcor()-player1.xcor()) < 20):
         if(abs(self.turtle.ycor() - player1.ycor()) < 20):
+
           
           self.turtle.ht()
           self.turtle.clear()
@@ -141,6 +145,7 @@ class Projectile():
       else:
         self.turtle.goto(self.x,self.turtle.ycor())
       return False
+
 
 # functions
 
@@ -177,7 +182,7 @@ def animate():
     # they move a certain bit
     hit = Projectile.move(b,1/20)
     if len(circles) > 0:
-      
+
       # if the life is less than 0, remove it
       if b.life < 0 and hit == False:
         b.turtle.ht()
@@ -186,6 +191,7 @@ def animate():
   # may produce error on vs code. ignore
   trtl.update()
   wn.ontimer(animate, 60)
+
 
 # creates new projectile tied to a player
 def new_projectile(player):

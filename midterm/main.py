@@ -93,7 +93,7 @@ class Projectile():
     self.turtle.color(player.fillcolor())
     self.direction = player.heading()
     self.turtle.setheading(player.heading())
-    self.life = 20
+    self.life = 30
 
 
   # move function to calculate which coordinates
@@ -108,33 +108,30 @@ class Projectile():
 
       self.turtle.ht()
       self.turtle.clear()
-
-      #try:
-      circles.remove(self)
-      player2_health.clear()
-      player2.health -= damage
-      player2_health.write("Health: " + str(player2.health),font=font_setup)
-      print("Hit player 2")
-      return 
-      #except:
-      #  print("error 119")
-      #  return 
+      try:
+        circles.remove(self)
+        player2_health.clear()
+        player2.health -= damage
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        print("Hit player 2")
+        return 
+      except:
+        return
 
     elif(abs(self.turtle.xcor()-player1.xcor()) < 20 and abs(self.turtle.ycor() - player1.ycor()) < 20 and self.turtle.fillcolor() == player2.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
 
-      #try:
-      circles.remove(self)
-      player1_health.clear()
-      player1.health -= damage
-      player1_health.write("Health: " + str(player1.health),font=font_setup)
-      print("hit player 1")
-      return 
-      #except:
-      #  print("error 136")
-      #  return 
+      try:
+        circles.remove(self)
+        player1_health.clear()
+        player1.health -= damage
+        player1_health.write("Health: " + str(player1.health),font=font_setup)
+        print("hit player 1")
+        return 
+      except:
+        return
 
     else:
       self.turtle.goto(self.x,self.turtle.ycor())      
@@ -173,7 +170,7 @@ def animate():
   for b in circles:
     
     # they move a certain bit
-    Projectile.move(b,1/20)
+    Projectile.move(b,1/20 * len(circles))
     
     if b in circles:
       if len(circles) > 0:
@@ -185,7 +182,71 @@ def animate():
     
   # trtl.update() moves everything at once
   # may produce error on vs code. ignore
-  #trtl.update()
+  if(player1.health <= 0):
+    player1.ht()
+    player2.ht()
+    continueScript = wn.textinput("Game Over","Congrats Player 1 Wins!\nPress Ok to play again or cancel to stop playing!")
+    try:
+      
+      if(continueScript == True):
+        
+        player1.goto(-150, 0)
+        player2.goto(150, 0)
+        
+        player1.st()
+        player2.st()
+        
+        player1.health = 100
+        player2.health = 100
+        
+        player1_health.clear()
+        player2_health.clear()
+
+        player1.health.write("Health: " + str(player1.health),font=font_setup)
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        return
+      
+      else:
+
+        wn.bye()
+    
+    except:
+      
+      wn.bye()
+
+  elif(player2.health <= 0):
+
+    player1.ht()
+    player2.ht()
+    continueScript = wn.textinput("Game Over!","Congrats Player 2 Wins!\nPress Ok to play again or cancel to stop playing!")
+    try:
+      
+      if(continueScript == True):
+        
+        player1.goto(-150, 0)
+        player2.goto(150, 0)
+        
+        player1.st()
+        player2.st()
+        
+        player1.health = 100
+        player2.health = 100
+        
+        player1_health.clear()
+        player2_health.clear()
+
+        player1.health.write("Health: " + str(player1.health),font=font_setup)
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        return
+      
+      else:
+
+        wn.bye()
+    
+    except:
+      
+      wn.bye()
+  trtl.update()
   wn.ontimer(animate, 60)
 
 
@@ -196,7 +257,7 @@ def new_projectile(player):
   c = Projectile(player)
   circles.append(c)
 
-animate()
+
 
 for k in "wasdilkj":
   
@@ -208,10 +269,12 @@ for k in "wasdilkj":
   wn.onkeypress(functools.partial(new_projectile,player2),key = "o")
   
   # animate function moves projectiles
-  # circles list stores the projectiles
-
+  animate()
 
   # needed to listen for keypresses
   wn.listen()
+
+
+
   
 wn.mainloop()

@@ -65,6 +65,7 @@ player2_health.write("Health: " + str(player2.health),font=font_setup)
 # projectiles
 class Projectile():
   global speed
+  global circles
 
   # __init__ function starts the creation of a new Projectile object
   # it sets the needed attributes of the projectiles
@@ -80,59 +81,48 @@ class Projectile():
     self.turtle.color(player.fillcolor())
     self.direction = player.heading()
     self.turtle.setheading(player.heading())
-    self.life = 50
-    circles.append(self)
+    self.life = 30
+
 
   # move function to calculate which coordinates
   # the projectile goes to
   # Only moves on the x-axis
   def move(self,t):
-    global circles
+
     self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
-    if self.turtle.fillcolor() == player1.fillcolor():
-      if(abs(self.turtle.xcor()-player2.xcor()) < 20):
-        if(abs(self.turtle.ycor() - player2.ycor()) < 20):
-          self.turtle.ht()
-          self.turtle.clear()
+    
+    if(abs(self.turtle.xcor()-player2.xcor()) < 20 and abs(self.turtle.ycor() - player2.ycor()) < 20 and self.turtle.fillcolor() == player1.fillcolor()):
 
-          try:
-            circles.remove(self)
-            player2_health.clear()
-            player2.health -= damage
-            player2_health.write("Health: " + str(player2.health),font=font_setup)
-            print("Hit player 2")
-            return True
-          except:
-            print("error 119")
-            return True
-      else:
-        self.turtle.goto(self.x,self.turtle.ycor())
+      self.turtle.ht()
+      self.turtle.clear()
+      try:
         circles.remove(self)
-        return True
+        player2_health.clear()
+        player2.health -= damage
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        print("Hit player 2")
+        return 
+      except:
+        return
 
+    elif(abs(self.turtle.xcor()-player1.xcor()) < 20 and abs(self.turtle.ycor() - player1.ycor()) < 20 and self.turtle.fillcolor() == player2.fillcolor()):
 
-    elif self.turtle.fillcolor() == player2.fillcolor():
-      if(abs(self.turtle.xcor()-player1.xcor()) < 20):
-        if(abs(self.turtle.ycor() - player1.ycor()) < 20):
+      self.turtle.ht()
+      self.turtle.clear()
 
-          
-          self.turtle.ht()
-          self.turtle.clear()
+      try:
+        circles.remove(self)
+        player1_health.clear()
+        player1.health -= damage
+        player1_health.write("Health: " + str(player1.health),font=font_setup)
+        print("hit player 1")
+        return 
+      except:
+        return
 
-          try:
-            circles.remove(self)
-            player1_health.clear()
-            player1.health -= 10
-            player1_health.write("Health: " + str(player1.health),font=font_setup)
-            print("hit player 1")
-            return True
-          except:
-            print("error 136")
-            return True
-      else:
-        self.turtle.goto(self.x,self.turtle.ycor())
-      return False
+    else:
+      self.turtle.goto(self.x,self.turtle.ycor())      
 
 
 # functions
@@ -168,23 +158,94 @@ def animate():
   for b in circles:
     
     # they move a certain bit
-    hit = Projectile.move(b,1/20)
-    if len(circles) > 0:
+    Projectile.move(b,1/20 * len(circles))
+    
+    if b in circles:
+      if len(circles) > 0:
 
-      # if the life is less than 0, remove it
-      if b.life < 0 and hit == False:
-        b.turtle.ht()
-        circles.remove(b)
+        # if the life is less than 0, remove it
+        if b.life < 0:
+          b.turtle.ht()
+          circles.remove(b)
+    
   # trtl.update() moves everything at once
   # may produce error on vs code. ignore
+  if(player1.health <= 0):
+    player1.ht()
+    player2.ht()
+    continueScript = wn.textinput("Game Over","Congrats Player 1 Wins!\nPress Ok to play again or cancel to stop playing!")
+    try:
+      
+      if(continueScript == True):
+        
+        player1.goto(-150, 0)
+        player2.goto(150, 0)
+        
+        player1.st()
+        player2.st()
+        
+        player1.health = 100
+        player2.health = 100
+        
+        player1_health.clear()
+        player2_health.clear()
+
+        player1.health.write("Health: " + str(player1.health),font=font_setup)
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        return
+      
+      else:
+
+        wn.bye()
+    
+    except:
+      
+      wn.bye()
+
+  elif(player2.health <= 0):
+
+    player1.ht()
+    player2.ht()
+    continueScript = wn.textinput("Game Over!","Congrats Player 2 Wins!\nPress Ok to play again or cancel to stop playing!")
+    try:
+      
+      if(continueScript == True):
+        
+        player1.goto(-150, 0)
+        player2.goto(150, 0)
+        
+        player1.st()
+        player2.st()
+        
+        player1.health = 100
+        player2.health = 100
+        
+        player1_health.clear()
+        player2_health.clear()
+
+        player1.health.write("Health: " + str(player1.health),font=font_setup)
+        player2_health.write("Health: " + str(player2.health),font=font_setup)
+        return
+      
+      else:
+
+        wn.bye()
+    
+    except:
+      
+      wn.bye()
   trtl.update()
   wn.ontimer(animate, 60)
 
 
 # creates new projectile tied to a player
 def new_projectile(player):
+  global circles
+
   c = Projectile(player)
   circles.append(c)
+
+
 
 for k in "wasdilkj":
   
@@ -200,5 +261,8 @@ for k in "wasdilkj":
 
   # needed to listen for keypresses
   wn.listen()
+
+
+
   
 wn.mainloop()

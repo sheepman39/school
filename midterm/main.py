@@ -3,19 +3,7 @@
 # Thomas Armstrong
 # John Salata
 
-# we are making a dueling game
-# done: 
-# make two turtles that can move using wasd and ijkl
-# make the turtles able to fire projectiles
-# TODO:
-# make the opposite player able to be hit
-# make a scoreboard for when a player gets hit
-# insert player names
-# change turtle colors
-# fix bugs
-# possible upgrades?
-# make some obstacles to hide behind
-# different blaster models
+# ITS TIME TO D-D-D-DUEL
 
 # imports
 import turtle as trtl

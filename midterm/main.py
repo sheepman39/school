@@ -78,7 +78,25 @@ def update_health():
   trtl.update()
 
 
+def game_restart():
 
+  for c in circles:
+    c.turtle.ht()
+    try:
+      circles.remove(c)
+    except:
+      pass
+  
+  player1.goto(-150, 0)
+  player2.goto(150, 0)
+  
+  player1.st()
+  player2.st()
+  
+  player1.health = 100
+  player2.health = 100
+  
+  update_health()
 
 # projectiles
 class Projectile():
@@ -119,7 +137,7 @@ class Projectile():
 
       try:
         circles.remove(self)
-        player1_projectiles += 1
+        player1_projectiles -= 1
         player2.health -= damage
         update_health()
         print("Hit player 2")
@@ -134,7 +152,7 @@ class Projectile():
 
       try:
         circles.remove(self)
-        player2_projectiles += 1
+        player2_projectiles -= 1
         player1.health -= damage
         update_health()
         print("hit player 1")
@@ -152,24 +170,24 @@ class Projectile():
 def move_player(key):
   if(key == "w" or key == "a" or key == "s" or key == "d"):
 
-    if(key == "d" and abs(player1.xcor()) < 300):
+    if(key == "d"):
       player1.forward(speed)
-    elif(key == "a" and abs(player1.xcor()) < 300):
+    elif(key == "a"):
       player1.forward(-speed)
-    elif(key == "w" and abs(player1.ycor()) < 200):
+    elif(key == "w"):
         player1.goto(player1.xcor(),player1.ycor()+speed)
-    elif(key == "s" and abs(player1.ycor()) < 200):
+    elif(key == "s"):
       player1.goto(player1.xcor(),player1.ycor()-speed)
 
   elif(key == "i" or key == "k" or key == "l" or key == "j"):
 
-    if(key == "j" and abs(player2.xcor()) < 300):
+    if(key == "j"):
       player2.forward(speed)
-    elif(key == "l" and abs(player2.xcor()) < 300):
+    elif(key == "l"):
       player2.forward(-speed)
-    elif(key == "k" and abs(player2.ycor()) < 200):
+    elif(key == "k"):
       player2.goto(player2.xcor(),player2.ycor()-speed)
-    elif(key == "i" and abs(player2.ycor()) < 200):
+    elif(key == "i"):
       player2.goto(player2.xcor(),player2.ycor()+speed)
 
 # this function animates all projectiles at once
@@ -192,10 +210,10 @@ def animate():
           b.turtle.ht()
           circles.remove(b)
           if b.turtle.fillcolor() == player1.fillcolor():
-            player1_projectiles += 1
+            player1_projectiles -= 1
             update_health()
           elif b.turtle.fillcolor() == player2.fillcolor():
-            player2_projectiles += 1
+            player2_projectiles -= 1
             update_health
     
   # trtl.update() moves everything at once
@@ -205,35 +223,17 @@ def animate():
     player2.ht()
     continueScript = wn.textinput("Game Over","Congrats Player 2 Wins!\nPress Ok to play again or cancel to stop playing!")
     print(continueScript)
-    try:
-      
-      if(continueScript != "None"):
-        
-        player1.goto(-150, 0)
-        player2.goto(150, 0)
-        
-        player1.st()
-        player2.st()
-        
-        player1.health = 100
-        player2.health = 100
-        
-        player1_health.clear()
-        player2_health.clear()
-
-        player1.health.write("Health: " + str(player1.health),font=font_setup)
-        player2_health.write("Health: " + str(player2.health),font=font_setup)
-        return
-      
-      else:
-
-        wn.bye()
-        return
     
-    except:
+    if(continueScript is not None):
       
-      wn.bye()
-      return
+      game_restart()
+    
+    else:
+      try:
+        wn.bye()
+      except:
+        print("Thanks for playing!")
+
 
   elif(player2.health <= 0):
 
@@ -241,35 +241,17 @@ def animate():
     player2.ht()
     continueScript = wn.textinput("Game Over!","Congrats Player 1 Wins!\nPress Ok to play again or cancel to stop playing!")
     print(continueScript)
-    try:
-      
-      if(continueScript == True):
-        
-        player1.goto(-150, 0)
-        player2.goto(150, 0)
-        
-        player1.st()
-        player2.st()
-        
-        player1.health = 100
-        player2.health = 100
-        
-        player1_health.clear()
-        player2_health.clear()
-
-        player1.health.write("Health: " + str(player1.health),font=font_setup)
-        player2_health.write("Health: " + str(player2.health),font=font_setup)
-        return
-      
-      else:
-
-        wn.bye()
-        return
     
-    except:
+    if(continueScript is not None):
       
-      wn.bye()
-      return
+      game_restart()
+    
+    else:
+      try:
+        wn.bye()
+      except:
+        print("Thanks for playing!")
+
   trtl.update()
   wn.ontimer(animate, 60)
 
@@ -312,7 +294,4 @@ for k in "wasdilkj":
   # needed to listen for keypresses
   wn.listen()
 
-
-
-  
 wn.mainloop()

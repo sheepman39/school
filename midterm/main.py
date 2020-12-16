@@ -49,7 +49,7 @@ player1_health.goto(-200,-150)
 
 # player 2
 player2 = trtl.Turtle()
-player2.shape("arrow")
+player2.shape("square")
 player2.turtlesize(3)
 player2.color("green")
 player2.penup()
@@ -67,8 +67,6 @@ player2_health.goto(150,-150)
 
 def update_health():
 
-  trtl.update()
-
   player1_health.clear()
   player2_health.clear()
 
@@ -77,8 +75,10 @@ def update_health():
 
   trtl.update()
 
-
 def game_restart():
+
+  player1_health.clear()
+  player2_health.clear()
 
   for c in circles:
     c.turtle.ht()
@@ -130,7 +130,7 @@ class Projectile():
     self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
     
-    if(abs(self.turtle.xcor()-player2.xcor()) < 20 and abs(self.turtle.ycor() - player2.ycor()) < 20 and self.turtle.fillcolor() == player1.fillcolor()):
+    if(abs(self.turtle.xcor()-player2.xcor()) <= 25 and abs(self.turtle.ycor() - player2.ycor()) <= 25 and self.turtle.fillcolor() == player1.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -140,12 +140,11 @@ class Projectile():
         player1_projectiles -= 1
         player2.health -= damage
         update_health()
-        print("Hit player 2")
         return 
       except:
         return
 
-    elif(abs(self.turtle.xcor()-player1.xcor()) < 20 and abs(self.turtle.ycor() - player1.ycor()) < 20 and self.turtle.fillcolor() == player2.fillcolor()):
+    elif(abs(self.turtle.xcor()-player1.xcor()) <= 25 and abs(self.turtle.ycor() - player1.ycor()) <= 25 and self.turtle.fillcolor() == player2.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -155,13 +154,13 @@ class Projectile():
         player2_projectiles -= 1
         player1.health -= damage
         update_health()
-        print("hit player 1")
         return 
       except:
         return
 
     else:
       self.turtle.goto(self.x,self.turtle.ycor())      
+
 
 
 # functions
@@ -190,35 +189,10 @@ def move_player(key):
     elif(key == "i"):
       player2.goto(player2.xcor(),player2.ycor()+speed)
 
-# this function animates all projectiles at once
-def animate():
-
-  global player1_projectiles
-  global player2_projectiles
-
-  # circles list stores the projectiles
-  for b in circles:
-    
-    # they move a certain bit
-    Projectile.move(b,1/20 * len(circles))
-    
-    if b in circles:
-      if len(circles) > 0:
-
-        # if the life is less than 0, remove it
-        if b.life < 0:
-          b.turtle.ht()
-          circles.remove(b)
-          if b.turtle.fillcolor() == player1.fillcolor():
-            player1_projectiles -= 1
-            update_health()
-          elif b.turtle.fillcolor() == player2.fillcolor():
-            player2_projectiles -= 1
-            update_health
-    
-  # trtl.update() moves everything at once
-  # may produce error on vs code. ignore
+def life_check():
+      
   if(player1.health <= 0):
+
     player1.ht()
     player2.ht()
     continueScript = wn.textinput("Game Over","Congrats Player 2 Wins!\nPress Ok to play again or cancel to stop playing!")
@@ -252,7 +226,43 @@ def animate():
       except:
         print("Thanks for playing!")
 
+# this function animates all projectiles at once
+def animate():
+
+  global player1_projectiles
+  global player2_projectiles
+
+  # circles list stores the projectiles
+  for b in circles:
+    
+    # they move a certain bit
+    Projectile.move(b,1/20 * len(circles))
+
+    if b in circles:
+
+      if len(circles) > 0:
+
+        # if the life is less than 0, remove it
+        if b.life < 0:
+          b.turtle.ht()
+          circles.remove(b)
+          
+          if b.turtle.fillcolor() == player1.fillcolor():
+
+            player1_projectiles -= 1
+            update_health()
+          
+          elif b.turtle.fillcolor() == player2.fillcolor():
+
+            player2_projectiles -= 1
+            update_health
+    
+  
+    
+  # trtl.update() moves everything at once
+  # may produce error on vs code. ignore
   trtl.update()
+  life_check()
   wn.ontimer(animate, 60)
 
 
@@ -266,15 +276,13 @@ def new_projectile(player):
     
     player1_projectiles += 1
     update_health()
-    c = Projectile(player)
-    circles.append(c)
+    circles.append(Projectile(player))
   
   elif(player.fillcolor() == player2.fillcolor() and player2_projectiles < max_projectiles):
 
     player2_projectiles += 1
     update_health()
-    c = Projectile(player)
-    circles.append(c)
+    circles.append(Projectile(player))
 
 
 update_health()

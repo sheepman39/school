@@ -24,12 +24,14 @@ font_setup = ("Arial", 20, "bold")
 
 player1_projectiles = 0
 player2_projectiles = 0
-max_projectiles = 5
+max_projectiles = 6
 
 # test turtle
 test1 = trtl.Turtle()
 test1.goto(0,100)
 test1.goto(0,-100)
+
+# player set up
 
 # player 1
 player1 = trtl.Turtle()
@@ -96,7 +98,7 @@ def game_restart():
   player1.health = 100
   player2.health = 100
   
-  update_health()
+  update_health() 
 
 # projectiles
 class Projectile():
@@ -130,7 +132,7 @@ class Projectile():
     self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
     
-    if(abs(self.turtle.xcor()-player2.xcor()) <= 25 and abs(self.turtle.ycor() - player2.ycor()) <= 25 and self.turtle.fillcolor() == player1.fillcolor()):
+    if(abs(self.turtle.xcor()-player2.xcor()) <= 30 and abs(self.turtle.ycor() - player2.ycor()) <= 30 and self.turtle.fillcolor() == player1.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -144,7 +146,7 @@ class Projectile():
       except:
         return
 
-    elif(abs(self.turtle.xcor()-player1.xcor()) <= 25 and abs(self.turtle.ycor() - player1.ycor()) <= 25 and self.turtle.fillcolor() == player2.fillcolor()):
+    elif(abs(self.turtle.xcor()-player1.xcor()) <= 30 and abs(self.turtle.ycor() - player1.ycor()) <= 30 and self.turtle.fillcolor() == player2.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -245,8 +247,10 @@ def animate():
         # if the life is less than 0, remove it
         if b.life < 0:
           b.turtle.ht()
-          circles.remove(b)
-          
+          try:
+            circles.remove(b)
+          except:
+            pass
           if b.turtle.fillcolor() == player1.fillcolor():
 
             player1_projectiles -= 1
@@ -298,7 +302,7 @@ for k in "wasdilkj":
   
   # animate function moves projectiles
   animate()
-
+  
   # needed to listen for keypresses
   wn.listen()
 

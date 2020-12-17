@@ -7,7 +7,6 @@
 
 # imports
 import turtle as trtl
-import random as rand
 import functools 
 import math
 
@@ -24,12 +23,14 @@ font_setup = ("Arial", 20, "bold")
 
 player1_projectiles = 0
 player2_projectiles = 0
-max_projectiles = 5
+max_projectiles = 6
 
 # test turtle
 test1 = trtl.Turtle()
 test1.goto(0,100)
 test1.goto(0,-100)
+
+# player set up
 
 # player 1
 player1 = trtl.Turtle()
@@ -73,30 +74,7 @@ def update_health():
   player1_health.write("Health: " + str(player1.health) + "\nRounds left: " + str(max_projectiles - player1_projectiles),font=font_setup)
   player2_health.write("Health: " + str(player2.health) + "\nRounds left: " + str(max_projectiles - player2_projectiles),font=font_setup)
 
-  trtl.update()
-
-def game_restart():
-
-  player1_health.clear()
-  player2_health.clear()
-
-  for c in circles:
-    c.turtle.ht()
-    try:
-      circles.remove(c)
-    except:
-      pass
-  
-  player1.goto(-150, 0)
-  player2.goto(150, 0)
-  
-  player1.st()
-  player2.st()
-  
-  player1.health = 100
-  player2.health = 100
-  
-  update_health()
+  #trtl.update()
 
 # projectiles
 class Projectile():
@@ -130,7 +108,7 @@ class Projectile():
     self.life, dist = self.life - t, speed * t 
     self.x, self.y = self.x + dist * math.cos(self.direction), self.y + dist * math.sin(self.direction)
     
-    if(abs(self.turtle.xcor()-player2.xcor()) <= 25 and abs(self.turtle.ycor() - player2.ycor()) <= 25 and self.turtle.fillcolor() == player1.fillcolor()):
+    if(abs(self.turtle.xcor()-player2.xcor()) <= 30 and abs(self.turtle.ycor() - player2.ycor()) <= 30 and self.turtle.fillcolor() == player1.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -144,7 +122,7 @@ class Projectile():
       except:
         return
 
-    elif(abs(self.turtle.xcor()-player1.xcor()) <= 25 and abs(self.turtle.ycor() - player1.ycor()) <= 25 and self.turtle.fillcolor() == player2.fillcolor()):
+    elif(abs(self.turtle.xcor()-player1.xcor()) <= 30 and abs(self.turtle.ycor() - player1.ycor()) <= 30 and self.turtle.fillcolor() == player2.fillcolor()):
 
       self.turtle.ht()
       self.turtle.clear()
@@ -195,37 +173,21 @@ def life_check():
 
     player1.ht()
     player2.ht()
-    continueScript = wn.textinput("Game Over","Congrats Player 2 Wins!\nPress Ok to play again or cancel to stop playing!")
-    print(continueScript)
-    
-    if(continueScript is not None):
-      
-      game_restart()
-    
-    else:
-      try:
-        wn.bye()
-      except:
-        print("Thanks for playing!")
-
+    wn.textinput("Game Over","Congrats Player 2 Wins!\nPress cancel to stop playing!")
+    try:
+      wn.bye()
+    except:
+      pass
 
   elif(player2.health <= 0):
 
     player1.ht()
     player2.ht()
-    continueScript = wn.textinput("Game Over!","Congrats Player 1 Wins!\nPress Ok to play again or cancel to stop playing!")
-    print(continueScript)
-    
-    if(continueScript is not None):
-      
-      game_restart()
-    
-    else:
-      try:
-        wn.bye()
-      except:
-        print("Thanks for playing!")
-
+    wn.textinput("Game Over!","Congrats Player 1 Wins!\nPress cancel to stop playing!")
+    try:
+      wn.bye()
+    except:
+      pass
 # this function animates all projectiles at once
 def animate():
 
@@ -245,8 +207,10 @@ def animate():
         # if the life is less than 0, remove it
         if b.life < 0:
           b.turtle.ht()
-          circles.remove(b)
-          
+          try:
+            circles.remove(b)
+          except:
+            pass
           if b.turtle.fillcolor() == player1.fillcolor():
 
             player1_projectiles -= 1
@@ -262,8 +226,9 @@ def animate():
   # trtl.update() moves everything at once
   # may produce error on vs code. ignore
   trtl.update()
-  life_check()
-  wn.ontimer(animate, 60)
+  if(player1.health < 10 or player2.health < 10):
+    life_check()
+  wn.ontimer(animate, 5)
 
 
 # creates new projectile tied to a player
@@ -298,7 +263,7 @@ for k in "wasdilkj":
   
   # animate function moves projectiles
   animate()
-
+  
   # needed to listen for keypresses
   wn.listen()
 

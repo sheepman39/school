@@ -74,7 +74,7 @@ def update_health():
   player1_health.write("Health: " + str(player1.health) + "\nRounds left: " + str(max_projectiles - player1_projectiles),font=font_setup)
   player2_health.write("Health: " + str(player2.health) + "\nRounds left: " + str(max_projectiles - player2_projectiles),font=font_setup)
 
-  #trtl.update()
+  trtl.update()
 
 # projectiles
 class Projectile():

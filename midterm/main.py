@@ -1,9 +1,9 @@
+# CS Midterm: The Duel
 # Final project by
 # Tyler Stadt
 # Thomas Armstrong
 # John Salata
 
-# ITS TIME TO D-D-D-DUEL
 
 # imports
 import turtle as trtl
@@ -67,8 +67,7 @@ player2_health.penup()
 player2_health.color("green")
 player2_health.goto(150,-150)
 
-# update health updates the health and 
-# ammo turtles at the bottom
+# update health updates the health and ammo turtles at the bottom
 def update_health():
 
   player1_health.clear()
@@ -80,6 +79,14 @@ def update_health():
   trtl.update()
 
 # projectiles
+'''
+Credit to HaimingXu679 for posting some of their own
+code to GitHub and including a tutorial on how to make
+projectiles 
+ We used them as a starting point for this chunk of code
+https://github.com/HaimingXu679/Asteroids/blob/master/bullet.py 
+https://pythonturtle.academy/asteroids-tutorial-bullets/
+'''
 class Projectile():
   global speed
   global circles
@@ -100,8 +107,7 @@ class Projectile():
     self.turtle.setheading(player.heading())
     self.life = 30
 
-  # move function to calculate which coordinates
-  # the projectile goes to
+  # move function to calculate which coordinates the projectile goes to
   # Only moves on the x-axis
   def move(self,t):
     global player2_projectiles
@@ -113,8 +119,7 @@ class Projectile():
     # this is all collision checking for player2
     if(abs(self.turtle.xcor()-player2.xcor()) <= 30 and abs(self.turtle.ycor() - player2.ycor()) <= 30 and self.turtle.fillcolor() == player1.fillcolor()):
 
-      # if there is a collection, hide and clear
-      # the turtle
+      # if there is a collection, hide and clear the turtle
       self.turtle.ht()
       self.turtle.clear()
 

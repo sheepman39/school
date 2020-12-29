@@ -1,5 +1,7 @@
 import pygame, random, sys
 
+# this is based off of a tutorial from https://www.youtube.com/watch?v=Qf3-aDXG8q4
+
 # starts pygame
 pygame.init()
 clock = pygame.time.Clock()

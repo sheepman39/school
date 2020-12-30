@@ -22,22 +22,23 @@ opponent = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 # color variable
 light_grey = (200,200,200)
 
-ball_speed_x = 7 * random.choice((1,-1))
-ball_speed_y = 7 * random.choice((1, -1))
+ball_speed = [7 * random.choice((1,-1)), 7 * random.choice((1,-1))]
 player_speed = 0
 opponent_speed = 7
 
 def ball_animation():
   
-  global ball_speed_x, ball_speed_y, player_score, opponent_score, score_time
+  global ball_speed, player_score, opponent_score, score_time
   
   # changes ball speed
-  ball.x += ball_speed_x
-  ball.y += ball_speed_y
+  ball.x += ball_speed[0]
+  ball.y += ball_speed[1]
 
+  ball_speed = list(ball_speed)
   # this changes the direction upon collision
   if ball.top <= 0 or ball.bottom >= screen_height:
-    ball_speed_y *= -1
+    print(type(ball_speed))
+    ball_speed[1] = ball_speed[1] * -1
   
   if ball.left <= 0:
     player_score += 1
@@ -49,7 +50,7 @@ def ball_animation():
 
 
   if ball.colliderect(player) or ball.colliderect(opponent):
-    ball_speed_x *= -1
+    ball_speed[0] = ball_speed[0] * -1
 
 def player_animation():
 
@@ -85,7 +86,7 @@ def opponent_animation():
     opponent.bottom = screen_height
 
 def ball_restart():
-  global ball_speed_x, ball_speed_y, score_time
+  global ball_speed, score_time
 
   ball.center = (screen_width/2, screen_height/2)
 
@@ -108,12 +109,11 @@ def ball_restart():
 
   if current_time - score_time < 2100:
   
-    ball_speed_x, ball_speed_y = 0, 0
+    ball_speed = [0, 0]
   
   else:
   
-    ball_speed_y = 7 * random.choice((1,-1))
-    ball_speed_x = 7 * random.choice((1,-1))
+    ball_speed = (7 * random.choice((1,-1)), 7 * random.choice((1,-1)))
     score_time = None
 
 # score variables

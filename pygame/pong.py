@@ -37,7 +37,6 @@ def ball_animation():
   ball_speed = list(ball_speed)
   # this changes the direction upon collision
   if ball.top <= 0 or ball.bottom >= screen_height:
-    print(type(ball_speed))
     ball_speed[1] = ball_speed[1] * -1
   
   if ball.left <= 0:

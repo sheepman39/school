@@ -1,0 +1,24 @@
+# solution
+q > e
+y > a
+i > d
+o > n
+h > i
+m > s
+s > l
+u > t
+j > o
+r > h
+x > w
+d > f
+p > c
+n > u
+c > p
+v > j
+l > r
+b > k
+g > b
+e > m
+k > g
+t > v
+

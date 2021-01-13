@@ -18,3 +18,95 @@ Hi, my name is alec
 I love to throw pie at people
 
 Hello Joyce
+
+v : 5
+y : 20
+p : 8
+b : 4
+  : 50
+o : 13
+i : 12
+h : 10
+s : 11
+x : 7
+q : 18
+u : 15
+n : 4
+c : 6
+r : 10
+j : 12
+d : 5
+l : 9
+. : 3
+g : 4
+m : 5
+, : 5
+e : 4
+k : 3
+t : 1
+
+y > a
+q > e
+i > d
+o > n
+h > i
+m > s
+s > l
+v > j 
+j > o
+u > i
+r > h
+p > c
+u > t
+d > f
+x > w
+e > m
+l > r
+b > k
+c > p
+g > b
+n > u
+k > g
+t > v
+
+
+# testing
+q > e
+y > a
+i > d
+o > n
+h > i
+m > s
+s > l
+c > o
+j > t
+u > i
+d > o
+c > c
+r > c
+c > f
+r > f
+j > r
+r > h
+d > d
+r > r
+u > u
+j > j
+u > t
+d > f
+j > o
+r > h
+p > h
+d > d
+x > w
+d > f
+p > c
+n > u
+c > p
+v > j
+l > r
+b > k
+g > b
+e > m
+k > g
+t > v

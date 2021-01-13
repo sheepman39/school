@@ -1,0 +1,27 @@
+# solution
+q > e
+y > a
+i > d
+o > n
+h > i
+m > s
+s > l
+u > t
+j > o
+r > h
+x > w
+d > f
+p > c
+n > u
+c > p
+v > j
+l > r
+b > k
+g > b
+e > m
+k > g
+t > v
+
+Orginal String:vypb yoi vhss xqou nc urq rhss uj dqupr y cyhs jd xyuql. vypb dqss ijxo yoi gljbq rhm pljxo, yoi vhss pyeq unegshok yduql. nc vypb kju, yoi rjeq ihi ulju, ym dymu ym rq pjnsi pycql, rq xqou uj gqi uj eqoi rhm rqyi, xhur thoqkyl yoi gljxo cycql.
+
+New String:jack and jill went up the hill to fetch a pail of water. jack fell down and broke his crown, and jill came tumbling after. up jack got, and home did trot, as fast as he could caper, he went to bed to mend his head, with vinegar and brown paper.

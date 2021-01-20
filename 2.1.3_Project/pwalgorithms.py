@@ -26,9 +26,9 @@ def two_word(password):
   guesses = 0
 
   for i in words:
-    if(i in password):
+    #if(i in password):
       for w in words:
-        if(w in password):
+        #if(w in password):
           guesses += 1
           if (w + i == password):
             return True, guesses
@@ -48,8 +48,9 @@ def two_words_and_digit (password):
       for w in words:
         #if(w in password):
           for j in "1234567890":
-            #if(j in password):
               guesses += 1
+              if(guesses % 500000 == 0):
+                print(guesses)
               if (j + w + i == password or w + i + j == password or i + j == password or i == password or j + i == password):
                 return True, guesses
               elif(i == password or i + w == password or w + i == password):

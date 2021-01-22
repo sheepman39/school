@@ -1,4 +1,4 @@
-import tkinter
+from tkinter import *
 
 # in tkinter, everything is a widget
 # buttons, frames, text boxes ect. are treated as widgets
@@ -17,3 +17,7 @@ my_label = Label(root, text = "hello world")
 # 2 ways to display stuff
 # for now, only do one
 my_label.pack()
+
+# the loop here listens for any events, such as mouse movement
+# must be exactly 'mainloop()'
+root.mainloop()

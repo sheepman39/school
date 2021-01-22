@@ -14,7 +14,7 @@ root = tk.Tk()
 # step 7
 root.title("Authorization")
 
-root.wm_geometry("200x200")
+root.wm_geometry("200x100")
 
 # step 8 copy and paste
 # create empty frame

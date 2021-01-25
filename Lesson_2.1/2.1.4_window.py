@@ -24,7 +24,12 @@ frame_login = tk.Frame(root)
 frame_login.grid()
 
 # step 10
-lbl_username = tk.Label(frame_login, text='Username:')
-lbl_username.pack()
+lbl_username = tk.Label(frame_login, text='Username:',font="Courier",foreground="black")
+lbl_username.pack(padx=50)
+
+# steps 11-14ish
+# use foreground="<color>" to change text color
+lbl_password = tk.Label(frame_login,text="Password:",font="Courier",foreground="black")
+lbl_password.pack(pady=25)
 
 root.mainloop()

@@ -7,10 +7,23 @@ def numClicks(clicks):
   if(clicks == 0):
     return "Look I clicked!"
   elif(clicks == 1):
-    pass
+    return "Why did you click me again?"
+  elif(clicks == 2):
+    return "That tickles!"
+  elif(clicks == 3):
+    return "Oh please don't make me disable myself"
+  elif(clicks == 4):
+    return "I swear stop clicking me!"
+  elif(clicks == 5):
+    button.config(state=DISABLED)
+    return "Ha now you can't click me"
+  else:
+    return "this shouldn't be possible"
 
 def onClick():
-  myLabel = Label(root, text="Look, I clicked")
+  global clicks
+  myLabel = Label(root, text=numClicks(clicks))
+  clicks += 1
   myLabel.pack()
 
 # like everything else, a button is a widget

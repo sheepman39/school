@@ -5,7 +5,7 @@ import rsa as rsa
 key = input("Enter the Encryption Key: " )
 
 # step 11
-# beauty of a while loop is that it checks the value of it AND repeats until it is correct
+# bEAuty of a while loop is that it checks the value of it AND repeats until it is correct
 while not key.isdigit():
     key = input("Enter the Encryption Key (must be a number): " )
 

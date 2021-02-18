@@ -137,19 +137,23 @@ class MultiFactorAuth(tk.Tk):
     return self.password
 
   def get_authorization(self):
-    s1 = [None]*20
+
+    s1 = []
     a = self.username
     b = self.password
 
-    i = 0
+    # the original algorithm they had didn't work well
+    # in the first for loop here, append each letter of the username provided
     for c in a:
-      s1[i] = c
-      i += 1   
-    s1[10] = ":"
-    i = 11
+      s1.append(c) 
+    
+    # colon separates the username and password
+    s1.append(":")
+
+    # second for loop here appends each of the letters in the password provided
     for c in b:
-      s1[i] = c
-      i += 1
+      s1.append(c)
+
 
     s2 = "["
     for c in s1:

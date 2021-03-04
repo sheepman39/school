@@ -67,14 +67,11 @@ bt_image = bt_image.subsample(10,10)
 btn_login = tk.Button(frame_login, text="Hack?", command =test_my_button, image=bt_image)
 btn_login.pack(pady=25)
 
-
-test_textbox = tksc.ScrolledText(frame_auth)
-# this line is broken somehow even tho it is the same stuff from the book.  not sure why
-#test_textbox.configure(frame_auth,height=10,width=50)
-test_textbox.config(frame_auth,height=10,width=50)
-test_textbox.
 # step 21
 frame_login.tkraise()
 
+test_textbox = tksc.ScrolledText(frame_auth)
+# this line is broken somehow even tho it is the same stuff from the book.  not sure why
+test_textbox.configure(frame_auth, height=10, width=50)
 
 root.mainloop()

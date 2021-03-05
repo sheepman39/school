@@ -6,7 +6,7 @@ from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
 def do_command():
-    subprocess.call("echo 'Ping because replit disables the ping command'")
+    subprocess.call("./Lesson_2.2.7/command.sh")
 
 root = tk.Tk()
 frame = tk.Frame(root)

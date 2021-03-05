@@ -14,8 +14,11 @@ frame.pack()
 
 # number 5
 # set up button to run the do_command function
-ping_btn = tk.Button(frame, text="ping", command=do_command)
+# Makes the command button pass it's name to a function using lambda (7)
+ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping -t"))
 ping_btn.pack()
+
+
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color

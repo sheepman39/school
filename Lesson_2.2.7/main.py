@@ -44,7 +44,7 @@ def do_command(command):
     except:
       
       # if an error happens, put it here
-      command_textbox.insert("ERROR: Command not found.  Your system may be incompatable")
+      command_textbox.insert(tk.END, "ERROR: Command not found.  Your system may be incompatable. This should be expected if you are using Replit.  Windows/MacOS version coming soon")
 
 # provided save function from step 11
 # Save function.

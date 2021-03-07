@@ -6,10 +6,11 @@ from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
 def do_command(command):
+    
     # all of this code is from step 9
     global command_textbox, url_entry
 
-    
+    # removes any previous text 
     command_textbox.delete(1.0, tk.END)
     command_textbox.insert(tk.END, command + " working....\n")
     command_textbox.update()
@@ -20,19 +21,36 @@ def do_command(command):
         url_val = "localhost"
         #url_val = "::1"
     
-    if("ping" in command):
+    # Since replit does not work with these commands, I added a try/except block to catch and report those errors
+    try:
+
+      # since the ping command requires a special argument, this helps control that
+      if("ping" in command):
+        
+        # What the book tells you to do IS WRONG
+        # the formatting for the command is supposed to look like this
         p = subprocess.Popen([command, "-c 5", url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    else:
+      
+      else:
+      
+        # as said previously, if you have a command that does not require arguments, this is the proper formatting to run a command
         p = subprocess.Popen([command, url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
 
-    cmd_results, cmd_errors = p.communicate()
-    command_textbox.insert(tk.END, cmd_results)
-    command_textbox.insert(tk.END, cmd_errors)
+      # returns the results of the command to the text box
+      cmd_results, cmd_errors = p.communicate()
+      command_textbox.insert(tk.END, cmd_results)
+      command_textbox.insert(tk.END, cmd_errors)
+    
+    except:
+      
+      # if an error happens, put it here
+      command_textbox.insert("ERROR: Command not found.  Your system may be incompatable")
 
 # provided save function from step 11
 # Save function.
 def mSave():
 
+  # this was all provided by the book
   filename = asksaveasfilename(defaultextension='.txt',filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
   if filename is None:
       return
@@ -42,6 +60,7 @@ def mSave():
   file.write(text_to_save)
   file.close()
 
+# root frame is placed
 root = tk.Tk()
 frame = tk.Frame(root)
 frame.pack()
@@ -66,7 +85,7 @@ ping_btn = tk.Button(frame, text="Check to see if a URL is up and active",
 ping_btn.pack() 
 
 # step 8/12
-# Modifies the ping button parameters.
+# Modifies the nslookup button parameters.
 nslookup_btn = tk.Button(frame, text="Click to see the IP of a website", 
     command=lambda:do_command("nslookup"),
     compound="center",
@@ -78,6 +97,7 @@ nslookup_btn = tk.Button(frame, text="Click to see the IP of a website",
     bg="black", activebackground="gray")
 nslookup_btn.pack() 
 
+# tracer button
 tracer_btn = tk.Button(frame, text='Click to see the route to a website',
     command=lambda:do_command("traceroute"),
     compound="center",

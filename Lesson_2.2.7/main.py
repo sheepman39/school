@@ -1,4 +1,5 @@
 # p227_starter_one_button_shell.py
+import os
 import subprocess
 import tkinter as tk
 import tkinter.scrolledtext as tksc
@@ -25,26 +26,28 @@ def do_command(command):
     try:
 
       # since the ping command requires a special argument, this helps control that
-      if("ping" in command):
+      if(os.uname().sysname == "Linux"):
+        if("ping" in command):
+          
+          # What the book tells you to do IS WRONG
+          # the formatting for the command is supposed to look like this
+          p = subprocess.Popen([command, "-c 5", url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         
-        # What the book tells you to do IS WRONG
-        # the formatting for the command is supposed to look like this
-        p = subprocess.Popen([command, "-c 5", url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-      
-      else:
-      
-        # as said previously, if you have a command that does not require arguments, this is the proper formatting to run a command
-        p = subprocess.Popen([command, url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
+        else:
+        
+          # as said previously, if you have a command that does not require arguments, this is the proper formatting to run a command
+          p = subprocess.Popen([command, url_val], stdout=subprocess.PIPE, stderr=subprocess.PIPE) #v2
 
-      # returns the results of the command to the text box
-      cmd_results, cmd_errors = p.communicate()
-      command_textbox.insert(tk.END, cmd_results)
-      command_textbox.insert(tk.END, cmd_errors)
-    
+        # returns the results of the command to the text box
+        cmd_results, cmd_errors = p.communicate()
+        command_textbox.insert(tk.END, cmd_results)
+        command_textbox.insert(tk.END, cmd_errors)
+      else:
+        command_textbox.insert(tk.END,"This is an unsupported system. Currently, this program only supports Linux systems.")
     except:
       
       # if an error happens, put it here
-      command_textbox.insert("ERROR: Command not found.  Your system may be incompatable")
+      command_textbox.insert(tk.END, "ERROR: Command not found.  Your system may be incompatable. This should be expected if you are using Replit.  Windows/MacOS version coming soon")
 
 # provided save function from step 11
 # Save function.

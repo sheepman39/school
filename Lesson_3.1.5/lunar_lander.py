@@ -599,7 +599,7 @@ msg_confirmation.grid(row=0, column=0, padx=20, pady=20)
 btn_play = tk.Button(frame_confirmation, text='Play the Game!', command=play_game, padx=10, pady=10, bd=3)
 btn_play.grid(row=1, column=0)
 
-load = Image.open("csp315_sensor_hold.png")
+load = Image.open("./Lesson_3.1.5/csp315_sensor_hold.png")
 render = ImageTk.PhotoImage(load)
 canvas = tk.Canvas(frame_confirmation, width = 195, height = 260)
 canvas.grid(row=2, column=0)

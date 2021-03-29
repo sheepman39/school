@@ -6,7 +6,7 @@ import pandas as pd
 
 # Load in the data with read_csv()
 # TODO #1: change the file name to your data file name
-temp_data = pd.read_csv("temperature_data.csv", header=0)   # identify the header row
+temp_data = pd.read_csv("./Lesson_3.2.1/temperature_data.csv", header=0)   # identify the header row
 
 # TODO #2: Use matplotlib to make a line graph
 

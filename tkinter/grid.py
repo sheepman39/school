@@ -1,3 +1,4 @@
+# import tkinter and everything with it
 from tkinter import *
 
 # in tkinter, everything is a widget

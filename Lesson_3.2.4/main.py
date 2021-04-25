@@ -1,11 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-<<<<<<< HEAD
 df = pd.read_csv("./Lesson_3.2.4/honey_1997.csv", header=0)
-=======
-df = pd.read_csv("./Lesson_3.2.4/honey_1977.csv", header=0)
->>>>>>> 1ee4b2a57a8e8c3acec9fc658d5bc2d087a88d85
 
 df['Value'] = df['Value'].str.replace(',', '')
 df['Value'] = pd.to_numeric(df['Value'], errors='coerce')

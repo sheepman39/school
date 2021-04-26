@@ -146,3 +146,28 @@ plt.xlabel('Year')
 plt.title('Honey Production (Large)')
 plt.legend()
 plt.show()
+
+# Average graph
+all_honey = []
+all_states = []
+
+# Note all_honey.append(honey_data.*mean*())
+# that allows it to take the average produced from the year
+for state in unique_states:
+  honey_data = df[df['State'] == state].groupby('Year')['Value']
+  all_honey.append(honey_data.mean())
+  all_states.append(state)
+
+# graphs the large graph
+for i in range(len(all_honey)):
+  honey = all_honey[i]
+  state = all_states[i]
+  years = honey.keys()
+  plt.plot(years, honey, label=state)
+
+# labels
+plt.ylabel('Honey Production (Meme)')
+plt.xlabel('Year')
+plt.title('Honey Production (Meme)')
+plt.show()
+

@@ -64,12 +64,12 @@ for i in range(len(all_honey)):
   honey = all_honey[i]
   state = all_states[i]
   years = honey.keys()
-  plt.plot(years, honey, label=state)
+  plt.plot(years, honey, label=state, ls='--')
 
 plt.ylabel('Honey Production')
 plt.xlabel('Year')
 plt.title('Honey Production')
-plt.legend()
+plt.legend(fontsize="small", loc="lower right")
 plt.show()
 
 # Small list
@@ -90,13 +90,13 @@ for i in range(len(all_honey)):
   honey = all_honey[i]
   state = all_states[i]
   years = honey.keys()
-  plt.plot(years, honey, label=state)
+  plt.plot(years, honey, label=state, ls=":")
 
 # labels
 plt.ylabel('Honey Production (Small)')
 plt.xlabel('Year')
 plt.title('Honey Production (Small)')
-plt.legend()
+plt.legend(fontsize='small', loc="lower right")
 plt.show()
 
 # Medium list
@@ -114,13 +114,13 @@ for i in range(len(all_honey)):
   honey = all_honey[i]
   state = all_states[i]
   years = honey.keys()
-  plt.plot(years, honey, label=state)
+  plt.plot(years, honey, label=state, ls="-.")
 
 # labels
 plt.ylabel('Honey Production (Medium)')
 plt.xlabel('Year')
 plt.title('Honey Production (Medium)')
-plt.legend()
+plt.legend(fontsize='small', loc='lower right')
 plt.show()
 
 # Large graph
@@ -138,18 +138,19 @@ for i in range(len(all_honey)):
   honey = all_honey[i]
   state = all_states[i]
   years = honey.keys()
-  plt.plot(years, honey, label=state)
+  plt.plot(years, honey, label=state, ls='--')
 
 # labels
 plt.ylabel('Honey Production (Large)')
 plt.xlabel('Year')
 plt.title('Honey Production (Large)')
-plt.legend()
+plt.legend(fontsize='medium', loc='lower right')
 plt.show()
 
 # Average graph
 all_honey = []
 all_states = []
+
 
 # Note all_honey.append(honey_data.*mean*())
 # that allows it to take the average produced from the year
@@ -171,3 +172,37 @@ plt.xlabel('Year')
 plt.title('Honey Production (Meme)')
 plt.show()
 
+
+all_totals = []
+all_years = []
+
+unique_years = df["Year"].unique()
+# For each state, the honey_data contains the total honey from each individual year
+for year in unique_years:
+  totals = df[df['Year'] == year].groupby('Year')['Value']
+
+# values of production by state and by year
+totals_sums = totals.sum()
+
+# this stores the years that go with honey_sums
+years = totals_sums.keys()
+
+# this goes through each state, groups the data by year and adds it to the all_honey array
+for year in unique_years:
+  total_data = df[df['Year'] == year].groupby('Year')['Value']
+  all_totals.append(total_data.sum())
+  all_years.append(year)
+
+# this section is all for the main graph
+# this iterates over all_honey and plots each individual state
+for i in range(len(all_totals)):
+  totals = all_totals[i]
+  years = all_years[i]
+  years_key = totals.keys()
+  plt.bar(years_key, totals, label=years)
+
+# labels
+plt.ylabel('Honey Production (Means)')
+plt.xlabel('Year')
+plt.title('Honey Production (Means)')
+plt.show()

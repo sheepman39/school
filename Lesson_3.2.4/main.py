@@ -15,7 +15,7 @@ def insertionsort(array):
             j -= 1
 
 # reads the csv file
-df = pd.read_csv("./Lesson_3.2.4/honey_1997.csv", header=0)
+df = pd.read_csv("./Lesson_3.2.4/honey_1977.csv", header=0)
 
 # Replaces any commas in the amount of honey produced with spaces to make converting easier
 df['Value'] = df['Value'].str.replace(',', '')
@@ -96,7 +96,7 @@ for i in range(len(all_honey)):
 plt.ylabel('Honey Production (Small)')
 plt.xlabel('Year')
 plt.title('Honey Production (Small)')
-plt.legend(fontsize='small', loc="lower right")
+plt.legend(fontsize='small', loc='center right', bbox_to_anchor=(1.15,0.5))
 plt.show()
 
 # Medium list
@@ -120,7 +120,7 @@ for i in range(len(all_honey)):
 plt.ylabel('Honey Production (Medium)')
 plt.xlabel('Year')
 plt.title('Honey Production (Medium)')
-plt.legend(fontsize='small', loc='lower right')
+plt.legend(fontsize='small', loc='center right', bbox_to_anchor=(1.15,0.5))
 plt.show()
 
 # Large graph
@@ -144,7 +144,7 @@ for i in range(len(all_honey)):
 plt.ylabel('Honey Production (Large)')
 plt.xlabel('Year')
 plt.title('Honey Production (Large)')
-plt.legend(fontsize='medium', loc='lower right')
+plt.legend(fontsize='medium', loc='center right', bbox_to_anchor=(1.15,0.5))
 plt.show()
 
 # Average graph

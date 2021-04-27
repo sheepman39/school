@@ -42,9 +42,9 @@ for i in range(len(all_honey)):
   plt.plot(years, honey, label=state)
 
 # labels
-plt.ylabel('Honey Production (Meme)')
+plt.ylabel('Honey Production Facilities')
 plt.xlabel('Year')
-plt.title('Honey Production (Meme)')
+plt.title('Honey Production Facilities')
 plt.show()
 
 
@@ -77,7 +77,7 @@ for i in range(len(all_totals)):
   plt.bar(years_key, totals, label=years)
 
 # labels
-plt.ylabel('Honey Production (Means)')
+plt.ylabel('Honey Production Total')
 plt.xlabel('Year')
-plt.title('Honey Production (Means)')
+plt.title('Honey Production Total')
 plt.show()

@@ -1,0 +1,17 @@
+to setup
+  clear-all
+  create-turtles 3                    ; create one turtle
+  [
+    set color one-of base-colors
+    pen-down
+  ]
+  reset-ticks
+end
+
+to go
+  ask turtles [
+    rt random 180           ; set random heading
+    forward 2                   ; advance one step
+  ]
+  tick
+end

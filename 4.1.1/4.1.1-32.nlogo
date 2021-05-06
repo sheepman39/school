@@ -5,10 +5,11 @@ turtles-own [
 
 to setup
   clear-all
-  create-turtles population
-    [ set color yellow - 2 + random 7  ;; random shades look nice
+  create-turtles bird-population
+    [ set color blue - 2 + random 14  ;; random shades look nice
       set size 1.5  ;; easier to see
       setxy random-xcor random-ycor
+      set shape "cow"
       set flockmates no-turtles ]
   reset-ticks
 end
@@ -109,11 +110,11 @@ end
 GRAPHICS-WINDOW
 250
 10
-747
-507
+755
+516
 -1
 -1
-7
+7.0
 1
 10
 1
@@ -131,7 +132,7 @@ GRAPHICS-WINDOW
 1
 1
 ticks
-30
+30.0
 
 BUTTON
 39
@@ -172,11 +173,11 @@ SLIDER
 51
 232
 84
-population
-population
+bird-population
+bird-population
 1.0
 1000.0
-300
+300.0
 1.0
 1
 NIL
@@ -191,7 +192,7 @@ max-align-turn
 max-align-turn
 0.0
 20.0
-5
+5.0
 0.25
 1
 degrees
@@ -206,7 +207,7 @@ max-cohere-turn
 max-cohere-turn
 0.0
 20.0
-3
+3.0
 0.25
 1
 degrees
@@ -236,7 +237,7 @@ vision
 vision
 0.0
 10.0
-5
+5.0
 0.5
 1
 patches
@@ -251,11 +252,12 @@ minimum-separation
 minimum-separation
 0.0
 5.0
-1
+1.0
 0.25
 1
 patches
 HORIZONTAL
+
 @#$#@#$#@
 ## WHAT IS IT?
 
@@ -429,7 +431,7 @@ Circle -7500403 true true 0 0 300
 Circle -16777216 true false 30 30 240
 
 cow
-false
+true
 0
 Polygon -7500403 true true 200 193 197 249 179 249 177 196 166 187 140 189 93 191 78 179 72 211 49 209 48 181 37 149 25 120 25 89 45 72 103 84 179 75 198 76 252 64 272 81 293 103 285 121 255 121 242 118 224 167
 Polygon -7500403 true true 73 210 86 251 62 249 48 208
@@ -650,15 +652,15 @@ NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 default
-0
--0.2 0 0 1
-0 1 1 0
-0.2 0 0 1
+0.0
+-0.2 0 0.0 1.0
+0.0 1 1.0 0.0
+0.2 0 0.0 1.0
 link direction
 true
 0
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 @#$#@#$#@
-
+0
 @#$#@#$#@

@@ -6,13 +6,10 @@ painter = trtl.Turtle()
 painter.speed(10)
 painter.pensize(5)
 
-<<<<<<< HEAD
 # this is a function I made so it was a bit quicker 
 # to move the turtle around and didn't copy and paste
 # the same three lines
-=======
 # function moveto makes it easier to move the turtle
->>>>>>> b11c7df1b34deb4aa90d11f2c091475f656b1c5a
 def moveto(x,y):
   painter.penup()
   painter.goto(x,y)

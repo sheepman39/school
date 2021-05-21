@@ -15,7 +15,7 @@ def insertionsort(array):
             j -= 1
 
 # reads the csv file
-df = pd.read_csv("./Lesson_3.2.4/honey_1977.csv", header=0)
+df = pd.read_csv("./3.2.4/honey_1977.csv", header=0)
 
 # Replaces any commas in the amount of honey produced with spaces to make converting easier
 df['Value'] = df['Value'].str.replace(',', '')

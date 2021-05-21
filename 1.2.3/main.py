@@ -12,7 +12,7 @@ pear_image = "./1.2.3_Project/pear.gif" # Store the file name of your shape
 
 # Screen setup for the background and size
 wn = trtl.Screen()
-wn.bgpic("./1.2.3_Project/background.gif")
+wn.bgpic("./1.2.3/background.gif")
 wn.setup(width=1.0, height=1.0)
 
 # Make the screen aware of the new file

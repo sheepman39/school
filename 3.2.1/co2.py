@@ -7,7 +7,7 @@ import math
 
 # Load in the data with read_csv()
 # TODO #1: change the file name to your data file name
-co2_data = pd.read_csv("./Lesson_3.2.1/co2_data.csv", header=0)   # identify the header row
+co2_data = pd.read_csv("./3.2.1/co2_data.csv", header=0)   # identify the header row
 
 #part of step 40
 print(co2_data)

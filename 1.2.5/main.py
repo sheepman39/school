@@ -13,16 +13,16 @@ lives = 3
 player_speed = 14
 
 trash = []
-trash_img = ["./1.2.5_Project/bad_apple.gif","./1.2.5_Project/banana.gif","./1.2.5_Project/garbage-bag.gif","./1.2.5_Project/paper_ball.gif"]
-trashcan = "./1.2.5_Project/trashcan.gif"
-tipped_trash = "./1.2.5_Project/tippedovercan.gif"
+trash_img = ["./1.2.5/bad_apple.gif","./1.2.5/banana.gif","./1.2.5/garbage-bag.gif","./1.2.5/paper_ball.gif"]
+trashcan = "./1.2.5/trashcan.gif"
+tipped_trash = "./1.2.5/tippedovercan.gif"
 font_setup = ("Arial", 20, "bold")
-a_surprise_for_later = "./1.2.5_Project/angry_raccoon.gif"
+a_surprise_for_later = "./1.2.5/angry_raccoon.gif"
 
 # screen setup
 wn = trtl.Screen()
 wn.screensize(1024,682)
-wn.bgpic("./1.2.5_Project/garbage-truck.gif")
+wn.bgpic("./1.2.5/garbage-truck.gif")
 
 # adds each of the trash images into the program
 for i in trash_img:
@@ -33,7 +33,7 @@ wn.addshape(tipped_trash)
 wn.addshape(a_surprise_for_later)
 
 # === leaderboard variables ===
-leaderboard_file_name = "./1.2.5_Project/1.2.5_Leaderboard.txt"
+leaderboard_file_name = "./1.2.5/1.2.5_Leaderboard.txt"
 leader_names_list = []
 leader_scores_list = []
 

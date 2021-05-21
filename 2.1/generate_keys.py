@@ -6,9 +6,3 @@ keys = rsa.generate_keypair()
 print("Public key: ", keys[0])
 print("Private key: ", keys[1])
 print("Modulus: ",keys[2])
-#frog leggs
-'''
-Public key:  358393
-Private key:  362005
-Modulus:  644849
-'''

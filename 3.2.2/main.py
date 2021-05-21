@@ -9,7 +9,7 @@ import pandas as pd
 #my_countries = ['United States', 'Zimbabwe','Cuba', 'Caribbean small states', "Cameroon", "Burundi"]
 my_countries = ["Egypt","Ghana","Morocco","Sudan","Tunisia","Botswana"]
 # Load in the data with read_csv()
-df = pd.read_csv("./Lesson_3.2.2/elec_access_data.csv", header=0)    # header=0 means there is a header in row 0
+df = pd.read_csv("./3.2.2/elec_access_data.csv", header=0)    # header=0 means there is a header in row 0
 
 # get a list unique countries
 unique_countries = df['Entity'].unique()

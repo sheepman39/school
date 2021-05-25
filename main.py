@@ -31,11 +31,11 @@ movie_genre = [[0.6, 0.0, 0.3, 0.1],
 # TODO Your ratings, rate the five movies in the list below
 # notice how your recommendations change when you add a rating for 1 movie
 your_ratings = np.zeros((5, 1))
-your_ratings[0] = 4 # rating for Back to the Future
-your_ratings[1] = 3 # rating for Guardians of the Galaxy
-your_ratings[2] = 1 # rating for Avatar
+your_ratings[0] = 5 # rating for Back to the Future
+your_ratings[1] = 1 # rating for Guardians of the Galaxy
+your_ratings[2] = 3 # rating for Avatar
 your_ratings[3] = 3 # rating for Indiana Jones
-your_ratings[4] = 4 # rating for The Matrix
+your_ratings[4] = 6 # rating for The Matrix
 
 # --- Normalization Process ---
 # ratings, movies_features, and user_prefs are arrays which are more structured lists

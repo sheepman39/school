@@ -6,6 +6,7 @@ import turtle as trtl
 # create two empty lists of turtles, adding to them later
 horiz_turtles = []
 vert_turtles = []
+
 # use interesting shapes and colors
 turtle_shapes = ["arrow", "turtle", "circle", "triangle", "classic"]
 horiz_colors = ["red", "blue", "green", "orange", "purple"]

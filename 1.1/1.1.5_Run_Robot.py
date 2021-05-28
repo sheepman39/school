@@ -20,8 +20,11 @@ wn = trtl.Screen()
 wn.setup(width=400, height=420)
 
 #----- init robot
+# TODO: Find robot.gif
+# this will add the robot shape to the images 
 robot_image = "robot.gif"
 wn.addshape(robot_image)
+
 robot = trtl.Turtle(shape=robot_image)
 robot.hideturtle()
 robot.penup()
@@ -39,6 +42,7 @@ wn.bgpic("maze2.png") # other file names should be maze2.png, maze3.png
 # turn robot left with turn_left()
 # sample while loop:
 '''
+# maze1
 move()
 i = 0
 while (i<3):

@@ -5,15 +5,19 @@ import turtle as trtl
 ladybug = trtl.Turtle()
 ladybug.pensize(40)
 ladybug.circle(5)
+
 #creates legs
 legs = 0
 ladybug.pensize(10)
+
+# while loop makes it faster to draw legs
 while(legs < 3):
   ladybug.goto(0,-25)
   ladybug.setheading(155+legs*25)
   ladybug.forward(60)
   ladybug.backward(120)
   legs += 1
+
 # and body
 ladybug.penup()
 ladybug.goto(-5, -25) 

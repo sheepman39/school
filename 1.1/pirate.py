@@ -1,13 +1,16 @@
-#   code is asking the user their name and what the name of their pirate ship will be
-user_name=input("Avast me harty! This be ye new pirate vessel. But before we can transfer the deed to ye we gonna be needin' some information from ye. Fer starters, wat ye be called? ")
-
-ship_name=input("Welcome aboard "+user_name+"! This be yer new vessel. But first she be needin' a name. Wat ye be callin' yer vessel? ")
- 
-
-print("That’s a fine choice "  + user_name + "! We be callin' ye vessel the " + ship_name)
-
 import turtle as turtl
 painter = turtl.Turtle()
+
+# the program starts by asking the user their name and what the name of their pirate ship will be
+'''
+fun fact: to make it easier to put variables in strings, type 'f' in front of a string and when you need a variable, put the variable name in brackets {}
+ex. apples = 20 print(f"I have {apples} apples!") and it will print out "I have 20 apples!"
+This type of syntax is used throughout this program
+'''
+user_name=input("Avast me harty! This be ye new pirate vessel. But before we can transfer the deed to ye we gonna be needin' some information from ye. Fer starters, wat ye be called? ")
+ship_name=input(f"Welcome aboard {user_name}! This be yer new vessel. But first she be needin' a name. Wat ye be callin' yer vessel? ")
+print(f"That’s a fine choice {user_name}! We be callin' ye vessel the {ship_name}")
+
  
 # moveto function makes it easier to move the turtle
 def moveto(x,y):
@@ -74,7 +77,8 @@ if sail_num == 2:
    painter.right(135)
    painter.forward(100)
    painter.end_fill()
-print("Good job " + user_name + "! Your ship " + ship_name +" is finished and those are some pretty good sails ya go")
+
+print(f"Good job {user_name}! Your ship {ship_name} is finished and those are some pretty good sails ya got")
 painter.hideturtle()
 wn = turtl.Screen()
 wn.mainloop()

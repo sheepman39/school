@@ -59,7 +59,7 @@ while (num_dots <= 2 ):
   ypos += 5
   num_dots += 1
   
-
+# at the end, hide the turtle to see the ladybug
 ladybug.hideturtle()
 
 wn = trtl.Screen()

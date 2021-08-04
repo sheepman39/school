@@ -1,0 +1,8 @@
+# run `pip install -r requirements.txt` in the command line
+matplotlib
+hidapi
+pandas
+godirect
+gdx
+tkinter
+numpy

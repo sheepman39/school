@@ -25,7 +25,7 @@ spider.stamp()
 spider.goto(-10,15)
 spider.stamp()
 
-#creates legs using a while loop
+# creates legs using a while loop
 spider.pencolor('black')
 legs = 0
 spider.pensize(10)

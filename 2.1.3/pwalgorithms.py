@@ -37,12 +37,14 @@ def two_word(password):
 def two_words_and_digit (password):
   words = get_dictionary()
   guesses = 0
-  # for testing purposes only,
-  # uncomment the if statements to make it run faster
-  # it is not realistic for an actual password decryptor
-  # but makes testing a lost faster
-  # note that line 55 needs to be unindented by 1
-  # if you uncomment the if statements
+  '''
+  for testing purposes only,
+  uncomment the if statements to make it run faster
+  it is not realistic for an actual password decryptor
+  but makes testing a lost faster
+  note that line 55 needs to be unindented by 1
+  if you uncomment the if statements
+  '''
   for i in words:
     #if(i in password):
       for w in words:

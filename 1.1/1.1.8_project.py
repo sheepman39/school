@@ -37,22 +37,32 @@ for s in turtle_shapes:
   tloc += 50
 
 # TODO: move turtles across and down screen, stopping for collisions
-
+  
   steps = 0
   while steps < 500: 
+  
     steps += 1
     speed = 1
+  
     for v in vert_turtles:
+  
       for h in horiz_turtles:
+  
         if(speed > 1 and speed < 5):
+  
           speed += 1
+  
         else:
+  
           speed -+ 3
+  
         ht.speed(speed)
         vt.speed(speed)
         ht.forward(3)
         vt.forward(3)
+  
         if(abs(ht.xcor()-vt.xcor()) < 20 and abs(ht.ycor()-vt.ycor()) < 20):
+  
           ht_shape = ht.shape()
           vt_shape = vt.shape()
           ht_color = ht.fillcolor()
@@ -67,18 +77,24 @@ for s in turtle_shapes:
           ht.shape(ht_shape)
           vt.fillcolor(vt_color)
           ht.fillcolor(ht_color)
+        
         if(ht.xcor() > 150 or vt.ycor() < -150):
           ht.fillcolor("pink")
           vt.fillcolor("pink")
           steps = 501
+
 #This Program was created/edited by sheepman39
 #In case of plagarism, please go to https://github.com/sheepman39/school
 #And submit an issue
+
 for v in vert_turtles:
+
   for h in horiz_turtles:
+
     h.fillcolor("#961E82")
     v.fillcolor("#961E82")
     h.color("#961E82")
     v.color("#961E82")
+
 wn = trtl.Screen()
 wn.mainloop()

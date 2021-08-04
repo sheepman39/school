@@ -11,7 +11,7 @@ def turn_left():
   robot.left(90)
   robot.speed(2)
   
-#----- roboto starting location
+#----- robot starting location
 startx = -100
 starty = -100
 
@@ -22,9 +22,11 @@ wn.setup(width=400, height=420)
 #----- init robot
 # TODO: Find robot.gif
 # this will add the robot shape to the images 
+# NOTE: Since this program is in a folder, we need to tell python to look in that folder.  This should not be necessary on standalone projects
 robot_image = "./1.1/robot.gif"
 wn.addshape(robot_image)
 
+# creates the details and setup of the robot
 robot = trtl.Turtle(shape=robot_image)
 robot.hideturtle()
 robot.penup()

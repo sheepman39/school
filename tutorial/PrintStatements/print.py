@@ -29,3 +29,5 @@ print('I can\'t do that')
 # \t will create a tab
 print("First line \nSecond Line")
 print("I wish I was tabbed \t Tabs!")
+
+# TODO: Now take that same story and print it using only one print command

@@ -18,7 +18,7 @@ In the example above, we have a story with a character named Sam. Let's say that
 
 ```python
 # quick note about the str(age) function)
-# str(age) converts the variable 'age' to a string
+# str(age) converts the integer 'age' to a string
 # without it, the program would crash
 # we will talk about this later
 
@@ -33,6 +33,8 @@ print("at the grocery store " + name + " goes to buy some food")
 
 Instead of changing every individual line of code, we can just change the variable.  This is much easier and much more efficient.
 
+
+## Variables in Python
 Variables in any programming language are a key part of any programming.  They allow you to store a value in a variable and then use that value later.  In Python, variables are created using the `=` symbol.  For example:
 
 ```python
@@ -66,6 +68,28 @@ In the example above, we add 1 to the value of x.  This is because Python is a d
 
 <br>
 
+## Standard Naming Patterns
+
+In most languages, there are standard conventions and patterns to naming variables.  This is so code is easy to read and understand when working with others.  According to the Python documentation, *"Function names should be lowercase, with words separated by underscores as necessary to improve readability.  Variable names follow the same convention as function names."*  This convention is known as snake case.  This means that the variable name should be lowercase and separated by underscores.  For example:
+```python
+# this is the correct way to name a variable
+character_name = "Sam"
+character_age = 16
+y_pos = 0
+x_pos = 0
+age = 16
+```
+While it is not strictly necessary to follow these conventions to the letter, it is a good idea to follow them to the best of your ability.  
+For more information on standard conventions, see the [Python documentation](https://www.python.org/dev/peps/pep-0008/#prescriptive-naming-conventions).
+<br>
+
+
+## Common Errors With Variables
+
+Learning how variables work at first can be complex and confusing.  There are a few common errors that can make it difficult to use variables.  The following are some of the most common errors that can make it difficult to use variables.
+
+<br>
+
 Variables cannot be used until they are defined.  For example:
 
 ```python
@@ -83,12 +107,13 @@ x = 5
 It is important to keep the case of the variable name the same as the variable name.  For example:
 
 ```python
-x = 5
-x = X + 1
+num_apples = 5
+num_apples = num_Apples + 1
 ```
 
-Since x is lowercased when we defined it, we need to make sure that the variable name is lowercased as well.  x and X are not the same variable.  This is why we need to make sure that the variable name is the same as the variable name. 
+Since x is lowercased when we defined it, we need to make sure that the variable name is lowercased as well.  `num_apples` and `num_Apples` are not the same variable.  This is why we need to make sure that the variable name is spelt exactly the same when using it 
 
 <br>
+
 
 We will talk about variables and using them in math equations in the next section.

@@ -8,7 +8,7 @@ import functools
 #This will vary slightly depending on your setup.  
 #If it is running in the same folder and you are not funky like I am, you can leave it 'pear.gif'
 
-pear_image = "./1.2.3_Project/pear.gif" # Store the file name of your shape
+pear_image = "./1.2.3/pear.gif" # Store the file name of your shape
 
 # Screen setup for the background and size
 wn = trtl.Screen()
@@ -74,7 +74,7 @@ def pear_fall(letter, index):
   turtle_list[index].turtle.goto(turtle_list[index].turtle.xcor(),ground_height)
   
   # increases current letters
-  current_letters += 1
+  #current_letters += 1
 
   # if the number of letters your clicked is 
   # greater than or equal to the number of letters you should have,
@@ -109,7 +109,7 @@ def pear_fall(letter, index):
 # but i found a way to pass a letter as an argument
 # more info how down below
 def fall(letter):
-  
+  global current_letters
   #for loop repeats the if statement for as long as the list is
   for i in range(len(turtle_list)):
 
@@ -117,6 +117,7 @@ def fall(letter):
     if(turtle_list[i].letter == letter):
       
       # calls the pear_fall function with the proper arguments
+      current_letters += 1
       pear_fall(letter, i)
       
       # break ends the for loop and prevents the need for it to continue

@@ -1,5 +1,5 @@
-bob,10
-god,7
-list,6
-js,5
-john,4
+john,10
+yourname,5
+nick,3
+billy,3
+geo,2

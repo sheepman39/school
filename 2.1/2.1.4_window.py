@@ -60,7 +60,7 @@ ent_password = tk.Entry(frame_login, bd=3, show="*")
 ent_password.pack(pady=5)
 
 # 2.1.6 stuff
-bt_image = tk.PhotoImage(file="Lesson_2.2.6/button.gif")
+bt_image = tk.PhotoImage(file="2.2.6/button.gif")
 bt_image = bt_image.subsample(10,10)
 
 # step 18 + 23
@@ -72,6 +72,6 @@ frame_login.tkraise()
 
 test_textbox = tksc.ScrolledText(frame_auth)
 # this line is broken somehow even tho it is the same stuff from the book.  not sure why
-test_textbox.configure(frame_auth, height=10, width=50)
+#test_textbox.configure(frame_auth, height=10, width=50)
 
 root.mainloop()
